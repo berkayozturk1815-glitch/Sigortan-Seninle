@@ -626,7 +626,10 @@
         </div>
       </div>
       <div class="contact-form">
-        <form id="teklifForm">
+        <form id="teklifForm" action="https://formsubmit.co/berkayozturk1815@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Yeni Teklif Talebi - Sigortan Seninle">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
           <div class="form-row">
             <div class="field"><label for="ad">Ad Soyad</label><input id="ad" name="Ad Soyad" type="text" placeholder="Adınız Soyadınız" required></div>
             <div class="field"><label for="tel">Telefon</label><input id="tel" name="Telefon" type="tel" placeholder="05xx xxx xx xx" required></div>
@@ -653,8 +656,7 @@
           <div class="form-row">
             <div class="field full"><label for="mesaj">Mesajınız (opsiyonel)</label><textarea id="mesaj" name="Mesaj" placeholder="Eklemek istediğiniz bir şey var mı?"></textarea></div>
           </div>
-          <button type="submit" class="submit-btn" id="submitBtn">Teklif İste</button>
-          <div class="form-success" id="formSuccess"></div>
+          <button type="submit" class="submit-btn">Teklif İste</button>
         </form>
       </div>
     </div>
@@ -665,51 +667,5 @@
   <div class="wrap">© 2026 Sigortan Seninle. Tüm hakları saklıdır.</div>
 </footer>
 
-<script>
-  var FORM_TARGET_EMAIL = 'berkayozturk1815@gmail.com';
-  var form = document.getElementById('teklifForm');
-  var submitBtn = document.getElementById('submitBtn');
-  var statusBox = document.getElementById('formSuccess');
-
-  function showStatus(msg, isError){
-    statusBox.textContent = msg;
-    statusBox.classList.add('show');
-    statusBox.classList.toggle('is-error', !!isError);
-  }
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Gönderiliyor…';
-    showStatus('Gönderiliyor…', false);
-
-    var formData = new FormData(form);
-    formData.append('_subject', 'Yeni Teklif Talebi - Sigortan Seninle');
-    formData.append('_template', 'table');
-    formData.append('_captcha', 'false');
-
-    fetch('https://formsubmit.co/ajax/' + FORM_TARGET_EMAIL, {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: formData
-    })
-    .then(function(res){ return res.json().then(function(data){ return {ok: res.ok, data: data}; }); })
-    .then(function(result){
-      if(result.ok){
-        showStatus('Talebiniz alındı. Uzmanımız en kısa sürede sizi arayacak.', false);
-        form.reset();
-      }else{
-        showStatus('Gönderim şu an tamamlanamadı. Lütfen ' + FORM_TARGET_EMAIL + ' adresine doğrudan yazın veya daha sonra tekrar deneyin.', true);
-      }
-    })
-    .catch(function(){
-      showStatus('Bağlantı hatası oluştu. Lütfen ' + FORM_TARGET_EMAIL + ' adresine doğrudan yazın veya daha sonra tekrar deneyin.', true);
-    })
-    .finally(function(){
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Teklif İste';
-    });
-  });
-</script>
 </body>
 </html>
