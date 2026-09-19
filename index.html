@@ -617,7 +617,7 @@
         </div>
         <div class="contact-row">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-          <div><b>teklif@sigortanseninle.com</b><span>24 saat içinde yanıt</span></div>
+          <div><b>berkayozturk1815@gmail.com</b><span>24 saat içinde yanıt</span></div>
         </div>
         <div class="contact-row">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -625,22 +625,25 @@
         </div>
       </div>
       <div class="contact-form">
-        <form id="teklifForm">
+        <form id="teklifForm" action="https://formsubmit.co/berkayozturk1815@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Yeni Teklif Talebi - Sigortan Seninle">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
           <div class="form-row">
-            <div class="field"><label for="ad">Ad Soyad</label><input id="ad" type="text" placeholder="Adınız Soyadınız" required></div>
-            <div class="field"><label for="tel">Telefon</label><input id="tel" type="tel" placeholder="05xx xxx xx xx" required></div>
+            <div class="field"><label for="ad">Ad Soyad</label><input id="ad" name="Ad Soyad" type="text" placeholder="Adınız Soyadınız" required></div>
+            <div class="field"><label for="tel">Telefon</label><input id="tel" name="Telefon" type="tel" placeholder="05xx xxx xx xx" required></div>
           </div>
           <div class="form-row">
-            <div class="field full"><label for="eposta">E-posta</label><input id="eposta" type="email" placeholder="ornek@eposta.com" required></div>
+            <div class="field full"><label for="eposta">E-posta</label><input id="eposta" name="E-posta" type="email" placeholder="ornek@eposta.com" required></div>
           </div>
           <div class="form-row">
-            <div class="field"><label for="marka">Araç markası</label><input id="marka" type="text" placeholder="Örn. Toyota"></div>
-            <div class="field"><label for="model">Model / Yıl</label><input id="model" type="text" placeholder="Örn. Corolla 2021"></div>
+            <div class="field"><label for="marka">Araç markası</label><input id="marka" name="Araç Markası" type="text" placeholder="Örn. Toyota"></div>
+            <div class="field"><label for="model">Model / Yıl</label><input id="model" name="Model / Yıl" type="text" placeholder="Örn. Corolla 2021"></div>
           </div>
           <div class="form-row">
             <div class="field full">
               <label for="tur">Sigorta türü</label>
-              <select id="tur" required>
+              <select id="tur" name="Sigorta Türü" required>
                 <option value="">Seçiniz</option>
                 <option>Kasko</option>
                 <option>Trafik Sigortası</option>
@@ -650,10 +653,10 @@
             </div>
           </div>
           <div class="form-row">
-            <div class="field full"><label for="mesaj">Mesajınız (opsiyonel)</label><textarea id="mesaj" placeholder="Eklemek istediğiniz bir şey var mı?"></textarea></div>
+            <div class="field full"><label for="mesaj">Mesajınız (opsiyonel)</label><textarea id="mesaj" name="Mesaj" placeholder="Eklemek istediğiniz bir şey var mı?"></textarea></div>
           </div>
           <button type="submit" class="submit-btn">Teklif İste</button>
-          <div class="form-success" id="formSuccess">Talebiniz alındı. Uzmanımız en kısa sürede sizi arayacak.</div>
+          <div class="form-success" id="formSuccess">Gönderiliyor…</div>
         </form>
       </div>
     </div>
@@ -665,10 +668,11 @@
 </footer>
 
 <script>
-  document.getElementById('teklifForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    document.getElementById('formSuccess').classList.add('show');
-    this.reset();
+  document.getElementById('teklifForm').addEventListener('submit', function(){
+    var successBox = document.getElementById('formSuccess');
+    successBox.textContent = 'Gönderiliyor…';
+    successBox.classList.add('show');
+    // Form doğal olarak POST ile FormSubmit.co üzerinden berkayozturk1815@gmail.com adresine iletilir.
   });
 </script>
 </body>
