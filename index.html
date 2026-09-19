@@ -179,6 +179,7 @@
   .submit-btn{background:var(--navy); color:#fff; padding:14px 30px; border-radius:999px; border:none; font-weight:700; font-size:0.95rem; cursor:pointer; margin-top:6px; width:100%; transition:.25s;}
   .submit-btn:hover{background:var(--navy-2);}
   .form-success{display:none; background:#E8F4EA; border:1px solid #BFDFC7; color:#245B33; padding:15px 17px; border-radius:var(--radius-sm); font-size:0.9rem; margin-top:16px;}
+  .form-success.is-error{background:#FBEAEA; border-color:#E6BFBF; color:#7A2A2A;}
   .form-success.show{display:block;}
 
   footer{padding:40px 0; text-align:center; color:var(--ink-soft); font-size:0.85rem;}
@@ -625,10 +626,7 @@
         </div>
       </div>
       <div class="contact-form">
-        <form id="teklifForm" action="https://formsubmit.co/berkayozturk1815@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="Yeni Teklif Talebi - Sigortan Seninle">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
+        <form id="teklifForm">
           <div class="form-row">
             <div class="field"><label for="ad">Ad Soyad</label><input id="ad" name="Ad Soyad" type="text" placeholder="Adınız Soyadınız" required></div>
             <div class="field"><label for="tel">Telefon</label><input id="tel" name="Telefon" type="tel" placeholder="05xx xxx xx xx" required></div>
@@ -655,8 +653,8 @@
           <div class="form-row">
             <div class="field full"><label for="mesaj">Mesajınız (opsiyonel)</label><textarea id="mesaj" name="Mesaj" placeholder="Eklemek istediğiniz bir şey var mı?"></textarea></div>
           </div>
-          <button type="submit" class="submit-btn">Teklif İste</button>
-          <div class="form-success" id="formSuccess">Gönderiliyor…</div>
+          <button type="submit" class="submit-btn" id="submitBtn">Teklif İste</button>
+          <div class="form-success" id="formSuccess"></div>
         </form>
       </div>
     </div>
@@ -668,11 +666,49 @@
 </footer>
 
 <script>
-  document.getElementById('teklifForm').addEventListener('submit', function(){
-    var successBox = document.getElementById('formSuccess');
-    successBox.textContent = 'Gönderiliyor…';
-    successBox.classList.add('show');
-    // Form doğal olarak POST ile FormSubmit.co üzerinden berkayozturk1815@gmail.com adresine iletilir.
+  var FORM_TARGET_EMAIL = 'berkayozturk1815@gmail.com';
+  var form = document.getElementById('teklifForm');
+  var submitBtn = document.getElementById('submitBtn');
+  var statusBox = document.getElementById('formSuccess');
+
+  function showStatus(msg, isError){
+    statusBox.textContent = msg;
+    statusBox.classList.add('show');
+    statusBox.classList.toggle('is-error', !!isError);
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Gönderiliyor…';
+    showStatus('Gönderiliyor…', false);
+
+    var formData = new FormData(form);
+    formData.append('_subject', 'Yeni Teklif Talebi - Sigortan Seninle');
+    formData.append('_template', 'table');
+    formData.append('_captcha', 'false');
+
+    fetch('https://formsubmit.co/ajax/' + FORM_TARGET_EMAIL, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: formData
+    })
+    .then(function(res){ return res.json().then(function(data){ return {ok: res.ok, data: data}; }); })
+    .then(function(result){
+      if(result.ok){
+        showStatus('Talebiniz alındı. Uzmanımız en kısa sürede sizi arayacak.', false);
+        form.reset();
+      }else{
+        showStatus('Gönderim şu an tamamlanamadı. Lütfen ' + FORM_TARGET_EMAIL + ' adresine doğrudan yazın veya daha sonra tekrar deneyin.', true);
+      }
+    })
+    .catch(function(){
+      showStatus('Bağlantı hatası oluştu. Lütfen ' + FORM_TARGET_EMAIL + ' adresine doğrudan yazın veya daha sonra tekrar deneyin.', true);
+    })
+    .finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Teklif İste';
+    });
   });
 </script>
 </body>
