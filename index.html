@@ -678,6 +678,10 @@
             <div class="field full"><label for="eposta">E-posta</label><input id="eposta" name="email" type="email" placeholder="ornek@eposta.com" required></div>
           </div>
           <div class="form-row">
+            <div class="field"><label for="marka">Araç markası</label><input id="marka" type="text" placeholder="Örn. Toyota"></div>
+            <div class="field"><label for="model">Model / Yıl</label><input id="model" type="text" placeholder="Örn. Corolla 2021"></div>
+          </div>
+          <div class="form-row">
             <div class="field full"><label for="mesaj">Mesaj</label><textarea id="mesaj" name="message" placeholder="Mesajınızı yazın..." required></textarea></div>
           </div>
           <button type="submit" class="submit-btn" id="submitBtn">Gönder</button>
@@ -717,14 +721,14 @@
 
 <script>
 (function(){
-  var mesajInput = document.getElementById('mesaj');
+  var markaInput = document.getElementById('marka');
+  var modelInput = document.getElementById('model');
   document.querySelectorAll('.vehicle-cta').forEach(function(btn){
     btn.addEventListener('click', function(){
       var brand = btn.getAttribute('data-brand');
       var model = btn.getAttribute('data-model');
-      if(mesajInput && brand && model){
-        mesajInput.value = 'İlgilendiğim araç: ' + brand + ' ' + model;
-      }
+      if(markaInput && brand) markaInput.value = brand;
+      if(modelInput && model) modelInput.value = model;
     });
   });
 })();
@@ -754,10 +758,15 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Gönderiliyor…';
 
+    var marka = document.getElementById('marka').value.trim();
+    var model = document.getElementById('model').value.trim();
+    var mesaj = document.getElementById('mesaj').value.trim();
+    var vehicleLine = (marka || model) ? ('Araç: ' + [marka, model].filter(Boolean).join(' - ') + '\n\n') : '';
+
     var payload = {
       name: document.getElementById('ad').value.trim(),
       email: document.getElementById('eposta').value.trim(),
-      message: document.getElementById('mesaj').value.trim()
+      message: vehicleLine + mesaj
     };
 
     fetch(ENDPOINT, {
