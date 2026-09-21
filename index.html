@@ -56,13 +56,66 @@
   .hero h1{font-size:clamp(2.3rem,4.4vw,3.4rem); color:#fff; max-width:15ch;}
   .hero p.lead{color:#C9DAEA; font-size:1.06rem; max-width:46ch; margin-top:20px;}
   .hero-ctas{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+
+  /* ---------- Araç Güvencesi animasyonlu klip ---------- */
+  .coverage-clip{
+    display:flex; align-items:center; gap:16px; margin-top:30px; padding:14px 18px;
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); border-radius:var(--radius-md);
+    max-width:460px;
+  }
+  .coverage-clip svg{width:88px; height:56px; flex-shrink:0;}
+  .coverage-clip .clip-text b{display:block; color:#fff; font-size:0.92rem; font-weight:700; margin-bottom:2px;}
+  .coverage-clip .clip-text span{color:#CFE1F2; font-size:0.8rem;}
+
+  .cc-car{ animation: cc-drive 4.5s ease-in-out infinite; }
+  @keyframes cc-drive{
+    0%   { transform: translateX(-40px); opacity: 0; }
+    12%  { opacity: 1; }
+    45%  { transform: translateX(0px); opacity: 1; }
+    70%  { transform: translateX(0px); opacity: 1; }
+    88%  { transform: translateX(6px); opacity: 0; }
+    100% { transform: translateX(-40px); opacity: 0; }
+  }
+  .cc-shield-inner{
+    animation: cc-shield-pop 4.5s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+  }
+  @keyframes cc-shield-pop{
+    0%   { transform: scale(0.4); opacity: 0; }
+    45%  { transform: scale(0.4); opacity: 0; }
+    58%  { transform: scale(1.08); opacity: 1; }
+    68%  { transform: scale(1); opacity: 1; }
+    85%  { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0.4); opacity: 0; }
+  }
+  .cc-check{ animation: cc-check-in 4.5s ease-in-out infinite; stroke-dasharray: 24; stroke-dashoffset: 24; }
+  @keyframes cc-check-in{
+    0%, 62%  { stroke-dashoffset: 24; opacity: 0; }
+    72%      { stroke-dashoffset: 0; opacity: 1; }
+    85%      { stroke-dashoffset: 0; opacity: 1; }
+    100%     { stroke-dashoffset: 0; opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .cc-car, .cc-shield-inner, .cc-check{ animation: none !important; opacity: 1 !important; transform: none !important; stroke-dashoffset: 0 !important; }
+  }
   .btn-primary{background:#fff; color:var(--navy); padding:15px 30px; border-radius:999px; font-weight:700; font-size:0.97rem; box-shadow:0 14px 32px -10px rgba(0,0,0,0.4); transition:.25s; display:inline-flex; align-items:center; gap:8px;}
   .btn-primary:hover{transform:translateY(-2px); box-shadow:0 18px 38px -8px rgba(0,0,0,0.5);}
+  .btn-primary svg{transition: transform .2s ease;}
+  .btn-primary:hover svg{animation: btn-arrow-slide 0.9s ease-in-out infinite;}
+  @keyframes btn-arrow-slide{
+    0%   { transform: translateX(0); }
+    50%  { transform: translateX(8px); }
+    100% { transform: translateX(0); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .btn-primary:hover svg{ animation: none; transform: translateX(5px); }
+  }
   .btn-ghost{padding:15px 26px; border-radius:999px; border:1px solid rgba(255,255,255,0.35); color:#fff; font-weight:600; font-size:0.97rem; transition:.25s;}
   .btn-ghost:hover{background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.6);}
-  .hero-stats{display:flex; gap:30px; margin-top:46px; padding:20px 22px; border-radius:var(--radius-md); background:rgba(0,0,0,0.18); border:1px solid rgba(255,255,255,0.12);}
-  .hero-stats div b{display:block; font-family:'Fraunces',serif; font-size:1.6rem; color:#fff; font-weight:600;}
-  .hero-stats div span{color:#CFE1F2; font-size:0.82rem;}
+  .hero-stats{display:flex; gap:30px; margin-top:24px; padding:20px 22px; border-radius:var(--radius-md); background:rgba(0,0,0,0.32); border:1px solid rgba(255,255,255,0.22);}
+  .hero-stats div b{display:block; font-family:'Fraunces',serif; font-size:1.7rem; color:#FFFFFF; font-weight:700; text-shadow:0 1px 3px rgba(0,0,0,0.35);}
+  .hero-stats div span{color:#E3ECF4; font-size:0.84rem; font-weight:500;}
   .hero-art{position:relative; height:400px;}
   .hero-wave{position:absolute; left:0; right:0; bottom:-2px;}
 
@@ -248,6 +301,28 @@
         </a>
         <a href="#araclarimiz" class="btn-ghost">Araçlarımızı İncele</a>
       </div>
+
+      <div class="coverage-clip" role="img" aria-label="Araç Güvencesi animasyonu: aracınız kalkan ile korunuyor">
+        <svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
+          <g class="cc-car">
+            <path d="M15 68 L15 56 C15 50 20 47 27 45 L42 41 C49 31 59 25 71 25 L118 25 C132 25 143 34 149 47 L156 51 C160 53 163 58 163 64 L163 68 Z" fill="#EAF2FA" stroke="#0F2340" stroke-width="2.4" transform="scale(0.85) translate(5,8)"/>
+            <path d="M70 43 L82 29 L112 29 L122 43 Z" fill="#0F2340" opacity="0.85" transform="scale(0.85) translate(5,8)"/>
+            <circle cx="45" cy="76" r="10" fill="#0F2340" transform="scale(0.85) translate(5,8)"/>
+            <circle cx="135" cy="76" r="10" fill="#0F2340" transform="scale(0.85) translate(5,8)"/>
+          </g>
+          <g transform="translate(80,50)">
+            <g class="cc-shield-inner">
+              <path d="M0 -32 L26 -22 V4 C26 22 14 33 0 38 C-14 33 -26 22 -26 4 V-22 Z" fill="none" stroke="#F4C542" stroke-width="4"/>
+              <path class="cc-check" d="M-11 2 L-3 12 L14 -10" fill="none" stroke="#F4C542" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </g>
+        </svg>
+        <div class="clip-text">
+          <b>Araç Güvencesi</b>
+          <span>Yolda olduğunuz her an, sigortanız yanınızda</span>
+        </div>
+      </div>
+
       <div class="hero-stats">
         <div><b>180.000+</b><span>Sigortalı araç</span></div>
         <div><b>45 dk</b><span>Ort. yol yardımı süresi</span></div>
@@ -595,37 +670,18 @@
         </div>
       </div>
       <div class="contact-form">
-        <form id="teklifForm" action="https://formsubmit.co/berkayozturk1815@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="Yeni Teklif Talebi - Sigortan Seninle">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
+        <form id="teklifForm">
           <div class="form-row">
-            <div class="field"><label for="ad">Ad Soyad</label><input id="ad" name="Ad Soyad" type="text" placeholder="Adınız Soyadınız" required></div>
-            <div class="field"><label for="tel">Telefon</label><input id="tel" name="Telefon" type="tel" placeholder="05xx xxx xx xx" required></div>
+            <div class="field full"><label for="ad">Ad Soyad</label><input id="ad" name="name" type="text" placeholder="Adınız Soyadınız" required></div>
           </div>
           <div class="form-row">
-            <div class="field full"><label for="eposta">E-posta</label><input id="eposta" name="E-posta" type="email" placeholder="ornek@eposta.com" required></div>
+            <div class="field full"><label for="eposta">E-posta</label><input id="eposta" name="email" type="email" placeholder="ornek@eposta.com" required></div>
           </div>
           <div class="form-row">
-            <div class="field"><label for="marka">Araç markası</label><input id="marka" name="Araç Markası" type="text" placeholder="Örn. Toyota"></div>
-            <div class="field"><label for="model">Model / Yıl</label><input id="model" name="Model / Yıl" type="text" placeholder="Örn. Corolla 2021"></div>
+            <div class="field full"><label for="mesaj">Mesaj</label><textarea id="mesaj" name="message" placeholder="Mesajınızı yazın..." required></textarea></div>
           </div>
-          <div class="form-row">
-            <div class="field full">
-              <label for="tur">Sigorta türü</label>
-              <select id="tur" name="Sigorta Türü" required>
-                <option value="">Seçiniz</option>
-                <option>Kasko</option>
-                <option>Trafik Sigortası</option>
-                <option>Kasko + Trafik</option>
-                <option>Filo Sigortası</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="field full"><label for="mesaj">Mesajınız (opsiyonel)</label><textarea id="mesaj" name="Mesaj" placeholder="Eklemek istediğiniz bir şey var mı?"></textarea></div>
-          </div>
-          <button type="submit" class="submit-btn">Teklif İste</button>
+          <button type="submit" class="submit-btn" id="submitBtn">Gönder</button>
+          <div class="form-success" id="formSuccess"></div>
         </form>
       </div>
     </div>
@@ -661,14 +717,73 @@
 
 <script>
 (function(){
-  var markaInput = document.getElementById('marka');
-  var modelInput = document.getElementById('model');
+  var mesajInput = document.getElementById('mesaj');
   document.querySelectorAll('.vehicle-cta').forEach(function(btn){
     btn.addEventListener('click', function(){
       var brand = btn.getAttribute('data-brand');
       var model = btn.getAttribute('data-model');
-      if(markaInput && brand) markaInput.value = brand;
-      if(modelInput && model) modelInput.value = model;
+      if(mesajInput && brand && model){
+        mesajInput.value = 'İlgilendiğim araç: ' + brand + ' ' + model;
+      }
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  // Bu site tek başına bir statik HTML dosyasıdır; gerçek mail gönderimi
+  // ancak birlikte teslim edilen backend (server.js) çalışıyorsa mümkündür.
+  // Backend başka bir adreste çalışıyorsa API_BASE_URL'i o adrese göre güncelleyin.
+  // Aynı sunucudan (Express static + API) servis ediliyorsa boş bırakın.
+  var API_BASE_URL = '';
+  var ENDPOINT = (API_BASE_URL || '') + '/api/contact';
+
+  var form = document.getElementById('teklifForm');
+  var submitBtn = document.getElementById('submitBtn');
+  var statusBox = document.getElementById('formSuccess');
+
+  function showStatus(msg, isError){
+    statusBox.textContent = msg;
+    statusBox.classList.add('show');
+    statusBox.classList.toggle('is-error', !!isError);
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Gönderiliyor…';
+
+    var payload = {
+      name: document.getElementById('ad').value.trim(),
+      email: document.getElementById('eposta').value.trim(),
+      message: document.getElementById('mesaj').value.trim()
+    };
+
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res){
+      return res.json().catch(function(){ return {}; }).then(function(data){
+        return { ok: res.ok, data: data };
+      });
+    })
+    .then(function(result){
+      if(result.ok){
+        showStatus('Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız.', false);
+        form.reset();
+      }else{
+        showStatus((result.data && result.data.error) || 'Mesaj gönderilemedi. Lütfen daha sonra tekrar deneyin.', true);
+      }
+    })
+    .catch(function(){
+      showStatus('Bağlantı hatası oluştu. Lütfen daha sonra tekrar deneyin.', true);
+    })
+    .finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Gönder';
     });
   });
 })();
