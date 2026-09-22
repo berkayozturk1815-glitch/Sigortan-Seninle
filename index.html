@@ -140,6 +140,96 @@
   .coverage{background:var(--band); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
   .coverage-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
   .coverage-art{background:linear-gradient(135deg,var(--sky),var(--blue-light)); border-radius:var(--radius-lg); aspect-ratio:1/0.9; display:flex; align-items:center; justify-content:center; padding:30px; position:relative; overflow:hidden;}
+
+  /* ================= Araç Güvence Widget'ı (sıfırdan) ================= */
+  .avw{
+    background: radial-gradient(120% 100% at 50% 30%, #123244 0%, #081826 55%, #050f18 100%);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    isolation: isolate;
+  }
+  .avw-hex{
+    position:absolute; inset:0; opacity:0.12;
+    background-image:
+      repeating-linear-gradient(60deg, transparent 0 18px, rgba(94,234,212,0.5) 18px 19px),
+      repeating-linear-gradient(-60deg, transparent 0 18px, rgba(94,234,212,0.5) 18px 19px);
+    mask-image: radial-gradient(60% 60% at 50% 45%, black 40%, transparent 75%);
+  }
+  .avw-halo{
+    position:absolute; width:78%; aspect-ratio: 1.5/1; border-radius:50%;
+    border:2px dashed rgba(94,234,212,0.55);
+    box-shadow: 0 0 40px rgba(45,212,191,0.25) inset;
+    animation: avw-halo-spin 18s linear infinite;
+  }
+  @keyframes avw-halo-spin{ to{ transform: rotate(360deg); } }
+  .avw-stage{ position:relative; width:100%; height:100%; }
+
+  .avw-badge-shield{
+    position:absolute; top:10%; left:50%; transform:translateX(-50%);
+    width:15%; aspect-ratio:1/1; min-width:44px;
+    background: #08131f; border:2px solid #22d3ee; border-radius:22%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 0 18px rgba(34,211,238,0.7), 0 0 4px rgba(34,211,238,0.9) inset;
+    animation: avw-pulse 2.4s ease-in-out infinite;
+    z-index:5;
+  }
+  .avw-badge-shield svg{ width:60%; height:60%; }
+  @keyframes avw-pulse{
+    0%,100% { box-shadow: 0 0 14px rgba(34,211,238,0.55), 0 0 4px rgba(34,211,238,0.85) inset; }
+    50%     { box-shadow: 0 0 26px rgba(34,211,238,0.95), 0 0 8px rgba(34,211,238,1) inset; }
+  }
+
+  .avw-pill{
+    position:absolute; display:flex; align-items:center; gap:8px;
+    background:#0a1c2c; border:1.5px solid rgba(94,234,212,0.6); border-radius:999px;
+    padding:7px 14px; font-size:0.72rem; font-weight:700; color:#eafffb;
+    white-space:normal; max-width:42%; line-height:1.3;
+    box-shadow:0 0 14px rgba(45,212,191,0.35);
+  }
+  .avw-pill .dot{ width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .avw-pill.left{ top:22%; left:3%; }
+  .avw-pill.left .dot{ background:#34d399; box-shadow:0 0 8px #34d399; animation: avw-blink 1.6s ease-in-out infinite; }
+  .avw-pill.right{ top:80%; right:2%; }
+  .avw-pill.right .dot{ background:#38bdf8; box-shadow:0 0 8px #38bdf8; }
+  @keyframes avw-blink{ 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+
+  .avw-car-wrap{
+    position:absolute; left:50%; top:48%; transform:translate(-50%,-50%);
+    width:70%; animation: avw-bob 3.2s ease-in-out infinite;
+  }
+  @keyframes avw-bob{
+    0%,100% { transform: translate(-50%,-50%) translateY(0); }
+    50%     { transform: translate(-50%,-50%) translateY(-3%); }
+  }
+  .avw-wheel{ transform-box: fill-box; transform-origin: 50% 50%; animation: avw-spin 0.6s linear infinite; }
+  @keyframes avw-spin{ to{ transform: rotate(360deg); } }
+
+  .avw-beam-l, .avw-beam-r{ opacity:0.85; }
+  .avw-beam-r{ animation: avw-beam-flicker 2.4s ease-in-out infinite; }
+  @keyframes avw-beam-flicker{ 0%,100%{ opacity:0.65;} 50%{ opacity:1;} }
+
+  .avw-road{ position:absolute; left:0; right:0; bottom:14%; height:14%; overflow:hidden; }
+  .avw-road-line{
+    position:absolute; top:50%; height:3px; width:36px; border-radius:2px;
+    background:linear-gradient(90deg, transparent, #22d3ee, transparent);
+    animation: avw-road-move 1.1s linear infinite;
+  }
+  @keyframes avw-road-move{ from{ transform:translateX(120%);} to{ transform:translateX(-140%);} }
+
+  @media (prefers-reduced-motion: reduce){
+    .avw-halo, .avw-badge-shield, .avw-pill .dot, .avw-car-wrap, .avw-wheel, .avw-beam-r, .avw-road-line{
+      animation: none !important;
+    }
+  }
+  @media (max-width:560px){
+    .avw-pill{ font-size:0.62rem; padding:5px 10px; }
+    .avw-pill.left{ left:1%; }
+    .avw-pill.right{ right:1%; }
+  }
   .coverage-list{display:flex; flex-direction:column; gap:4px;}
   .coverage-item{display:flex; gap:16px; padding:16px 0; border-bottom:1px solid var(--line);}
   .coverage-item:last-child{border-bottom:none;}
@@ -434,16 +524,88 @@
         </div>
       </div>
     </div>
-    <div class="coverage-art">
-      <svg viewBox="0 0 260 220" width="82%" height="82%">
-        <path d="M40 0 L80 14 V44 C80 66 62 80 40 88 C18 80 0 66 0 44 V14 Z" fill="#0F2340" transform="translate(90,10)"/>
-        <path d="M112 55 L128 71 L152 40" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <g transform="translate(20,120)">
-          <path d="M6 55 L6 42 C6 34 12 30 20 28 L42 22 C50 12 60 5 74 5 L150 5 C167 5 181 15 188 32 L222 37 C233 38 240 46 240 56 L240 64 L6 64 Z" fill="#fff" stroke="#0F2340" stroke-width="2"/>
-          <circle cx="55" cy="65" r="16" fill="#0F2340"/>
-          <circle cx="190" cy="65" r="16" fill="#0F2340"/>
-        </g>
-      </svg>
+    <div class="coverage-art" style="padding:0;">
+      <div class="avw">
+        <div class="avw-hex"></div>
+        <div class="avw-stage">
+          <div class="avw-halo"></div>
+
+          <div class="avw-badge-shield">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/>
+              <path d="M8.5 12l2.3 2.3L15.5 9.5"/>
+            </svg>
+          </div>
+
+          <div class="avw-pill left"><span class="dot"></span>TAM KORUMA AKTİF</div>
+          <div class="avw-pill right"><span class="dot"></span>Aracınız neredeyse, güvenceniz de orada.</div>
+
+          <div class="avw-road">
+            <div class="avw-road-line" style="left:10%; animation-delay:0s;"></div>
+            <div class="avw-road-line" style="left:40%; animation-delay:0.35s;"></div>
+            <div class="avw-road-line" style="left:70%; animation-delay:0.7s;"></div>
+          </div>
+
+          <div class="avw-car-wrap">
+            <svg viewBox="0 0 300 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="avwBody" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#60a5fa"/>
+                  <stop offset="100%" stop-color="#1d4ed8"/>
+                </linearGradient>
+                <radialGradient id="avwBeamR" cx="0" cy="0.5" r="1">
+                  <stop offset="0%" stop-color="#a5f3fc" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="#a5f3fc" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="avwBeamL" cx="1" cy="0.5" r="1">
+                  <stop offset="0%" stop-color="#f87171" stop-opacity="0.7"/>
+                  <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+
+              <!-- Far ışık hüzmeleri -->
+              <path class="avw-beam-r" d="M258 92 L300 78 L300 108 Z" fill="url(#avwBeamR)"/>
+              <path class="avw-beam-l" d="M42 92 L0 82 L0 104 Z" fill="url(#avwBeamL)"/>
+
+              <!-- Gölge -->
+              <ellipse cx="153" cy="132" rx="110" ry="9" fill="#000" opacity="0.35"/>
+
+              <!-- Gövde -->
+              <path d="M20 102 L20 82 C20 72 28 66 38 63 L64 54 C78 34 98 24 122 24 L188 24 C210 24 228 36 238 56 L264 64 C278 68 286 78 286 90 L286 102 Z"
+                    fill="url(#avwBody)" stroke="#0b1220" stroke-width="3"/>
+              <!-- Camlar -->
+              <path d="M90 60 L126 30 L184 30 L220 60 Z" fill="#0b1220" opacity="0.9"/>
+              <line x1="155" y1="30" x2="155" y2="60" stroke="#0b1220" stroke-width="2"/>
+              <!-- Tampon aksanları -->
+              <rect x="268" y="86" width="16" height="6" rx="2" fill="#a5f3fc"/>
+              <rect x="22" y="86" width="14" height="5" rx="2" fill="#f87171"/>
+
+              <!-- Arka jant -->
+              <g class="avw-wheel">
+                <circle cx="70" cy="104" r="20" fill="#0b1220"/>
+                <circle cx="70" cy="104" r="8" fill="#9ca3af"/>
+                <g stroke="#d1d5db" stroke-width="2.4">
+                  <line x1="70" y1="96" x2="70" y2="112"/>
+                  <line x1="62" y1="104" x2="78" y2="104"/>
+                  <line x1="64.5" y1="98.5" x2="75.5" y2="109.5"/>
+                  <line x1="75.5" y1="98.5" x2="64.5" y2="109.5"/>
+                </g>
+              </g>
+              <!-- Ön jant -->
+              <g class="avw-wheel">
+                <circle cx="236" cy="104" r="20" fill="#0b1220"/>
+                <circle cx="236" cy="104" r="8" fill="#9ca3af"/>
+                <g stroke="#d1d5db" stroke-width="2.4">
+                  <line x1="236" y1="96" x2="236" y2="112"/>
+                  <line x1="228" y1="104" x2="244" y2="104"/>
+                  <line x1="230.5" y1="98.5" x2="241.5" y2="109.5"/>
+                  <line x1="241.5" y1="98.5" x2="230.5" y2="109.5"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
