@@ -1108,24 +1108,17 @@
 
 <script>
 (function(){
-  var STORAGE_KEY = 'sigortanSeninleInfoPopupDismissed_v1';
   var popup = document.getElementById('infoPopup');
   var closeBtn = document.getElementById('ipClose');
   if(!popup || !closeBtn) return;
 
-  var dismissed = false;
-  try{ dismissed = localStorage.getItem(STORAGE_KEY) === '1'; }catch(e){}
-
-  if(!dismissed){
-    setTimeout(function(){
-      popup.classList.add('show');
-    }, 700);
-  }
+  setTimeout(function(){
+    popup.classList.add('show');
+  }, 700);
 
   closeBtn.addEventListener('click', function(){
     popup.classList.remove('show');
     popup.classList.add('hide');
-    try{ localStorage.setItem(STORAGE_KEY, '1'); }catch(e){}
   });
 })();
 </script>
