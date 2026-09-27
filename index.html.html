@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#0F2340">
+<title>Sigortan Seninle — Aracınız için güvenli yol arkadaşı</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F2340;
+    --navy-2:#183A63;
+    --blue:#3E7BC4;
+    --blue-light:#EAF2FA;
+    --sky:#BFDAF2;
+    --ink:#152238;
+    --ink-soft:#5B6B80;
+    --line:#E3E9F0;
+    --paper:#FFFFFF;
+    --bg:#FFFFFF;
+    --band:#F5F8FB;
+    --radius-lg:26px;
+    --radius-md:18px;
+    --radius-sm:10px;
+  }
+  /* Colors are intentionally fixed and do NOT react to prefers-color-scheme,
+     data-theme attributes, or any OS/browser dark-mode setting. This keeps
+     the site looking identical on every device and browser. */
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth; color-scheme:light;}
+  body{background:var(--bg); color:var(--ink); font-family:'Inter',-apple-system,sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif; font-weight:500; color:var(--navy); letter-spacing:-0.01em; line-height:1.14;}
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 28px;}
+  section{position:relative;}
+
+  /* ---------- Nav ---------- */
+  header{position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--paper) 90%, transparent); backdrop-filter:blur(14px); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 28px; max-width:1200px; margin:0 auto;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-size:1.3rem; font-weight:500; color:var(--navy);}
+  nav.links{display:flex; gap:30px; font-size:0.94rem; color:var(--ink-soft);}
+  nav.links a:hover{color:var(--navy);}
+  .nav-cta{background:var(--navy); color:#fff; padding:11px 22px; border-radius:999px; font-size:0.9rem; font-weight:600; transition:.25s;}
+  .nav-cta.outline{background:transparent; color:var(--navy); border:1.5px solid var(--navy); padding:9.5px 20px;}
+  .nav-cta.outline:hover{background:var(--navy); color:#fff;}
+  .nav-cta:hover{background:var(--navy-2); transform:translateY(-1px);}
+
+  /* ---------- Hero ---------- */
+  .hero{background:linear-gradient(150deg, var(--navy) 0%, var(--navy-2) 60%, #1E4A80 100%); color:#EAF1F8; padding:88px 0 0; overflow:hidden;}
+  .hero .wrap{display:grid; grid-template-columns:1.05fr 0.95fr; gap:40px; align-items:center; position:relative; z-index:2;}
+  .badge-pill{display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18); padding:7px 16px; border-radius:999px; font-size:0.82rem; color:#CFE1F2; margin-bottom:22px;}
+  .badge-pill svg{width:14px; height:14px;}
+  .hero h1{font-size:clamp(2.3rem,4.4vw,3.4rem); color:#fff; max-width:15ch;}
+  .hero p.lead{color:#C9DAEA; font-size:1.06rem; max-width:46ch; margin-top:20px;}
+  .hero-ctas{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+
+  .btn-primary{background:#fff; color:var(--navy); padding:15px 30px; border-radius:999px; font-weight:700; font-size:0.97rem; box-shadow:0 14px 32px -10px rgba(0,0,0,0.4); transition:.25s; display:inline-flex; align-items:center; gap:8px;}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 18px 38px -8px rgba(0,0,0,0.5);}
+  .btn-primary svg{transition: transform .2s ease;}
+  .btn-primary:hover svg{animation: btn-arrow-slide 0.9s ease-in-out infinite;}
+  @keyframes btn-arrow-slide{
+    0%   { transform: translateX(0); }
+    50%  { transform: translateX(8px); }
+    100% { transform: translateX(0); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .btn-primary:hover svg{ animation: none; transform: translateX(5px); }
+  }
+  .btn-ghost{padding:15px 26px; border-radius:999px; border:1px solid rgba(255,255,255,0.35); color:#fff; font-weight:600; font-size:0.97rem; transition:.25s;}
+  .btn-ghost:hover{background:#fff; color:var(--navy); border-color:#fff;}
+  .hero-stats{display:flex; flex-wrap:wrap; gap:14px; margin-top:32px;}
+  .hero-feature{display:flex; align-items:center; gap:9px; padding:10px 16px; border-radius:999px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18);}
+  .hero-feature svg{width:18px; height:18px; flex-shrink:0;}
+  .hero-feature span{color:#E3ECF4; font-size:0.84rem; font-weight:600;}
+  .hero-art{position:relative; height:400px;}
+  .hero-wave{position:absolute; left:0; right:0; bottom:-2px;}
+
+  /* ---------- Section heads ---------- */
+  .section-head{max-width:600px; margin-bottom:48px;}
+  .kicker{display:inline-block; font-size:0.78rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); margin-bottom:12px;}
+  .section-head h2{font-size:clamp(1.75rem,3vw,2.3rem);}
+  .section-head p{color:var(--ink-soft); margin-top:12px; font-size:1.01rem;}
+  .section-pad{padding:96px 0;}
+  .section-pad.tight{padding:76px 0;}
+
+  /* ---------- Benefits ---------- */
+  .benefit-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  .benefit-card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-md); padding:28px 24px; transition:.3s;}
+  .benefit-card:hover{transform:translateY(-4px); box-shadow:0 20px 40px -22px rgba(15,35,64,0.25);}
+  .benefit-card .icon-wrap{width:48px; height:48px; border-radius:12px; background:var(--blue-light); display:flex; align-items:center; justify-content:center; margin-bottom:18px;}
+  .benefit-card .icon-wrap svg{width:24px; height:24px; stroke:var(--navy);}
+  .benefit-card h3{font-size:1.08rem; margin-bottom:8px;}
+  .benefit-card p{color:var(--ink-soft); font-size:0.92rem;}
+
+  /* ---------- Coverage ---------- */
+  .coverage{background:var(--band); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .coverage-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
+  .coverage-art{background:linear-gradient(135deg,var(--sky),var(--blue-light)); border-radius:var(--radius-lg); aspect-ratio:1/0.9; display:flex; align-items:center; justify-content:center; padding:30px; position:relative; overflow:hidden;}
+
+  /* ================= Araç Güvence Widget'ı (sıfırdan) ================= */
+  .avw{
+    background: radial-gradient(120% 100% at 50% 30%, #123244 0%, #081826 55%, #050f18 100%);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    isolation: isolate;
+  }
+  .avw-hex{
+    position:absolute; inset:0; opacity:0.12;
+    background-image:
+      repeating-linear-gradient(60deg, transparent 0 18px, rgba(94,234,212,0.5) 18px 19px),
+      repeating-linear-gradient(-60deg, transparent 0 18px, rgba(94,234,212,0.5) 18px 19px);
+    mask-image: radial-gradient(60% 60% at 50% 45%, black 40%, transparent 75%);
+  }
+  .avw-halo{
+    position:absolute; width:78%; aspect-ratio: 1.5/1; border-radius:50%;
+    border:2px dashed rgba(94,234,212,0.55);
+    box-shadow: 0 0 40px rgba(45,212,191,0.25) inset;
+    animation: avw-halo-spin 18s linear infinite;
+  }
+  @keyframes avw-halo-spin{ to{ transform: rotate(360deg); } }
+  .avw-stage{ position:relative; width:100%; height:100%; }
+
+  .avw-badge-shield{
+    position:absolute; top:10%; left:50%; transform:translateX(-50%);
+    width:15%; aspect-ratio:1/1; min-width:44px;
+    background: #08131f; border:2px solid #22d3ee; border-radius:22%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 0 18px rgba(34,211,238,0.7), 0 0 4px rgba(34,211,238,0.9) inset;
+    animation: avw-pulse 2.4s ease-in-out infinite;
+    z-index:5;
+  }
+  .avw-badge-shield svg{ width:60%; height:60%; }
+  @keyframes avw-pulse{
+    0%,100% { box-shadow: 0 0 14px rgba(34,211,238,0.55), 0 0 4px rgba(34,211,238,0.85) inset; }
+    50%     { box-shadow: 0 0 26px rgba(34,211,238,0.95), 0 0 8px rgba(34,211,238,1) inset; }
+  }
+
+  .avw-pill{
+    position:absolute; display:flex; align-items:center; gap:8px;
+    background:#0a1c2c; border:1.5px solid rgba(94,234,212,0.6); border-radius:999px;
+    padding:7px 14px; font-size:0.72rem; font-weight:700; color:#eafffb;
+    white-space:normal; max-width:42%; line-height:1.3;
+    box-shadow:0 0 14px rgba(45,212,191,0.35);
+  }
+  .avw-pill .dot{ width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .avw-pill.left{ top:22%; left:3%; }
+  .avw-pill.left .dot{ background:#34d399; box-shadow:0 0 8px #34d399; animation: avw-blink 1.6s ease-in-out infinite; }
+  .avw-pill.right{ top:80%; right:2%; }
+  .avw-pill.right .dot{ background:#38bdf8; box-shadow:0 0 8px #38bdf8; }
+  @keyframes avw-blink{ 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+
+  .avw-car-wrap{
+    position:absolute; left:50%; top:48%; transform:translate(-50%,-50%);
+    width:70%; animation: avw-bob 3.2s ease-in-out infinite;
+  }
+  @keyframes avw-bob{
+    0%,100% { transform: translate(-50%,-50%) translateY(0); }
+    50%     { transform: translate(-50%,-50%) translateY(-3%); }
+  }
+  .avw-wheel{ transform-box: fill-box; transform-origin: 50% 50%; animation: avw-spin 0.6s linear infinite; }
+  @keyframes avw-spin{ to{ transform: rotate(360deg); } }
+
+  .avw-beam-l, .avw-beam-r{ opacity:0.85; }
+  .avw-beam-r{ animation: avw-beam-flicker 2.4s ease-in-out infinite; }
+  @keyframes avw-beam-flicker{ 0%,100%{ opacity:0.65;} 50%{ opacity:1;} }
+
+  .avw-road{ position:absolute; left:0; right:0; bottom:14%; height:14%; overflow:hidden; }
+  .avw-road-line{
+    position:absolute; top:50%; height:3px; width:36px; border-radius:2px;
+    background:linear-gradient(90deg, transparent, #22d3ee, transparent);
+    animation: avw-road-move 1.1s linear infinite;
+  }
+  @keyframes avw-road-move{ from{ transform:translateX(120%);} to{ transform:translateX(-140%);} }
+
+  @media (prefers-reduced-motion: reduce){
+    .avw-halo, .avw-badge-shield, .avw-pill .dot, .avw-car-wrap, .avw-wheel, .avw-beam-r, .avw-road-line{
+      animation: none !important;
+    }
+  }
+  @media (max-width:560px){
+    .avw-pill{ font-size:0.62rem; padding:5px 10px; }
+    .avw-pill.left{ left:1%; }
+    .avw-pill.right{ right:1%; }
+  }
+  .coverage-list{display:flex; flex-direction:column; gap:4px;}
+  .coverage-item{display:flex; gap:16px; padding:16px 0; border-bottom:1px solid var(--line);}
+  .coverage-item:last-child{border-bottom:none;}
+  .coverage-item svg{width:22px; height:22px; stroke:var(--blue); flex-shrink:0; margin-top:2px;}
+  .coverage-item h3{font-size:1.02rem; margin-bottom:4px;}
+  .coverage-item p{color:var(--ink-soft); font-size:0.9rem;}
+
+  /* ---------- Why choose (navy strip) ---------- */
+  .why-strip{background:var(--navy); color:#fff;}
+  .why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:34px;}
+  .why-card{padding:8px 0;}
+  .why-card .step-num{font-family:'Fraunces',serif; font-size:1.3rem; color:#9FC3E8; display:block; margin-bottom:16px;}
+  .why-card h3{color:#fff; font-size:1.12rem; margin-bottom:10px;}
+  .why-card p{color:#BCD2E6; font-size:0.92rem;}
+
+  /* ---------- Vehicles (Araçlarımız) ---------- */
+  .vehicles-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .vehicle-card{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden;
+    display:flex; flex-direction:column; transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .vehicle-card:hover{transform:translateY(-6px); box-shadow:0 26px 50px -24px rgba(15,35,64,0.3);}
+  .product-media{
+    background:linear-gradient(160deg,var(--blue-light),var(--band)); height:110px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .product-media svg{width:52px; height:52px;}
+  .vehicle-body{padding:22px 22px 24px; display:flex; flex-direction:column; flex:1;}
+  .vehicle-body h3{font-size:1.14rem; margin-bottom:4px;}
+  .vehicle-body .model-type{color:var(--blue); font-size:0.84rem; font-weight:600; margin-bottom:12px;}
+  .vehicle-body p.desc{color:var(--ink-soft); font-size:0.9rem; margin-bottom:18px; flex:1;}
+  .vehicle-cta{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px; width:100%;
+    background:var(--navy); color:#fff; padding:12px 16px; border-radius:10px; font-size:0.88rem; font-weight:600;
+    transition:background .25s ease;
+  }
+  .vehicle-cta:hover{background:var(--navy-2);}
+  .vehicle-cta svg{width:15px; height:15px;}
+
+  /* ---------- Trust ---------- */
+  .trust{background:var(--band); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:760px; display:flex; flex-direction:column; gap:12px;}
+  .faq-item{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-md); overflow:visible; position:relative;}
+  .faq-item summary{
+    list-style:none; cursor:pointer; padding:20px 24px; font-size:1rem; font-weight:600; color:var(--navy);
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    transform-origin:left center; transition: transform .25s ease, background .25s ease;
+    border-radius:var(--radius-md);
+    position:relative; z-index:1;
+  }
+  .faq-item summary:hover{
+    transform: scale(1.035);
+    background: var(--band);
+    z-index:2;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary .plus{
+    width:26px; height:26px; border-radius:50%; background:var(--blue-light); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; position:relative; transition:transform .25s ease;
+  }
+  .faq-item summary .plus::before, .faq-item summary .plus::after{
+    content:''; position:absolute; background:var(--navy); border-radius:2px;
+  }
+  .faq-item summary .plus::before{width:11px; height:2px;}
+  .faq-item summary .plus::after{width:2px; height:11px;}
+  .faq-item[open] summary .plus{transform:rotate(45deg); background:var(--navy);}
+  .faq-item[open] summary .plus::before, .faq-item[open] summary .plus::after{background:#fff;}
+  .faq-item .faq-a{padding:0 24px 20px; color:var(--ink-soft); font-size:0.94rem; max-width:64ch;}
+  @media (prefers-reduced-motion: reduce){
+    .faq-item summary{ transition:none; }
+    .faq-item summary:hover{ transform:none; }
+  }
+  .trust-grid{display:grid; grid-template-columns:1.1fr 1fr 1fr; gap:22px;}
+  .trust-badges{display:flex; flex-direction:column; gap:22px; justify-content:center;}
+  .why-reason{display:flex; align-items:center; gap:12px; font-size:0.96rem; color:var(--ink); font-weight:600;}
+  .why-reason svg{width:24px; height:24px; flex-shrink:0;}
+  .quote-card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-md); padding:28px 26px;}
+  .quote-card p{font-size:0.96rem; margin-bottom:16px;}
+  .quote-who{display:flex; align-items:center; gap:12px;}
+  .quote-who svg{width:36px; height:36px; border-radius:50%; flex-shrink:0;}
+  .quote-who b{font-size:0.88rem; display:block;}
+  .quote-who span{font-size:0.8rem; color:var(--ink-soft);}
+
+  /* ---------- Contact ---------- */
+  .contact-wrap{display:grid; grid-template-columns:0.85fr 1.15fr; gap:0; border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--line);}
+  .contact-info{background:var(--navy); color:#fff; padding:50px 42px;}
+  .contact-info h2{color:#fff; font-size:1.85rem; margin-bottom:14px;}
+  .contact-info p{color:#C9DAEA; font-size:0.96rem; margin-bottom:32px;}
+  .contact-row{display:flex; gap:14px; margin-bottom:20px; align-items:flex-start;}
+  .contact-row svg{width:19px; height:19px; stroke:#9FC3E8; flex-shrink:0; margin-top:2px;}
+  .contact-row b{display:block; font-size:0.92rem;}
+  .contact-row span{color:#A9C4DC; font-size:0.86rem;}
+  .contact-form{background:var(--paper); padding:50px 42px;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
+  .field{display:flex; flex-direction:column; gap:6px;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-size:0.84rem; color:var(--ink-soft);}
+  .field input, .field select, .field textarea{border:1px solid var(--line); border-radius:var(--radius-sm); padding:12px 14px; font-family:inherit; font-size:0.94rem; background:var(--band); color:var(--ink);}
+  .field input:focus, .field select:focus, .field textarea:focus{outline:none; border-color:var(--blue);}
+  .field textarea{resize:vertical; min-height:88px;}
+  .submit-btn{background:var(--navy); color:#fff; padding:14px 30px; border-radius:999px; border:none; font-weight:700; font-size:0.95rem; cursor:pointer; margin-top:6px; width:100%; transition:.25s;}
+  .submit-btn:hover{background:var(--navy-2);}
+  .form-success{display:none; background:#E8F4EA; border:1px solid #BFDFC7; color:#245B33; padding:15px 17px; border-radius:var(--radius-sm); font-size:0.9rem; margin-top:16px;}
+  .form-success.is-error{background:#FBEAEA; border-color:#E6BFBF; color:#7A2A2A;}
+  .form-success.show{display:block;}
+
+  footer{padding:32px 0; text-align:center; color:var(--ink-soft); font-size:0.85rem;}
+  .footer-inner{display:flex; flex-direction:column; align-items:center; gap:10px;}
+  .footer-links{display:flex; flex-wrap:wrap; justify-content:center; gap:18px;}
+  .footer-links a{color:var(--ink-soft); font-size:0.82rem; text-decoration:underline; text-underline-offset:3px;}
+  .footer-links a:hover{color:var(--navy);}
+
+  /* ---------- Yasal metin modalleri ---------- */
+  .legal-modal{
+    display:none; position:fixed; inset:0; z-index:400;
+    align-items:center; justify-content:center; padding:24px;
+    background:rgba(8,19,32,0.45);
+  }
+  .legal-modal.show{ display:flex; }
+  .legal-modal-card{
+    background:var(--paper); border-radius:var(--radius-lg); width:600px; max-width:100%;
+    max-height:80vh; overflow-y:auto; padding:32px 30px; position:relative;
+    box-shadow:0 30px 70px -20px rgba(15,35,64,0.45);
+  }
+  .legal-modal-card h3{font-size:1.3rem; margin-bottom:16px; padding-right:30px;}
+  .legal-modal-body p{color:var(--ink-soft); font-size:0.92rem; margin-bottom:12px; line-height:1.6;}
+  .legal-modal-close{
+    position:absolute; top:18px; right:18px; width:32px; height:32px; border-radius:50%;
+    border:none; background:var(--band); color:var(--navy); cursor:pointer; font-size:1rem;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .legal-modal-close:hover{ background:var(--line); }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{outline:2px solid var(--blue); outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important; animation:none !important; scroll-behavior:auto !important;} }
+
+  /* ---------- Mobil aksiyon çubuğu ---------- */
+  .mobile-action-bar{ display:none; }
+
+  @media (max-width:980px){
+    nav.links{display:none;}
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-art{height:260px; order:-1;}
+    .benefit-grid{grid-template-columns:repeat(2,1fr);}
+    .coverage-grid{grid-template-columns:1fr;}
+    .coverage-art{order:-1;}
+    .why-grid{grid-template-columns:1fr; gap:26px;}
+    .vehicles-grid{grid-template-columns:repeat(2,1fr);}
+    .trust-grid{grid-template-columns:1fr;}
+    .contact-wrap{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .hero-stats{flex-wrap:wrap; row-gap:16px;}
+  }
+  @media (max-width:620px){
+    .vehicles-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:768px){
+    body{ padding-bottom:64px; }
+    .mobile-action-bar{
+      display:flex; position:fixed; left:0; right:0; bottom:0; z-index:250;
+      background:var(--paper); border-top:1px solid var(--line);
+      box-shadow:0 -8px 24px -12px rgba(15,35,64,0.25);
+    }
+    .mab-btn{
+      flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+      padding:9px 4px 8px; font-size:0.68rem; font-weight:600; color:var(--navy);
+      border-right:1px solid var(--line);
+    }
+    .mab-btn:last-child{ border-right:none; }
+    .mab-btn svg{ width:19px; height:19px; }
+    .mab-whatsapp{ color:#25D366; }
+    .mab-primary{ background:var(--navy); color:#fff; }
+  }
+  @media (max-width:420px){
+    .header-ctas .nav-cta:not(.outline){ display:none; }
+  }
+
+  .ip-title{ font-family:'Fraunces',serif; font-size:1.05rem; color:var(--navy); font-weight:600; }
+</style>
+</head>
+<body>
+
+<div class="mobile-action-bar">
+  <a href="tel:08502009090" class="mab-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Ara</span></a>
+  <a href="https://wa.me/908502009090" target="_blank" rel="noopener" class="mab-btn mab-whatsapp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .1-1.6-.1-.4-.1-1-.3-1.6-.6-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.7.8 1.8.1.2.1.3 0 .5-.1.2-.2.3-.3.5-.2.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.4.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.8.3.1.4.2.5.3.1.2.1.7-.1 1.2z"/></svg><span>WhatsApp</span></a>
+  <a href="#iletisim" class="mab-btn mab-primary"><span>Teklif Al</span></a>
+</div>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="18" fill="none" stroke="var(--navy)" stroke-width="2"/>
+        <path d="M12 22l2-6a3 3 0 0 1 2.8-2h6.4a3 3 0 0 1 2.8 2l2 6" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="10" y="22" width="20" height="6" rx="2" fill="none" stroke="var(--navy)" stroke-width="2"/>
+        <circle cx="15" cy="28" r="1.6" fill="var(--navy)"/>
+        <circle cx="25" cy="28" r="1.6" fill="var(--navy)"/>
+      </svg>
+      Sigortan Seninle
+    </div>
+    <nav class="links">
+      <a href="#avantajlar">Avantajlar</a>
+      <a href="#kapsam">Kapsam</a>
+      <a href="#urunler">Sigorta Ürünleri</a>
+      <a href="#hakkimizda">Hakkımızda</a>
+      <a href="#sss">S.S.S.</a>
+      <a href="#iletisim">İletişim</a>
+    </nav>
+    <div class="header-ctas" style="display:flex; align-items:center; gap:10px;">
+      <a href="#iletisim" class="nav-cta outline hasar-link">Hasar Bildir</a>
+      <a href="#iletisim" class="nav-cta">Teklif Al</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="badge-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#9FC3E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg>
+        Kasko &amp; Trafik'te uzman güvence
+      </span>
+      <h1>Aracınız neredeyse, güvenceniz de orada.</h1>
+      <p class="lead">Kasko, trafik sigortası ve yol yardımını tek çatı altında topluyoruz. Hasarınızı bekletmeden, dürüst bir fiyatla çözüyoruz.</p>
+      <div class="hero-ctas">
+        <a href="#iletisim" class="btn-primary">
+          Teklif Al
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#iletisim" class="btn-ghost hasar-link">Hasar Bildir</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-feature"><svg viewBox="0 0 24 24" fill="none" stroke="#9FC3E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg><span>Lisanslı Sigorta Acentesi</span></div>
+        <div class="hero-feature"><svg viewBox="0 0 24 24" fill="none" stroke="#9FC3E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span>Hızlı Teklif ve Hasar Desteği</span></div>
+        <div class="hero-feature"><svg viewBox="0 0 24 24" fill="none" stroke="#9FC3E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Birden Fazla Sigorta Şirketinden Teklif</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 480 420" width="100%" height="100%">
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="40%" r="65%">
+            <stop offset="0%" stop-color="#3E7BC4" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#3E7BC4" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="carBody" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#EAF2FA"/>
+            <stop offset="100%" stop-color="#BFDAF2"/>
+          </linearGradient>
+        </defs>
+        <circle cx="240" cy="180" r="190" fill="url(#glow)"/>
+        <!-- shield -->
+        <g transform="translate(300,40)">
+          <path d="M45 0 L90 16 V48 C90 74 70 90 45 100 C20 90 0 74 0 48 V16 Z" fill="#EFE3CC"/>
+          <path d="M27 50 L40 63 L67 34" stroke="#0F2340" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </g>
+        <!-- car silhouette -->
+        <g transform="translate(50,190)">
+          <path d="M10 90 L10 70 C10 60 18 55 28 52 L60 44 C70 30 85 20 105 20 L220 20 C245 20 265 34 275 55 L330 62 C345 64 355 74 355 88 L355 100 L10 100 Z" fill="url(#carBody)" stroke="#0F2340" stroke-width="2.2"/>
+          <path d="M110 52 L128 24 L215 24 L235 52 Z" fill="#0F2340" opacity="0.85"/>
+          <circle cx="90" cy="102" r="26" fill="#0F2340"/>
+          <circle cx="90" cy="102" r="10" fill="#EAF2FA"/>
+          <circle cx="285" cy="102" r="26" fill="#0F2340"/>
+          <circle cx="285" cy="102" r="10" fill="#EAF2FA"/>
+          <rect x="330" y="55" width="14" height="8" rx="3" fill="#F4C542"/>
+        </g>
+        <g opacity="0.9">
+          <rect x="30" y="330" width="150" height="60" rx="16" fill="rgba(255,255,255,0.08)"/>
+          <circle cx="58" cy="360" r="12" fill="#9FC3E8"/>
+          <rect x="78" y="352" width="80" height="7" rx="3.5" fill="rgba(255,255,255,0.4)"/>
+          <rect x="78" y="366" width="55" height="6" rx="3" fill="rgba(255,255,255,0.22)"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" style="height:70px; width:100%;">
+    <path d="M0,32 C240,80 480,0 720,24 C960,48 1200,88 1440,40 L1440,100 L0,100 Z" fill="var(--bg)"/>
+  </svg>
+</section>
+
+<section class="section-pad" id="avantajlar">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Neden Sigortan Seninle</span>
+      <h2>Araç sigortasında fark yaratan avantajlar</h2>
+      <p>Kasko yaptırmak karmaşık olmak zorunda değil. İşte size sunduğumuz temel avantajlar.</p>
+    </div>
+    <div class="benefit-grid">
+      <div class="benefit-card">
+        <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+        <h3>Hızlı hasar süreci</h3>
+        <p>Hasar talebiniz mümkün olan en kısa sürede değerlendirilir.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-4 4 8 2-4h6"/></svg></div>
+        <h3>7/24 yol yardımı</h3>
+        <p>Türkiye genelinde geniş çekici ve yol yardımı ağı ile yanınızdayız.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+        <h3>Anlaşmalı geniş servis ağı</h3>
+        <p>Geniş yetkili servis ağımızda sorunsuz onarım imkanı.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3>Şeffaf ve uygun fiyat</h3>
+        <p>Sürpriz ek ücret yok; poliçenizde her kalem açıkça yazar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="coverage section-pad" id="kapsam">
+  <div class="wrap coverage-grid">
+    <div>
+      <div class="section-head" style="margin-bottom:34px;">
+        <span class="kicker">Kapsam Detayları</span>
+        <h2>Aracınız için tam koruma</h2>
+        <p>Kasko poliçenizin neleri kapsadığını en baştan, anlaşılır şekilde bilin.</p>
+      </div>
+      <div class="coverage-list">
+        <div class="coverage-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          <div><h3>Çarpışma &amp; Çarpma</h3><p>Kaza sonucu oluşan hasarların tamamı karşılanır.</p></div>
+        </div>
+        <div class="coverage-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+          <div><h3>Cam kırılması</h3><p>Ön, yan ve arka cam hasarları ek ücretsiz onarılır.</p></div>
+        </div>
+        <div class="coverage-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/></svg>
+          <div><h3>Hırsızlık koruması</h3><p>Aracınızın çalınması ya da çalınmaya teşebbüs halinde güvence.</p></div>
+        </div>
+        <div class="coverage-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-4 4 8 2-4h6"/></svg>
+          <div><h3>Doğal afet güvencesi</h3><p>Sel, dolu, deprem gibi afetlerden doğan hasarlar dahildir.</p></div>
+        </div>
+        <div class="coverage-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+          <div><h3>İhtiyari Mali Mesuliyet (İMM)</h3><p>Karşı tarafa verdiğiniz zararlarda ek limit sağlar.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="coverage-art" style="padding:0;">
+      <div class="avw">
+        <div class="avw-hex"></div>
+        <div class="avw-stage">
+          <div class="avw-halo"></div>
+
+          <div class="avw-badge-shield">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/>
+              <path d="M8.5 12l2.3 2.3L15.5 9.5"/>
+            </svg>
+          </div>
+
+          <div class="avw-pill left"><span class="dot"></span>TAM KORUMA AKTİF</div>
+          <div class="avw-pill right"><span class="dot"></span>Aracınız neredeyse, güvenceniz de orada.</div>
+
+          <div class="avw-road">
+            <div class="avw-road-line" style="left:10%; animation-delay:0s;"></div>
+            <div class="avw-road-line" style="left:40%; animation-delay:0.35s;"></div>
+            <div class="avw-road-line" style="left:70%; animation-delay:0.7s;"></div>
+          </div>
+
+          <div class="avw-car-wrap">
+            <svg viewBox="0 0 300 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="avwBody" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#60a5fa"/>
+                  <stop offset="100%" stop-color="#1d4ed8"/>
+                </linearGradient>
+                <radialGradient id="avwBeamR" cx="0" cy="0.5" r="1">
+                  <stop offset="0%" stop-color="#a5f3fc" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="#a5f3fc" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="avwBeamL" cx="1" cy="0.5" r="1">
+                  <stop offset="0%" stop-color="#f87171" stop-opacity="0.7"/>
+                  <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+
+              <!-- Far ışık hüzmeleri -->
+              <path class="avw-beam-r" d="M258 92 L300 78 L300 108 Z" fill="url(#avwBeamR)"/>
+              <path class="avw-beam-l" d="M42 92 L0 82 L0 104 Z" fill="url(#avwBeamL)"/>
+
+              <!-- Gölge -->
+              <ellipse cx="153" cy="132" rx="110" ry="9" fill="#000" opacity="0.35"/>
+
+              <!-- Gövde -->
+              <path d="M20 102 L20 82 C20 72 28 66 38 63 L64 54 C78 34 98 24 122 24 L188 24 C210 24 228 36 238 56 L264 64 C278 68 286 78 286 90 L286 102 Z"
+                    fill="url(#avwBody)" stroke="#0b1220" stroke-width="3"/>
+              <!-- Camlar -->
+              <path d="M90 60 L126 30 L184 30 L220 60 Z" fill="#0b1220" opacity="0.9"/>
+              <line x1="155" y1="30" x2="155" y2="60" stroke="#0b1220" stroke-width="2"/>
+              <!-- Tampon aksanları -->
+              <rect x="268" y="86" width="16" height="6" rx="2" fill="#a5f3fc"/>
+              <rect x="22" y="86" width="14" height="5" rx="2" fill="#f87171"/>
+
+              <!-- Arka jant -->
+              <g class="avw-wheel">
+                <circle cx="70" cy="104" r="20" fill="#0b1220"/>
+                <circle cx="70" cy="104" r="8" fill="#9ca3af"/>
+                <g stroke="#d1d5db" stroke-width="2.4">
+                  <line x1="70" y1="96" x2="70" y2="112"/>
+                  <line x1="62" y1="104" x2="78" y2="104"/>
+                  <line x1="64.5" y1="98.5" x2="75.5" y2="109.5"/>
+                  <line x1="75.5" y1="98.5" x2="64.5" y2="109.5"/>
+                </g>
+              </g>
+              <!-- Ön jant -->
+              <g class="avw-wheel">
+                <circle cx="236" cy="104" r="20" fill="#0b1220"/>
+                <circle cx="236" cy="104" r="8" fill="#9ca3af"/>
+                <g stroke="#d1d5db" stroke-width="2.4">
+                  <line x1="236" y1="96" x2="236" y2="112"/>
+                  <line x1="228" y1="104" x2="244" y2="104"/>
+                  <line x1="230.5" y1="98.5" x2="241.5" y2="109.5"/>
+                  <line x1="241.5" y1="98.5" x2="230.5" y2="109.5"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-strip section-pad">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:52px;">
+      <span class="kicker" style="color:#9FC3E8;">Süreç</span>
+      <h2 style="color:#fff;">Teklif almak üç adım sürer</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="step-num">01</span>
+        <h3>Aracınızı seçin</h3>
+        <p>Marka, model ve kullanım şeklinizi bize iletin.</p>
+      </div>
+      <div class="why-card">
+        <span class="step-num">02</span>
+        <h3>Teklifi karşılaştırın</h3>
+        <p>Size özel hazırlanan kapsam ve fiyat seçeneklerini inceleyin.</p>
+      </div>
+      <div class="why-card">
+        <span class="step-num">03</span>
+        <h3>Anında güvence altına alın</h3>
+        <p>Onayınızla poliçeniz aynı gün içinde aktif olur.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" id="urunler">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Sigorta Ürünlerimiz</span>
+      <h2>İhtiyacınıza uygun sigorta ürünleri</h2>
+      <p>Aracınız ve sürüş alışkanlıklarınıza göre, birden fazla sigorta şirketinden karşılaştırmalı teklif sunuyoruz.</p>
+    </div>
+    <div class="vehicles-grid">
+
+      <div class="vehicle-card">
+        <div class="product-media">
+          <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="32" height="24" rx="4" stroke="#3E7BC4" stroke-width="2"/><path d="M8 16h32" stroke="#0F2340" stroke-width="2"/></svg>
+        </div>
+        <div class="vehicle-body">
+          <h3>Trafik Sigortası</h3>
+          <div class="model-type">Zorunlu Sigorta</div>
+          <p class="desc">Kanunen zorunlu olan trafik sigortası, kaza durumunda karşı tarafa verdiğiniz maddi ve bedensel zararları teminat altına alır.</p>
+          <a href="#iletisim" class="vehicle-cta">Teklif Al
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="vehicle-card">
+        <div class="product-media">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 4 L40 11 V22 C40 32 33 39 24 42 C15 39 8 32 8 22 V11 Z" stroke="#3E7BC4" stroke-width="2" stroke-linejoin="round"/><path d="M17 24l4.5 4.5L32 18" stroke="#0F2340" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </div>
+        <div class="vehicle-body">
+          <h3>Kasko</h3>
+          <div class="model-type">İsteğe Bağlı Sigorta</div>
+          <p class="desc">Aracınızda oluşabilecek çarpışma, hırsızlık, yangın ve doğal afet gibi hasarları kapsayan geniş koruma paketidir.</p>
+          <a href="#iletisim" class="vehicle-cta">Teklif Al
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="vehicle-card">
+        <div class="product-media">
+          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="#3E7BC4" stroke-width="2"/><path d="M24 14v10l7 4" stroke="#0F2340" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="vehicle-body">
+          <h3>Genişletilmiş Kasko</h3>
+          <div class="model-type">Ek Teminat Paketi</div>
+          <p class="desc">Standart kasko kapsamına; anahtar kaybı, lastik, cam ve mini onarım gibi ek teminatlar eklemek isteyenler için uygundur.</p>
+          <a href="#iletisim" class="vehicle-cta">Teklif Al
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="vehicle-card">
+        <div class="product-media">
+          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="#3E7BC4" stroke-width="2"/><path d="M17 24l4.5 4.5L32 18" stroke="#0F2340" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </div>
+        <div class="vehicle-body">
+          <h3>İhtiyari Mali Mesuliyet (İMM)</h3>
+          <div class="model-type">Ek Teminat</div>
+          <p class="desc">Trafik sigortasının teminat limiti üzerinde kalan zararlar için ek güvence sağlayarak maddi riskinizi azaltır.</p>
+          <a href="#iletisim" class="vehicle-cta">Teklif Al
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="vehicle-card">
+        <div class="product-media">
+          <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="12" width="36" height="24" rx="3" stroke="#3E7BC4" stroke-width="2"/><path d="M6 18h36" stroke="#0F2340" stroke-width="2"/><circle cx="14" cy="28" r="2" fill="#0F2340"/></svg>
+        </div>
+        <div class="vehicle-body">
+          <h3>Yeşil Kart Sigortası</h3>
+          <div class="model-type">Yurt Dışı Sigortası</div>
+          <p class="desc">Aracınızla yurt dışına çıkış yapacaksanız, birçok ülkede geçerli olan zorunlu sorumluluk sigortasıdır.</p>
+          <a href="#iletisim" class="vehicle-cta">Teklif Al
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="vehicle-card">
+        <div class="product-media">
+          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="17" r="7" stroke="#3E7BC4" stroke-width="2"/><path d="M10 40c0-8 6-13 14-13s14 5 14 13" stroke="#0F2340" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </div>
+        <div class="vehicle-body">
+          <h3>Ferdi Kaza Sigortası</h3>
+          <div class="model-type">Kişisel Koruma</div>
+          <p class="desc">Sürücü ve yolcuların bir kaza sonucu yaşayabileceği bedensel zararları güvence altına alan tamamlayıcı bir sigortadır.</p>
+          <a href="#iletisim" class="vehicle-cta">Teklif Al
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="trust section-pad" id="hakkimizda">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Hakkımızda</span>
+      <h2>Lisanslı sigorta acentesi güvencesi</h2>
+      <p>Sigortan Seninle, araç sahiplerinin ihtiyaç duyduğu sigorta ürünlerini şeffaf ve anlaşılır şekilde sunan bir sigorta acentesidir.</p>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-badges">
+        <div class="why-reason"><svg viewBox="0 0 24 24" fill="none" stroke="#3E7BC4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg><span>Lisanslı ve yetkili sigorta acentesi</span></div>
+        <div class="why-reason"><svg viewBox="0 0 24 24" fill="none" stroke="#3E7BC4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Birden fazla sigorta şirketinden karşılaştırmalı teklif</span></div>
+        <div class="why-reason"><svg viewBox="0 0 24 24" fill="none" stroke="#3E7BC4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span>Hasar sürecinde adım adım destek</span></div>
+      </div>
+      <div class="quote-card">
+        <p class="ip-title" style="margin-bottom:10px;">Kimiz?</p>
+        <p style="color:var(--ink-soft); font-size:0.94rem;">Sigortan Seninle, araç sahiplerine trafik sigortası ve kasko başta olmak üzere ihtiyaç duydukları sigorta ürünlerinde danışmanlık veren bir aracı kurumdur. Amacımız, sigorta seçim sürecini basitleştirmek ve size en uygun teminatı bulmanıza yardımcı olmaktır.</p>
+      </div>
+      <div class="quote-card">
+        <p class="ip-title" style="margin-bottom:10px;">Sigorta Şirketleri</p>
+        <p style="color:var(--ink-soft); font-size:0.94rem;">Anlaşmalı olduğumuz sigorta şirketlerinden aldığımız teklifleri karşılaştırarak, ihtiyacınıza ve bütçenize en uygun poliçeyi birlikte belirliyoruz. Güncel anlaşmalı kurum listemiz için bizimle iletişime geçebilirsiniz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" id="sss">
+
+
+
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Merak edilenler</span>
+      <h2>Sıkça sorulan sorular</h2>
+      <p>Araç sigortası hakkında en çok gelen soruları sizin için yanıtladık.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>Kasko ile trafik sigortası arasındaki fark nedir?<span class="plus"></span></summary>
+        <div class="faq-a">Trafik sigortası kanunen zorunludur ve yalnızca karşı tarafa verdiğiniz zararları karşılar. Kasko ise isteğe bağlıdır ve kendi aracınızda oluşan çarpışma, hırsızlık, yangın gibi hasarları da güvence altına alır.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Kasko fiyatımı hangi faktörler etkiler?<span class="plus"></span></summary>
+        <div class="faq-a">Aracın marka/modeli, yaşı, kullanım şekli, hasarsızlık basamağı, kayıtlı olduğu il ve seçtiğiniz teminat kapsamı fiyatı doğrudan etkiler. Size özel net fiyatı teklif formunu doldurarak öğrenebilirsiniz.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Kaza sonrası hasar süreci nasıl işliyor?<span class="plus"></span></summary>
+        <div class="faq-a">Bizi aradığınız anda dosyanız açılır, en yakın anlaşmalı servise yönlendirilirsiniz. Ekspertiz ve onarım sürecini sizin adınıza takip ederiz.</div>
+      </details>
+      <details class="faq-item">
+        <summary>İhtiyari Mali Mesuliyet (İMM) neden önemlidir?<span class="plus"></span></summary>
+        <div class="faq-a">Trafik sigortasının karşı tarafa sağladığı teminat limiti bir kazada yetersiz kalabilir. İMM, bu limitin üzerinde kalan tutarları karşılayarak sizi maddi risklerden korur.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Poliçemi iptal edip iade alabilir miyim?<span class="plus"></span></summary>
+        <div class="faq-a">Evet. Poliçe süresi içinde iptal talep ettiğinizde, kullanılmayan güne karşılık gelen prim tutarı yasal kesintiler düşülerek tarafınıza iade edilir.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Yurt dışına çıkarken aracım kasko kapsamında mı?<span class="plus"></span></summary>
+        <div class="faq-a">Standart kasko poliçeleri yalnızca Türkiye sınırları içinde geçerlidir. Yurt dışı seyahatleriniz için Yeşil Kart sigortası ayrıca düzenlenmelidir; bu konuda size destek oluyoruz.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" id="iletisim">
+  <div class="wrap">
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <h2>Teklif Alın veya Hasar Bildirin</h2>
+        <p>İster yeni bir sigorta teklifi almak, ister bir hasar bildiriminde bulunmak isteyin — aşağıdaki formu doldurun, size dönelim.</p>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><b>0850 200 90 90</b><span>Hafta içi 08:00–20:00</span></div>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+          <div><b>berkayozturk1815@gmail.com</b><span>En kısa sürede yanıt</span></div>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><b>Maslak, İstanbul</b><span>Merkez ofis</span></div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form id="hasarForm">
+          <div class="form-row">
+            <div class="field full">
+              <label for="konu">Konu</label>
+              <select id="konu" required>
+                <option value="Teklif Talebi">Teklif Talebi</option>
+                <option value="Hasar Bildirimi">Hasar Bildirimi</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field full"><label for="hasarAd">Ad Soyad</label><input id="hasarAd" name="name" type="text" placeholder="Adınız Soyadınız" required></div>
+          </div>
+          <div class="form-row">
+            <div class="field full"><label for="hasarTel">Telefon</label><input id="hasarTel" type="tel" placeholder="05xx xxx xx xx" required></div>
+          </div>
+          <div class="form-row">
+            <div class="field full"><label for="hasarEposta">E-posta</label><input id="hasarEposta" name="email" type="email" placeholder="ornek@eposta.com" required></div>
+          </div>
+
+          <div class="konu-fields" data-konu="Teklif Talebi">
+            <div class="form-row">
+              <div class="field"><label for="marka">Araç Markası</label><input id="marka" type="text" placeholder="Örn. Toyota"></div>
+              <div class="field"><label for="model">Model / Yıl</label><input id="model" type="text" placeholder="Örn. Corolla 2021"></div>
+            </div>
+            <div class="form-row">
+              <div class="field full">
+                <label for="sigortaTuru">Sigorta Türü</label>
+                <select id="sigortaTuru">
+                  <option value="">Seçiniz</option>
+                  <option>Kasko</option>
+                  <option>Trafik Sigortası</option>
+                  <option>Kasko + Trafik</option>
+                  <option>İMM</option>
+                  <option>Yeşil Kart</option>
+                  <option>Diğer</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="konu-fields" data-konu="Hasar Bildirimi" style="display:none;">
+            <div class="form-row">
+              <div class="field"><label for="policeNo">Poliçe Numarası (varsa)</label><input id="policeNo" type="text" placeholder="Varsa poliçe numaranız"></div>
+              <div class="field"><label for="hasarTarihi">Hasar Tarihi</label><input id="hasarTarihi" type="date"></div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field full"><label for="hasarAciklama" id="hasarAciklamaLabel">Mesajınız</label><textarea id="hasarAciklama" name="message" placeholder="Talebinizi kısaca açıklayın..." required></textarea></div>
+          </div>
+          <button type="submit" class="submit-btn" id="hasarSubmitBtn">Gönder</button>
+          <div class="form-success" id="hasarFormSuccess"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© 2026 Sigortan Seninle. Tüm hakları saklıdır.</span>
+    <nav class="footer-links">
+      <a href="#" data-modal-target="modalKvkk">KVKK Aydınlatma Metni</a>
+      <a href="#" data-modal-target="modalGizlilik">Gizlilik Politikası</a>
+      <a href="#" data-modal-target="modalKosullar">Kullanım Koşulları</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="legal-modal" id="modalKvkk">
+  <div class="legal-modal-card">
+    <button class="legal-modal-close" type="button" aria-label="Kapat">✕</button>
+    <h3>KVKK Aydınlatma Metni</h3>
+    <div class="legal-modal-body">
+      <p>6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") uyarınca, Sigortan Seninle sigorta acenteliği faaliyetleri kapsamında elde ettiği ad, soyad, telefon, e-posta, araç ve poliçe bilgileriniz gibi kişisel verilerinizi; sigorta teklifi hazırlamak, hasar süreçlerinizi yönetmek, yasal yükümlülükleri yerine getirmek ve sizinle iletişime geçmek amacıyla işlemektedir.</p>
+      <p>Kişisel verileriniz, yalnızca ilgili sigorta şirketleri ve yasal olarak yetkili kurumlarla, işin gerektirdiği ölçüde paylaşılabilir. Verileriniz, ilgili mevzuatta öngörülen veya işlendikleri amaç için gerekli olan süre kadar saklanır.</p>
+      <p>KVKK'nın 11. maddesi kapsamında; verilerinizin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, düzeltilmesini veya silinmesini isteme haklarına sahipsiniz. Bu haklarınızı kullanmak için bizimle iletişim bölümünden ulaşabilirsiniz.</p>
+      <p style="color:var(--ink-soft); font-size:0.82rem;">Bu metin genel bir şablon niteliğindedir; şirketinizin faaliyetlerine göre bir hukuk danışmanı tarafından güncellenmesi önerilir.</p>
+    </div>
+  </div>
+</div>
+
+<div class="legal-modal" id="modalGizlilik">
+  <div class="legal-modal-card">
+    <button class="legal-modal-close" type="button" aria-label="Kapat">✕</button>
+    <h3>Gizlilik Politikası</h3>
+    <div class="legal-modal-body">
+      <p>Sigortan Seninle olarak, web sitemiz üzerinden bizimle paylaştığınız bilgilerin gizliliğine önem veriyoruz. Teklif ve hasar bildirim formları aracılığıyla topladığımız bilgiler yalnızca size hizmet sunmak amacıyla kullanılır ve üçüncü taraflarla, hizmetin gerektirdiği durumlar dışında paylaşılmaz.</p>
+      <p>Sitemiz, tarayıcınızda yalnızca teknik işlevsellik için gerekli olan yerel depolama (tercih hatırlama vb.) kullanabilir; bu veriler kimlik bilgilerinizle ilişkilendirilmez.</p>
+      <p>Sorularınız için iletişim bölümünden bize ulaşabilirsiniz.</p>
+      <p style="color:var(--ink-soft); font-size:0.82rem;">Bu metin genel bir şablon niteliğindedir; gerçek veri işleme süreçlerinize göre güncellenmelidir.</p>
+    </div>
+  </div>
+</div>
+
+<div class="legal-modal" id="modalKosullar">
+  <div class="legal-modal-card">
+    <button class="legal-modal-close" type="button" aria-label="Kapat">✕</button>
+    <h3>Kullanım Koşulları</h3>
+    <div class="legal-modal-body">
+      <p>Bu web sitesini kullanarak aşağıdaki koşulları kabul etmiş sayılırsınız. Sitede yer alan sigorta ürünü açıklamaları genel bilgilendirme amaçlıdır; kesin teminat ve fiyat bilgisi, tarafınıza sunulan resmi teklif ve poliçe belgelerinde yer alır.</p>
+      <p>Site üzerinden iletilen teklif ve hasar bildirim talepleri, ilgili ekibimiz tarafından değerlendirilir; bu talepler otomatik olarak bir poliçe oluşturmaz veya hasar kabulü anlamına gelmez.</p>
+      <p>Sitede yer alan içeriklerin izinsiz çoğaltılması veya ticari amaçla kullanılması yasaktır.</p>
+      <p style="color:var(--ink-soft); font-size:0.82rem;">Bu metin genel bir şablon niteliğindedir; hukuki danışmanlık yerine geçmez.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var API_BASE_URL = '';
+  var ENDPOINT = (API_BASE_URL || '') + '/api/contact';
+
+  var form = document.getElementById('hasarForm');
+  var submitBtn = document.getElementById('hasarSubmitBtn');
+  var statusBox = document.getElementById('hasarFormSuccess');
+  var konuSelect = document.getElementById('konu');
+  var aciklamaLabel = document.getElementById('hasarAciklamaLabel');
+  var fieldGroups = document.querySelectorAll('.konu-fields');
+  if(!form) return;
+
+  function applyKonuVisibility(){
+    var val = konuSelect.value;
+    fieldGroups.forEach(function(group){
+      var match = group.getAttribute('data-konu') === val;
+      group.style.display = match ? '' : 'none';
+      group.querySelectorAll('input, select').forEach(function(input){
+        input.disabled = !match;
+      });
+    });
+    aciklamaLabel.textContent = (val === 'Hasar Bildirimi') ? 'Hasar Açıklaması' : 'Teklif Notunuz (opsiyonel)';
+    document.getElementById('hasarAciklama').required = (val === 'Hasar Bildirimi');
+  }
+  konuSelect.addEventListener('change', applyKonuVisibility);
+  applyKonuVisibility();
+
+  function showStatus(msg, isError){
+    statusBox.textContent = msg;
+    statusBox.classList.add('show');
+    statusBox.classList.toggle('is-error', !!isError);
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Gönderiliyor…';
+
+    var konu = konuSelect.value;
+    var tel = document.getElementById('hasarTel').value.trim();
+    var aciklama = document.getElementById('hasarAciklama').value.trim();
+    var detayMesaj = konu.toUpperCase() + '\n' + 'Telefon: ' + tel + '\n';
+
+    if(konu === 'Teklif Talebi'){
+      var marka = document.getElementById('marka').value.trim();
+      var model = document.getElementById('model').value.trim();
+      var sigortaTuru = document.getElementById('sigortaTuru').value;
+      detayMesaj += (marka || model) ? ('Araç: ' + [marka, model].filter(Boolean).join(' - ') + '\n') : '';
+      detayMesaj += sigortaTuru ? ('Sigorta Türü: ' + sigortaTuru + '\n') : '';
+    } else {
+      var policeNo = document.getElementById('policeNo').value.trim();
+      var hasarTarihi = document.getElementById('hasarTarihi').value;
+      detayMesaj += policeNo ? ('Poliçe No: ' + policeNo + '\n') : '';
+      detayMesaj += hasarTarihi ? ('Hasar Tarihi: ' + hasarTarihi + '\n') : '';
+    }
+    detayMesaj += '\nMesaj:\n' + aciklama;
+
+    var payload = {
+      name: document.getElementById('hasarAd').value.trim(),
+      email: document.getElementById('hasarEposta').value.trim(),
+      message: detayMesaj
+    };
+
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res){
+      return res.json().catch(function(){ return {}; }).then(function(data){
+        return { ok: res.ok, data: data };
+      });
+    })
+    .then(function(result){
+      if(result.ok){
+        showStatus('Talebiniz alındı. En kısa sürede sizinle iletişime geçeceğiz.', false);
+        form.reset();
+      }else{
+        showStatus((result.data && result.data.error) || 'Gönderilemedi. Lütfen daha sonra tekrar deneyin.', true);
+      }
+    })
+    .catch(function(){
+      showStatus('Bağlantı hatası oluştu. Lütfen daha sonra tekrar deneyin.', true);
+    })
+    .finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Gönder';
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var openLinks = document.querySelectorAll('[data-modal-target]');
+  var modals = document.querySelectorAll('.legal-modal');
+
+  function closeAll(){
+    modals.forEach(function(m){ m.classList.remove('show'); });
+  }
+
+  openLinks.forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var id = link.getAttribute('data-modal-target');
+      var modal = document.getElementById(id);
+      if(modal) modal.classList.add('show');
+    });
+  });
+
+  modals.forEach(function(modal){
+    modal.addEventListener('click', function(e){
+      if(e.target === modal) closeAll();
+    });
+    var closeBtn = modal.querySelector('.legal-modal-close');
+    if(closeBtn) closeBtn.addEventListener('click', closeAll);
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeAll();
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var konuSelect = document.getElementById('konu');
+  if(!konuSelect) return;
+  document.querySelectorAll('.hasar-link').forEach(function(link){
+    link.addEventListener('click', function(){
+      konuSelect.value = 'Hasar Bildirimi';
+      konuSelect.dispatchEvent(new Event('change'));
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
