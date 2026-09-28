@@ -665,7 +665,7 @@
           <h3>Trafik Sigortası</h3>
           <div class="model-type">Zorunlu Sigorta</div>
           <p class="desc">Kanunen zorunlu olan trafik sigortası, kaza durumunda karşı tarafa verdiğiniz maddi ve bedensel zararları teminat altına alır.</p>
-          <a href="#iletisim" class="vehicle-cta">Teklif Al
+          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Trafik Sigortası">Teklif Al
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -679,7 +679,7 @@
           <h3>Kasko</h3>
           <div class="model-type">İsteğe Bağlı Sigorta</div>
           <p class="desc">Aracınızda oluşabilecek çarpışma, hırsızlık, yangın ve doğal afet gibi hasarları kapsayan geniş koruma paketidir.</p>
-          <a href="#iletisim" class="vehicle-cta">Teklif Al
+          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Kasko">Teklif Al
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -693,7 +693,7 @@
           <h3>Genişletilmiş Kasko</h3>
           <div class="model-type">Ek Teminat Paketi</div>
           <p class="desc">Standart kasko kapsamına; anahtar kaybı, lastik, cam ve mini onarım gibi ek teminatlar eklemek isteyenler için uygundur.</p>
-          <a href="#iletisim" class="vehicle-cta">Teklif Al
+          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Genişletilmiş Kasko">Teklif Al
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -707,7 +707,7 @@
           <h3>İhtiyari Mali Mesuliyet (İMM)</h3>
           <div class="model-type">Ek Teminat</div>
           <p class="desc">Trafik sigortasının teminat limiti üzerinde kalan zararlar için ek güvence sağlayarak maddi riskinizi azaltır.</p>
-          <a href="#iletisim" class="vehicle-cta">Teklif Al
+          <a href="#iletisim" class="vehicle-cta product-cta" data-product="İMM">Teklif Al
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -721,7 +721,7 @@
           <h3>Yeşil Kart Sigortası</h3>
           <div class="model-type">Yurt Dışı Sigortası</div>
           <p class="desc">Aracınızla yurt dışına çıkış yapacaksanız, birçok ülkede geçerli olan zorunlu sorumluluk sigortasıdır.</p>
-          <a href="#iletisim" class="vehicle-cta">Teklif Al
+          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Yeşil Kart">Teklif Al
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -735,7 +735,7 @@
           <h3>Ferdi Kaza Sigortası</h3>
           <div class="model-type">Kişisel Koruma</div>
           <p class="desc">Sürücü ve yolcuların bir kaza sonucu yaşayabileceği bedensel zararları güvence altına alan tamamlayıcı bir sigortadır.</p>
-          <a href="#iletisim" class="vehicle-cta">Teklif Al
+          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Ferdi Kaza Sigortası">Teklif Al
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -862,8 +862,10 @@
                   <option>Kasko</option>
                   <option>Trafik Sigortası</option>
                   <option>Kasko + Trafik</option>
+                  <option>Genişletilmiş Kasko</option>
                   <option>İMM</option>
                   <option>Yeşil Kart</option>
+                  <option>Ferdi Kaza Sigortası</option>
                   <option>Diğer</option>
                 </select>
               </div>
@@ -1071,6 +1073,22 @@
     link.addEventListener('click', function(){
       konuSelect.value = 'Hasar Bildirimi';
       konuSelect.dispatchEvent(new Event('change'));
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var konuSelect = document.getElementById('konu');
+  var sigortaTuru = document.getElementById('sigortaTuru');
+  if(!konuSelect || !sigortaTuru) return;
+  document.querySelectorAll('.product-cta').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var product = btn.getAttribute('data-product');
+      konuSelect.value = 'Teklif Talebi';
+      konuSelect.dispatchEvent(new Event('change'));
+      if(product) sigortaTuru.value = product;
     });
   });
 })();
