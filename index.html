@@ -371,6 +371,149 @@
   }
 
   .ip-title{ font-family:'Fraunces',serif; font-size:1.05rem; color:var(--navy); font-weight:600; }
+
+  /* ================= Profesyonel güncelleme: ürünler, iletişim, sihirbaz, dosya yükleme ================= */
+  section[id]{scroll-margin-top:76px;}
+
+  /* Ürün kartları (detaylı) */
+  .product-guide{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:28px;}
+  .pg-item{display:flex; gap:12px; align-items:flex-start; background:var(--band); border:1px solid var(--line); border-radius:var(--radius-md); padding:14px 16px;}
+  .pg-item p{font-size:0.86rem; color:var(--ink-soft); line-height:1.45; margin:0;}
+  .pg-item p b{color:var(--navy);}
+  .pg-badge{flex-shrink:0; font-size:0.66rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase; padding:4px 9px; border-radius:999px; margin-top:1px;}
+  .pg-must{background:#FDECEC; color:#9B2C2C;}
+  .pg-opt{background:var(--blue-light); color:var(--navy);}
+  .pg-extra{background:#E8F4EA; color:#245B33;}
+  .vehicle-body p.desc{flex:none; margin-bottom:14px;}
+  .product-block{margin-bottom:12px;}
+  .pb-title{font-size:0.72rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--navy); margin-bottom:8px;}
+  .product-list{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:7px;}
+  .product-list li{position:relative; padding-left:25px; font-size:0.86rem; color:var(--ink); line-height:1.45;}
+  .product-list li::before{content:''; position:absolute; left:0; top:1px; width:17px; height:17px; border-radius:50%;
+    background:var(--blue-light) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230F2340' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'><path d='M20 6L9 17l-5-5'/></svg>") center/10px no-repeat;}
+  .product-note{display:flex; gap:8px; align-items:flex-start; background:#FFF8E6; border:1px solid #F3E2B0; border-radius:10px; padding:9px 11px; font-size:0.79rem; color:#6B5316; line-height:1.4; margin-bottom:12px;}
+  .product-note svg{width:15px; height:15px; flex-shrink:0; margin-top:1px; stroke:#B7791F;}
+  .product-audience{font-size:0.8rem; color:var(--ink-soft); margin-bottom:16px; padding-top:10px; border-top:1px dashed var(--line);}
+  .product-audience b{color:var(--navy);}
+  .vehicle-cta{margin-top:auto;}
+  .product-disclaimer{margin-top:22px; font-size:0.8rem; color:var(--ink-soft); text-align:center;}
+
+  /* Hızlı iletişim butonları */
+  .quick-contact{display:flex; flex-direction:column; gap:12px; margin-bottom:28px;}
+  .qc-btn{display:flex; align-items:center; gap:14px; padding:12px 16px; border-radius:14px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); color:#fff; transition:.25s;}
+  .qc-btn:hover{background:rgba(255,255,255,0.16); transform:translateX(4px);}
+  .qc-ico{width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .qc-ico svg{width:20px; height:20px;}
+  .qc-call .qc-ico{background:#fff; color:var(--navy);}
+  .qc-wa .qc-ico{background:#25D366; color:#fff;}
+  .qc-mail .qc-ico{background:#9FC3E8; color:var(--navy);}
+  .qc-txt b{display:block; font-size:0.95rem; font-weight:700;}
+  .qc-txt small{display:block; font-size:0.8rem; color:#BCD2E6; word-break:break-all;}
+  .wa-float{position:fixed; right:22px; bottom:22px; width:56px; height:56px; border-radius:50%; background:#25D366; color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 0 #1a9a4c, 0 16px 28px -8px rgba(37,211,102,0.6); z-index:240; transition:transform .25s;}
+  .wa-float:hover{transform:translateY(-3px) scale(1.06);}
+  .wa-float svg{width:28px; height:28px;}
+
+  /* Sekmeler, sihirbaz, dosya yükleme */
+  .mode-tabs{display:flex; background:var(--band); border:1px solid var(--line); border-radius:999px; padding:4px; margin-bottom:26px;}
+  .mode-tab{flex:1; border:none; background:transparent; padding:11px 14px; border-radius:999px; font-family:inherit; font-size:0.9rem; font-weight:700; color:var(--ink-soft); cursor:pointer; transition:.25s;}
+  .mode-tab.active{background:var(--navy); color:#fff; box-shadow:0 8px 18px -8px rgba(15,35,64,0.5);}
+  .wiz-progress{margin-bottom:22px;}
+  .wiz-progress-top{display:flex; justify-content:space-between; font-size:0.8rem; color:var(--ink-soft); margin-bottom:8px; font-weight:600;}
+  .wiz-bars{display:flex; gap:6px;}
+  .wiz-bars span{flex:1; height:5px; border-radius:99px; background:var(--line); transition:background .3s;}
+  .wiz-bars span.on{background:var(--blue);}
+  .wiz-step{display:none;}
+  .wiz-step.active{display:block; animation:wiz-in .35s ease;}
+  @keyframes wiz-in{from{opacity:0; transform:translateX(14px);} to{opacity:1; transform:none;}}
+  .wiz-title{font-family:'Fraunces',serif; font-size:1.2rem; color:var(--navy); margin-bottom:4px;}
+  .wiz-sub{font-size:0.86rem; color:var(--ink-soft); margin-bottom:16px;}
+  .type-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+  .type-opt{position:relative; cursor:pointer; display:block;}
+  .type-opt input{position:absolute; opacity:0; inset:0; width:100%; height:100%; cursor:pointer; margin:0;}
+  .type-opt span{display:flex; align-items:center; gap:10px; padding:13px 14px; border:1.5px solid var(--line); border-radius:12px; background:var(--band); font-size:0.88rem; font-weight:600; color:var(--ink); transition:.2s; min-height:50px;}
+  .type-opt span::before{content:''; width:16px; height:16px; border-radius:50%; border:2px solid #B9CFE6; flex-shrink:0; background:#fff; transition:.2s;}
+  .type-opt:hover span{border-color:var(--blue);}
+  .type-opt input:checked + span{border-color:var(--navy); background:var(--blue-light); color:var(--navy);}
+  .type-opt input:checked + span::before{border-color:var(--navy); background:var(--navy); box-shadow:inset 0 0 0 3px #fff;}
+  .type-opt input:focus-visible + span{outline:2px solid var(--blue); outline-offset:2px;}
+  .wiz-nav{display:flex; gap:10px; margin-top:20px;}
+  .wiz-nav .submit-btn{margin-top:0; flex:1;}
+  .btn-back{flex:0 0 auto; padding:14px 22px; border-radius:999px; border:1.5px solid var(--line); background:transparent; color:var(--navy); font-family:inherit; font-weight:700; font-size:0.92rem; cursor:pointer; transition:.25s;}
+  .btn-back:hover{border-color:var(--navy);}
+  .field input.invalid, .field select.invalid, .field textarea.invalid{border-color:#C0392B; background:#FFF5F4;}
+  .wiz-error{display:none; color:#9B2C2C; font-size:0.84rem; margin-top:12px; font-weight:600;}
+  .wiz-error.show{display:block;}
+  .consent{display:flex; gap:10px; align-items:flex-start; font-size:0.82rem; color:var(--ink-soft); margin:14px 0 4px; line-height:1.45; cursor:pointer;}
+  .consent input{margin-top:3px; width:16px; height:16px; flex-shrink:0; accent-color:var(--navy);}
+  .consent a{color:var(--navy); text-decoration:underline;}
+  .consent.invalid span{color:#9B2C2C;}
+  .hp-field{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;}
+  .info-note{display:flex; gap:10px; align-items:flex-start; background:#FFF8E6; border:1px solid #F3E2B0; border-radius:12px; padding:11px 13px; font-size:0.84rem; color:#6B5316; line-height:1.45; margin-bottom:18px;}
+  .info-note svg{width:18px; height:18px; flex-shrink:0; margin-top:1px; stroke:#B7791F;}
+  .dropzone{border:2px dashed #B9CFE6; border-radius:14px; background:var(--band); padding:20px 16px; text-align:center; cursor:pointer; transition:.2s;}
+  .dropzone:hover, .dropzone.drag{border-color:var(--blue); background:var(--blue-light);}
+  .dropzone svg{width:30px; height:30px; stroke:var(--blue); margin:0 auto 8px; display:block;}
+  .dropzone b{display:block; color:var(--navy); font-size:0.92rem;}
+  .dropzone small{display:block; color:var(--ink-soft); font-size:0.78rem; margin-top:4px;}
+  .file-list{list-style:none; margin:12px 0 0; padding:0; display:flex; flex-direction:column; gap:8px;}
+  .file-item{display:flex; align-items:center; gap:12px; padding:8px 10px; border:1px solid var(--line); border-radius:12px; background:var(--paper);}
+  .file-thumb{width:44px; height:44px; border-radius:8px; background:var(--blue-light); overflow:hidden; flex-shrink:0; display:flex; align-items:center; justify-content:center;}
+  .file-thumb img{width:100%; height:100%; object-fit:cover;}
+  .file-thumb svg{width:22px; height:22px; stroke:var(--navy);}
+  .file-meta{flex:1; min-width:0;}
+  .file-meta b{display:block; font-size:0.84rem; color:var(--ink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .file-meta span{font-size:0.76rem; color:var(--ink-soft);}
+  .file-remove{border:none; background:var(--band); width:28px; height:28px; border-radius:50%; cursor:pointer; color:var(--navy); font-size:0.85rem; flex-shrink:0;}
+  .file-remove:hover{background:var(--line);}
+  .file-hint{font-size:0.8rem; color:#9B2C2C; margin-top:8px; display:none; font-weight:600;}
+  .done-card{display:none; text-align:center; padding:26px 8px;}
+  .done-card.show{display:block; animation:wiz-in .4s ease;}
+  .done-ico{width:64px; height:64px; border-radius:50%; background:#E8F4EA; display:flex; align-items:center; justify-content:center; margin:0 auto 16px;}
+  .done-ico svg{width:30px; height:30px; stroke:#245B33;}
+  .done-card h3{font-size:1.3rem; margin-bottom:8px;}
+  .done-card p{color:var(--ink-soft); font-size:0.94rem; margin-bottom:20px;}
+  .done-card .btn-back{margin:0 auto;}
+
+  @media (max-width:900px){ .product-guide{grid-template-columns:1fr;} }
+  @media (max-width:768px){ .wa-float{display:none;} }
+  @media (max-width:560px){
+    .contact-info, .contact-form{padding:30px 20px;}
+    .type-grid{gap:8px;}
+    .type-opt span{padding:11px 10px; font-size:0.82rem;}
+    .qc-btn{padding:11px 12px;}
+    .wiz-nav{flex-wrap:wrap;}
+  }
+
+  /* ================= 3D katmanı ================= */
+  .js-3d .reveal3d{opacity:0; transform:perspective(900px) rotateX(14deg) translateY(34px) scale(.97); transform-origin:50% 100%;
+    transition:opacity .7s ease, transform .8s cubic-bezier(.2,.8,.2,1);}
+  .js-3d .reveal3d.in{opacity:1; transform:none;}
+  .tilt3d{transform-style:preserve-3d; will-change:transform;}
+  .benefit-card .icon-wrap{transform:translateZ(34px); box-shadow:0 10px 18px -8px rgba(15,35,64,0.35);}
+  .benefit-card h3{transform:translateZ(22px);}
+  .benefit-card p{transform:translateZ(10px);}
+  .benefit-card{box-shadow:0 1px 0 #fff inset, 0 12px 24px -16px rgba(15,35,64,0.25);}
+  .vehicle-card, .quote-card, .pg-item{box-shadow:0 14px 28px -20px rgba(15,35,64,0.35);}
+  .hero h1{text-shadow:0 1px 0 #24467a, 0 2px 0 #1d3a67, 0 3px 0 #173056, 0 4px 0 #132849, 0 14px 22px rgba(0,0,0,0.38);}
+  .btn-primary{box-shadow:0 4px 0 #C4D3E6, 0 16px 28px -10px rgba(0,0,0,0.45);}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 6px 0 #C4D3E6, 0 22px 34px -10px rgba(0,0,0,0.5);}
+  .btn-primary:active{transform:translateY(3px); box-shadow:0 1px 0 #C4D3E6, 0 8px 16px -8px rgba(0,0,0,0.5);}
+  .submit-btn, .vehicle-cta, .nav-cta:not(.outline){box-shadow:0 4px 0 #07152b, 0 12px 20px -10px rgba(15,35,64,0.55);}
+  .submit-btn:hover, .vehicle-cta:hover, .nav-cta:not(.outline):hover{transform:translateY(-2px); box-shadow:0 6px 0 #07152b, 0 16px 24px -10px rgba(15,35,64,0.6);}
+  .submit-btn:active, .vehicle-cta:active, .nav-cta:not(.outline):active{transform:translateY(3px); box-shadow:0 1px 0 #07152b, 0 6px 12px -8px rgba(15,35,64,0.6);}
+  .vehicle-cta{border-radius:12px;}
+
+  /* Three.js 3D model alanları */
+  .car3d{position:absolute; inset:0; z-index:2; opacity:0; transition:opacity .6s ease;}
+  .car3d.ready{opacity:1;}
+  .car3d canvas{width:100% !important; height:100% !important; display:block; touch-action:pan-y;}
+  .hero-art.has-3d > svg{opacity:0; transition:opacity .4s ease;}
+  .avw.has-3d .avw-car-wrap{opacity:0;}
+  .avw .avw-pill, .avw .avw-badge-shield{z-index:5;}
+
+  @media (prefers-reduced-motion: reduce){
+    .js-3d .reveal3d{opacity:1; transform:none; transition:none;}
+  }
 </style>
 </head>
 <body>
@@ -378,8 +521,11 @@
 <div class="mobile-action-bar">
   <a href="tel:08502009090" class="mab-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Ara</span></a>
   <a href="https://wa.me/908502009090" target="_blank" rel="noopener" class="mab-btn mab-whatsapp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .1-1.6-.1-.4-.1-1-.3-1.6-.6-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.7.8 1.8.1.2.1.3 0 .5-.1.2-.2.3-.3.5-.2.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.4.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.8.3.1.4.2.5.3.1.2.1.7-.1 1.2z"/></svg><span>WhatsApp</span></a>
-  <a href="#iletisim" class="mab-btn mab-primary"><span>Teklif Al</span></a>
+  <a href="#iletisim" class="mab-btn hasar-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg><span>Hasar</span></a>
+  <a href="#iletisim" class="mab-btn mab-primary teklif-link"><span>Teklif Al</span></a>
 </div>
+
+<a href="https://wa.me/908502009090?text=Merhaba%2C%20sigorta%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp ile yazın"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .1-1.6-.1-.4-.1-1-.3-1.6-.6-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.7.8 1.8.1.2.1.3 0 .5-.1.2-.2.3-.3.5-.2.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.4.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.8.3.1.4.2.5.3.1.2.1.7-.1 1.2z"/></svg></a>
 
 <header>
   <div class="nav">
@@ -403,7 +549,7 @@
     </nav>
     <div class="header-ctas" style="display:flex; align-items:center; gap:10px;">
       <a href="#iletisim" class="nav-cta outline hasar-link">Hasar Bildir</a>
-      <a href="#iletisim" class="nav-cta">Teklif Al</a>
+      <a href="#iletisim" class="nav-cta teklif-link">Teklif Al</a>
     </div>
   </div>
 </header>
@@ -418,7 +564,7 @@
       <h1>Aracınız neredeyse, güvenceniz de orada.</h1>
       <p class="lead">Kasko, trafik sigortası ve yol yardımını tek çatı altında topluyoruz. Hasarınızı bekletmeden, dürüst bir fiyatla çözüyoruz.</p>
       <div class="hero-ctas">
-        <a href="#iletisim" class="btn-primary">
+        <a href="#iletisim" class="btn-primary teklif-link">
           Teklif Al
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
@@ -432,6 +578,7 @@
       </div>
     </div>
     <div class="hero-art">
+      <div class="car3d" id="hero3d" aria-hidden="true"></div>
       <svg viewBox="0 0 480 420" width="100%" height="100%">
         <defs>
           <radialGradient id="glow" cx="50%" cy="40%" r="65%">
@@ -516,11 +663,11 @@
       <div class="coverage-list">
         <div class="coverage-item">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
-          <div><h3>Çarpışma &amp; Çarpma</h3><p>Kaza sonucu oluşan hasarların tamamı karşılanır.</p></div>
+          <div><h3>Çarpışma &amp; Çarpma</h3><p>Kaza sonucu oluşan hasarlar poliçe kapsamında karşılanır.</p></div>
         </div>
         <div class="coverage-item">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
-          <div><h3>Cam kırılması</h3><p>Ön, yan ve arka cam hasarları ek ücretsiz onarılır.</p></div>
+          <div><h3>Cam kırılması</h3><p>Cam hasarları poliçe şartlarına göre karşılanır.</p></div>
         </div>
         <div class="coverage-item">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/></svg>
@@ -541,6 +688,7 @@
         <div class="avw-hex"></div>
         <div class="avw-stage">
           <div class="avw-halo"></div>
+          <div class="car3d" id="avw3d" aria-hidden="true"></div>
 
           <div class="avw-badge-shield">
             <svg viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -641,8 +789,8 @@
       </div>
       <div class="why-card">
         <span class="step-num">03</span>
-        <h3>Anında güvence altına alın</h3>
-        <p>Onayınızla poliçeniz aynı gün içinde aktif olur.</p>
+        <h3>Güvence altına alın</h3>
+        <p>Onayınızla poliçeniz hazırlanır ve size iletilir.</p>
       </div>
     </div>
   </div>
@@ -653,8 +801,15 @@
     <div class="section-head">
       <span class="kicker">Sigorta Ürünlerimiz</span>
       <h2>İhtiyacınıza uygun sigorta ürünleri</h2>
-      <p>Aracınız ve sürüş alışkanlıklarınıza göre, birden fazla sigorta şirketinden karşılaştırmalı teklif sunuyoruz.</p>
+      <p>Her ürünün neyi kapsadığını, kimler için uygun olduğunu ve nelere dikkat etmeniz gerektiğini kısaca özetledik.</p>
     </div>
+
+    <div class="product-guide">
+      <div class="pg-item"><span class="pg-badge pg-must">Zorunlu</span><p><b>Trafik Sigortası</b> — Karşı tarafa verebileceğiniz zararlar için yasal zorunluluk.</p></div>
+      <div class="pg-item"><span class="pg-badge pg-opt">Önerilen</span><p><b>Kasko</b> — Kendi aracınızın hasarı için koruma.</p></div>
+      <div class="pg-item"><span class="pg-badge pg-extra">Ek Güvence</span><p><b>İMM, Ferdi Kaza, Yeşil Kart</b> — İhtiyacınıza göre tamamlayıcı teminatlar.</p></div>
+    </div>
+
     <div class="vehicles-grid">
 
       <div class="vehicle-card">
@@ -664,8 +819,18 @@
         <div class="vehicle-body">
           <h3>Trafik Sigortası</h3>
           <div class="model-type">Zorunlu Sigorta</div>
-          <p class="desc">Kanunen zorunlu olan trafik sigortası, kaza durumunda karşı tarafa verdiğiniz maddi ve bedensel zararları teminat altına alır.</p>
-          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Trafik Sigortası">Teklif Al
+          <p class="desc">Kanunen zorunludur. Kaza durumunda karşı tarafa verdiğiniz zararları karşılar.</p>
+          <div class="product-block">
+            <div class="pb-title">Neleri kapsar?</div>
+            <ul class="product-list">
+            <li>Karşı tarafın araç ve mal hasarı</li>
+            <li>Karşı taraftaki kişilerin bedensel zararları (yaralanma, sakatlık, vefat)</li>
+            <li>Yasal yükümlülüğünüzü yerine getirir</li>
+            </ul>
+          </div>
+          <div class="product-note"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg><span><b>Dikkat:</b> Kendi aracınızın hasarını karşılamaz; bunun için kasko gerekir.</span></div>
+          <div class="product-audience"><b>Kimler için?</b> Trafiğe çıkan tüm araç sahipleri.</div>
+          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Trafik Sigortası">Bu Ürün İçin Teklif Al
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -678,8 +843,18 @@
         <div class="vehicle-body">
           <h3>Kasko</h3>
           <div class="model-type">İsteğe Bağlı Sigorta</div>
-          <p class="desc">Aracınızda oluşabilecek çarpışma, hırsızlık, yangın ve doğal afet gibi hasarları kapsayan geniş koruma paketidir.</p>
-          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Kasko">Teklif Al
+          <p class="desc">Kendi aracınızda oluşan hasarlara karşı geniş koruma sağlar.</p>
+          <div class="product-block">
+            <div class="pb-title">Neleri kapsar?</div>
+            <ul class="product-list">
+            <li>Çarpma, çarpışma ve devrilme hasarları</li>
+            <li>Yangın ve hırsızlık</li>
+            <li>Doğal afet kaynaklı hasarlar (poliçeye göre)</li>
+            </ul>
+          </div>
+          <div class="product-note"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg><span><b>Dikkat:</b> Muafiyet ve teminat limitleri poliçeye göre değişir.</span></div>
+          <div class="product-audience"><b>Kimler için?</b> Aracını hasar ve çalınmaya karşı korumak isteyenler.</div>
+          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Kasko">Bu Ürün İçin Teklif Al
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -692,8 +867,18 @@
         <div class="vehicle-body">
           <h3>Genişletilmiş Kasko</h3>
           <div class="model-type">Ek Teminat Paketi</div>
-          <p class="desc">Standart kasko kapsamına; anahtar kaybı, lastik, cam ve mini onarım gibi ek teminatlar eklemek isteyenler için uygundur.</p>
-          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Genişletilmiş Kasko">Teklif Al
+          <p class="desc">Standart kasko kapsamına ek teminatlar ekleyerek korumayı artırır.</p>
+          <div class="product-block">
+            <div class="pb-title">Neleri kapsar?</div>
+            <ul class="product-list">
+            <li>Anahtar kaybı ve lastik hasarı</li>
+            <li>Cam ve mini onarım teminatı</li>
+            <li>İkame araç ve yol yardımı (seçilen pakete göre)</li>
+            </ul>
+          </div>
+          <div class="product-note"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg><span><b>Dikkat:</b> Ek teminatların kapsamı sigorta şirketine göre farklılık gösterir.</span></div>
+          <div class="product-audience"><b>Kimler için?</b> Daha kapsamlı ve rahat bir koruma isteyenler.</div>
+          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Genişletilmiş Kasko">Bu Ürün İçin Teklif Al
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -706,8 +891,18 @@
         <div class="vehicle-body">
           <h3>İhtiyari Mali Mesuliyet (İMM)</h3>
           <div class="model-type">Ek Teminat</div>
-          <p class="desc">Trafik sigortasının teminat limiti üzerinde kalan zararlar için ek güvence sağlayarak maddi riskinizi azaltır.</p>
-          <a href="#iletisim" class="vehicle-cta product-cta" data-product="İMM">Teklif Al
+          <p class="desc">Trafik sigortası limitinin yetmediği durumlarda ek güvence sağlar.</p>
+          <div class="product-block">
+            <div class="pb-title">Neleri kapsar?</div>
+            <ul class="product-list">
+            <li>Trafik sigortası limitini aşan maddi zararlar</li>
+            <li>Limit üstünde kalan bedensel zararlar</li>
+            <li>Yüksek tutarlı kazalarda mali riskinizi azaltır</li>
+            </ul>
+          </div>
+          <div class="product-note"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg><span><b>Dikkat:</b> Poliçe şartları ve limitler sigorta şirketine göre değişir.</span></div>
+          <div class="product-audience"><b>Kimler için?</b> Olası yüksek tazminat risklerine karşı ek güvence isteyenler.</div>
+          <a href="#iletisim" class="vehicle-cta product-cta" data-product="İMM">Bu Ürün İçin Teklif Al
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -720,8 +915,18 @@
         <div class="vehicle-body">
           <h3>Yeşil Kart Sigortası</h3>
           <div class="model-type">Yurt Dışı Sigortası</div>
-          <p class="desc">Aracınızla yurt dışına çıkış yapacaksanız, birçok ülkede geçerli olan zorunlu sorumluluk sigortasıdır.</p>
-          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Yeşil Kart">Teklif Al
+          <p class="desc">Aracınızla yurt dışına çıkarken gereken zorunlu sorumluluk sigortasıdır.</p>
+          <div class="product-block">
+            <div class="pb-title">Neleri kapsar?</div>
+            <ul class="product-list">
+            <li>Anlaşmalı ülkelerde geçerli sorumluluk teminatı</li>
+            <li>Yurt dışında karşı tarafa verilen zararlar</li>
+            <li>Gidilecek ülkeye ve süreye göre düzenlenir</li>
+            </ul>
+          </div>
+          <div class="product-note"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg><span><b>Dikkat:</b> Seyahatten önce gideceğiniz ülkedeki geçerliliği kontrol edin.</span></div>
+          <div class="product-audience"><b>Kimler için?</b> Aracıyla yurt dışına çıkacak sürücüler.</div>
+          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Yeşil Kart">Bu Ürün İçin Teklif Al
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -734,14 +939,26 @@
         <div class="vehicle-body">
           <h3>Ferdi Kaza Sigortası</h3>
           <div class="model-type">Kişisel Koruma</div>
-          <p class="desc">Sürücü ve yolcuların bir kaza sonucu yaşayabileceği bedensel zararları güvence altına alan tamamlayıcı bir sigortadır.</p>
-          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Ferdi Kaza Sigortası">Teklif Al
+          <p class="desc">Sürücü ve yolcuların kaza sonucu yaşayabileceği bedensel zararlara karşı tamamlayıcı korumadır.</p>
+          <div class="product-block">
+            <div class="pb-title">Neleri kapsar?</div>
+            <ul class="product-list">
+            <li>Kaza sonucu vefat ve kalıcı sakatlık teminatı</li>
+            <li>Tedavi gider teminatı (pakete göre)</li>
+            <li>Sürücü ve yolcuları kapsayacak şekilde düzenlenebilir</li>
+            </ul>
+          </div>
+          <div class="product-note"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg><span><b>Dikkat:</b> Teminat bedelleri seçilen pakete göre belirlenir.</span></div>
+          <div class="product-audience"><b>Kimler için?</b> Kendisi ve yolcuları için ek güvence isteyenler.</div>
+          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Ferdi Kaza Sigortası">Bu Ürün İçin Teklif Al
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
       </div>
 
     </div>
+
+    <p class="product-disclaimer">Teminat kapsamı, limitler ve muafiyetler sigorta şirketine ve seçilen poliçeye göre değişir. Kesin bilgi için size sunulan teklif ve poliçe şartlarını inceleyiniz.</p>
   </div>
 </section>
 
@@ -794,6 +1011,10 @@
         <div class="faq-a">Bizi aradığınız anda dosyanız açılır, en yakın anlaşmalı servise yönlendirilirsiniz. Ekspertiz ve onarım sürecini sizin adınıza takip ederiz.</div>
       </details>
       <details class="faq-item">
+        <summary>Hasar bildirirken hangi fotoğraf ve belgeleri eklemeliyim?<span class="plus"></span></summary>
+        <div class="faq-a">Hasarın genel ve yakın çekim fotoğrafları, varsa kaza tutanağı, ruhsat ve poliçe bilgileri süreci hızlandırır. Hasar formundan JPG, PNG, WEBP, HEIC veya PDF olarak en fazla 5 dosya ekleyebilirsiniz.</div>
+      </details>
+      <details class="faq-item">
         <summary>İhtiyari Mali Mesuliyet (İMM) neden önemlidir?<span class="plus"></span></summary>
         <div class="faq-a">Trafik sigortasının karşı tarafa sağladığı teminat limiti bir kazada yetersiz kalabilir. İMM, bu limitin üzerinde kalan tutarları karşılayarak sizi maddi risklerden korur.</div>
       </details>
@@ -811,80 +1032,171 @@
 
 <section class="section-pad" id="iletisim">
   <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">İletişim</span>
+      <h2>Hızlı online teklif ve hasar bildirimi</h2>
+      <p>Birkaç adımda talebinizi iletin, uzmanımız sizi arasın. Acil durumlarda doğrudan arayabilir veya WhatsApp'tan yazabilirsiniz.</p>
+    </div>
+
     <div class="contact-wrap">
       <div class="contact-info">
-        <h2>Teklif Alın veya Hasar Bildirin</h2>
-        <p>İster yeni bir sigorta teklifi almak, ister bir hasar bildiriminde bulunmak isteyin — aşağıdaki formu doldurun, size dönelim.</p>
-        <div class="contact-row">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <div><b>0850 200 90 90</b><span>Hafta içi 08:00–20:00</span></div>
+        <h2>Bize hemen ulaşın</h2>
+        <p>Size en uygun yolu seçin. Acil durumlarda telefon veya WhatsApp en hızlı yoldur.</p>
+
+        <div class="quick-contact">
+          <a href="tel:08502009090" class="qc-btn qc-call">
+            <span class="qc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <span class="qc-txt"><b>Hemen Ara</b><small>0850 200 90 90</small></span>
+          </a>
+          <a href="https://wa.me/908502009090?text=Merhaba%2C%20sigorta%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="qc-btn qc-wa">
+            <span class="qc-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .1-1.6-.1-.4-.1-1-.3-1.6-.6-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.7.8 1.8.1.2.1.3 0 .5-.1.2-.2.3-.3.5-.2.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.4.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.8.3.1.4.2.5.3.1.2.1.7-.1 1.2z"/></svg></span>
+            <span class="qc-txt"><b>WhatsApp ile Yazın</b><small>Hızlı yanıt için</small></span>
+          </a>
+          <a href="mailto:berkayozturk1815@gmail.com" class="qc-btn qc-mail">
+            <span class="qc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <span class="qc-txt"><b>E-posta Gönderin</b><small>berkayozturk1815@gmail.com</small></span>
+          </a>
         </div>
+
         <div class="contact-row">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-          <div><b>berkayozturk1815@gmail.com</b><span>En kısa sürede yanıt</span></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <div><b>Çalışma saatleri</b><span>Hafta içi 08:00–20:00</span></div>
         </div>
         <div class="contact-row">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <div><b>Maslak, İstanbul</b><span>Merkez ofis</span></div>
         </div>
       </div>
-      <div class="contact-form">
-        <form id="hasarForm">
-          <div class="form-row">
-            <div class="field full">
-              <label for="konu">Konu</label>
-              <select id="konu" required>
-                <option value="Teklif Talebi">Teklif Talebi</option>
-                <option value="Hasar Bildirimi">Hasar Bildirimi</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="field full"><label for="hasarAd">Ad Soyad</label><input id="hasarAd" name="name" type="text" placeholder="Adınız Soyadınız" required></div>
-          </div>
-          <div class="form-row">
-            <div class="field full"><label for="hasarTel">Telefon</label><input id="hasarTel" type="tel" placeholder="05xx xxx xx xx" required></div>
-          </div>
-          <div class="form-row">
-            <div class="field full"><label for="hasarEposta">E-posta</label><input id="hasarEposta" name="email" type="email" placeholder="ornek@eposta.com" required></div>
-          </div>
 
-          <div class="konu-fields" data-konu="Teklif Talebi">
-            <div class="form-row">
-              <div class="field"><label for="marka">Araç Markası</label><input id="marka" type="text" placeholder="Örn. Toyota"></div>
-              <div class="field"><label for="model">Model / Yıl</label><input id="model" type="text" placeholder="Örn. Corolla 2021"></div>
+      <div class="contact-form">
+        <div class="mode-tabs" role="tablist" aria-label="Talep türü">
+          <button type="button" class="mode-tab active" data-mode="teklif" role="tab" aria-selected="true">Teklif Al</button>
+          <button type="button" class="mode-tab" data-mode="hasar" role="tab" aria-selected="false">Hasar Bildir</button>
+        </div>
+
+        <!-- ========== ONLINE TEKLİF (3 ADIM) ========== -->
+        <div class="mode-panel" data-mode="teklif">
+          <form id="teklifWizard" novalidate>
+            <div class="wiz-progress">
+              <div class="wiz-progress-top"><span id="wizStepLabel">Adım 1/3 · Sigorta türü</span><span>~1 dakika</span></div>
+              <div class="wiz-bars"><span class="on"></span><span></span><span></span></div>
             </div>
-            <div class="form-row">
-              <div class="field full">
-                <label for="sigortaTuru">Sigorta Türü</label>
-                <select id="sigortaTuru">
-                  <option value="">Seçiniz</option>
-                  <option>Kasko</option>
-                  <option>Trafik Sigortası</option>
-                  <option>Kasko + Trafik</option>
-                  <option>Genişletilmiş Kasko</option>
-                  <option>İMM</option>
-                  <option>Yeşil Kart</option>
-                  <option>Ferdi Kaza Sigortası</option>
-                  <option>Diğer</option>
-                </select>
+
+            <div class="wiz-step active" data-step="1">
+              <h3 class="wiz-title">Hangi sigortayı arıyorsunuz?</h3>
+              <p class="wiz-sub">Size en yakın seçeneği işaretleyin; emin değilseniz "Emin değilim" diyebilirsiniz.</p>
+              <div class="type-grid">
+                <label class="type-opt"><input type="radio" name="sigortaTuru" value="Trafik Sigortası"><span>Trafik Sigortası</span></label>
+                <label class="type-opt"><input type="radio" name="sigortaTuru" value="Kasko"><span>Kasko</span></label>
+                <label class="type-opt"><input type="radio" name="sigortaTuru" value="Trafik + Kasko"><span>Trafik + Kasko</span></label>
+                <label class="type-opt"><input type="radio" name="sigortaTuru" value="Genişletilmiş Kasko"><span>Genişletilmiş Kasko</span></label>
+                <label class="type-opt"><input type="radio" name="sigortaTuru" value="İMM"><span>İMM</span></label>
+                <label class="type-opt"><input type="radio" name="sigortaTuru" value="Yeşil Kart"><span>Yeşil Kart</span></label>
+                <label class="type-opt"><input type="radio" name="sigortaTuru" value="Ferdi Kaza Sigortası"><span>Ferdi Kaza</span></label>
+                <label class="type-opt"><input type="radio" name="sigortaTuru" value="Emin değilim"><span>Emin değilim</span></label>
               </div>
             </div>
-          </div>
 
-          <div class="konu-fields" data-konu="Hasar Bildirimi" style="display:none;">
-            <div class="form-row">
-              <div class="field"><label for="policeNo">Poliçe Numarası (varsa)</label><input id="policeNo" type="text" placeholder="Varsa poliçe numaranız"></div>
-              <div class="field"><label for="hasarTarihi">Hasar Tarihi</label><input id="hasarTarihi" type="date"></div>
+            <div class="wiz-step" data-step="2">
+              <h3 class="wiz-title">Aracınız hakkında</h3>
+              <p class="wiz-sub">Doğru teklif için temel araç bilgilerine ihtiyacımız var.</p>
+              <div class="form-row">
+                <div class="field"><label for="marka">Araç Markası *</label><input id="marka" type="text" placeholder="Örn. Toyota" autocomplete="off"></div>
+                <div class="field"><label for="model">Model / Yıl *</label><input id="model" type="text" placeholder="Örn. Corolla 2021" autocomplete="off"></div>
+              </div>
+              <div class="form-row">
+                <div class="field full"><label for="plaka">Plaka (opsiyonel)</label><input id="plaka" type="text" placeholder="Örn. 34 ABC 123" autocomplete="off"></div>
+              </div>
             </div>
-          </div>
 
-          <div class="form-row">
-            <div class="field full"><label for="hasarAciklama" id="hasarAciklamaLabel">Mesajınız</label><textarea id="hasarAciklama" name="message" placeholder="Talebinizi kısaca açıklayın..." required></textarea></div>
+            <div class="wiz-step" data-step="3">
+              <h3 class="wiz-title">İletişim bilgileriniz</h3>
+              <p class="wiz-sub">Teklifinizi size iletebilmemiz için bilgilerinizi bırakın.</p>
+              <div class="form-row">
+                <div class="field full"><label for="tAd">Ad Soyad *</label><input id="tAd" type="text" placeholder="Adınız Soyadınız" autocomplete="name"></div>
+              </div>
+              <div class="form-row">
+                <div class="field"><label for="tTel">Telefon *</label><input id="tTel" type="tel" placeholder="05xx xxx xx xx" autocomplete="tel"></div>
+                <div class="field"><label for="tEposta">E-posta *</label><input id="tEposta" type="email" placeholder="ornek@eposta.com" autocomplete="email"></div>
+              </div>
+              <div class="form-row">
+                <div class="field full"><label for="tNot">Notunuz (opsiyonel)</label><textarea id="tNot" placeholder="Eklemek istediğiniz bir bilgi var mı?"></textarea></div>
+              </div>
+              <label class="consent" id="tConsentWrap"><input type="checkbox" id="tConsent"><span><a href="#" data-modal-target="modalKvkk">KVKK Aydınlatma Metni</a>'ni okudum; kişisel verilerimin teklif hazırlanması amacıyla işlenmesini kabul ediyorum. *</span></label>
+              <div class="hp-field" aria-hidden="true"><label>Web sitesi<input type="text" id="tWebsite" tabindex="-1" autocomplete="off"></label></div>
+            </div>
+
+            <div class="wiz-error" id="wizError" role="alert"></div>
+
+            <div class="wiz-nav">
+              <button type="button" class="btn-back" id="wizBack" style="display:none;">← Geri</button>
+              <button type="button" class="submit-btn" id="wizNext">Devam →</button>
+              <button type="submit" class="submit-btn" id="wizSubmit" style="display:none;">Teklif İste</button>
+            </div>
+            <div class="form-success" id="teklifStatus" role="alert"></div>
+          </form>
+
+          <div class="done-card" id="teklifDone">
+            <div class="done-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <h3>Teklif talebiniz alındı</h3>
+            <p>Bilgilerinizi inceleyip en kısa sürede sizinle iletişime geçeceğiz. Acil bir durumunuz varsa bizi arayabilirsiniz.</p>
+            <button type="button" class="btn-back" data-again="teklif">Yeni teklif talebi</button>
           </div>
-          <button type="submit" class="submit-btn" id="hasarSubmitBtn">Gönder</button>
-          <div class="form-success" id="hasarFormSuccess"></div>
-        </form>
+        </div>
+
+        <!-- ========== HASAR BİLDİRİMİ (DOSYA YÜKLEMELİ) ========== -->
+        <div class="mode-panel" data-mode="hasar" style="display:none;">
+          <form id="hasarForm" novalidate>
+            <div class="info-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+              <span>Yaralanma veya acil bir durum varsa önce <b>112</b>'yi arayın. Hasar fotoğraflarını ve belgeleri aşağıdan ekleyebilirsiniz.</span>
+            </div>
+
+            <div class="form-row">
+              <div class="field full"><label for="hAd">Ad Soyad *</label><input id="hAd" type="text" placeholder="Adınız Soyadınız" autocomplete="name"></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label for="hTel">Telefon *</label><input id="hTel" type="tel" placeholder="05xx xxx xx xx" autocomplete="tel"></div>
+              <div class="field"><label for="hEposta">E-posta *</label><input id="hEposta" type="email" placeholder="ornek@eposta.com" autocomplete="email"></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label for="hPolice">Poliçe No (opsiyonel)</label><input id="hPolice" type="text" placeholder="Varsa poliçe numaranız"></div>
+              <div class="field"><label for="hPlaka">Araç Plakası (opsiyonel)</label><input id="hPlaka" type="text" placeholder="Örn. 34 ABC 123"></div>
+            </div>
+            <div class="form-row">
+              <div class="field full"><label for="hTarih">Hasar Tarihi</label><input id="hTarih" type="date"></div>
+            </div>
+            <div class="form-row">
+              <div class="field full"><label for="hAciklama">Hasar Açıklaması *</label><textarea id="hAciklama" placeholder="Kaza veya hasarın nasıl oluştuğunu kısaca anlatın..."></textarea></div>
+            </div>
+
+            <div class="field full" style="margin-bottom:6px;">
+              <label>Fotoğraf / Belge Ekle (opsiyonel)</label>
+              <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Dosya seçmek için tıklayın veya sürükleyip bırakın">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
+                <b>Dosya seçin veya buraya sürükleyin</b>
+                <small>JPG, PNG, WEBP, HEIC veya PDF · en fazla 5 dosya · dosya başına 5 MB</small>
+              </div>
+              <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,image/heic,image/heif,application/pdf,.jpg,.jpeg,.png,.webp,.heic,.heif,.pdf" multiple style="display:none;">
+              <div class="file-hint" id="fileHint" role="alert"></div>
+              <ul class="file-list" id="fileList"></ul>
+            </div>
+
+            <label class="consent" id="hConsentWrap"><input type="checkbox" id="hConsent"><span><a href="#" data-modal-target="modalKvkk">KVKK Aydınlatma Metni</a>'ni okudum; kişisel verilerimin ve yüklediğim belgelerin hasar sürecinin yönetilmesi amacıyla işlenmesini kabul ediyorum. *</span></label>
+            <div class="hp-field" aria-hidden="true"><label>Web sitesi<input type="text" id="hWebsite" tabindex="-1" autocomplete="off"></label></div>
+
+            <div class="wiz-error" id="hasarError" role="alert"></div>
+            <button type="submit" class="submit-btn" id="hasarSubmit">Hasarı Bildir</button>
+            <div class="form-success" id="hasarStatus" role="alert"></div>
+          </form>
+
+          <div class="done-card" id="hasarDone">
+            <div class="done-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <h3>Hasar bildiriminiz alındı</h3>
+            <p>Bildiriminiz ve ekleriniz ekibimize iletildi. Süreç hakkında en kısa sürede sizinle iletişime geçeceğiz.</p>
+            <button type="button" class="btn-back" data-again="hasar">Yeni hasar bildirimi</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -942,99 +1254,6 @@
 
 <script>
 (function(){
-  var API_BASE_URL = '';
-  var ENDPOINT = (API_BASE_URL || '') + '/api/contact';
-
-  var form = document.getElementById('hasarForm');
-  var submitBtn = document.getElementById('hasarSubmitBtn');
-  var statusBox = document.getElementById('hasarFormSuccess');
-  var konuSelect = document.getElementById('konu');
-  var aciklamaLabel = document.getElementById('hasarAciklamaLabel');
-  var fieldGroups = document.querySelectorAll('.konu-fields');
-  if(!form) return;
-
-  function applyKonuVisibility(){
-    var val = konuSelect.value;
-    fieldGroups.forEach(function(group){
-      var match = group.getAttribute('data-konu') === val;
-      group.style.display = match ? '' : 'none';
-      group.querySelectorAll('input, select').forEach(function(input){
-        input.disabled = !match;
-      });
-    });
-    aciklamaLabel.textContent = (val === 'Hasar Bildirimi') ? 'Hasar Açıklaması' : 'Teklif Notunuz (opsiyonel)';
-    document.getElementById('hasarAciklama').required = (val === 'Hasar Bildirimi');
-  }
-  konuSelect.addEventListener('change', applyKonuVisibility);
-  applyKonuVisibility();
-
-  function showStatus(msg, isError){
-    statusBox.textContent = msg;
-    statusBox.classList.add('show');
-    statusBox.classList.toggle('is-error', !!isError);
-  }
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Gönderiliyor…';
-
-    var konu = konuSelect.value;
-    var tel = document.getElementById('hasarTel').value.trim();
-    var aciklama = document.getElementById('hasarAciklama').value.trim();
-    var detayMesaj = konu.toUpperCase() + '\n' + 'Telefon: ' + tel + '\n';
-
-    if(konu === 'Teklif Talebi'){
-      var marka = document.getElementById('marka').value.trim();
-      var model = document.getElementById('model').value.trim();
-      var sigortaTuru = document.getElementById('sigortaTuru').value;
-      detayMesaj += (marka || model) ? ('Araç: ' + [marka, model].filter(Boolean).join(' - ') + '\n') : '';
-      detayMesaj += sigortaTuru ? ('Sigorta Türü: ' + sigortaTuru + '\n') : '';
-    } else {
-      var policeNo = document.getElementById('policeNo').value.trim();
-      var hasarTarihi = document.getElementById('hasarTarihi').value;
-      detayMesaj += policeNo ? ('Poliçe No: ' + policeNo + '\n') : '';
-      detayMesaj += hasarTarihi ? ('Hasar Tarihi: ' + hasarTarihi + '\n') : '';
-    }
-    detayMesaj += '\nMesaj:\n' + aciklama;
-
-    var payload = {
-      name: document.getElementById('hasarAd').value.trim(),
-      email: document.getElementById('hasarEposta').value.trim(),
-      message: detayMesaj
-    };
-
-    fetch(ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    })
-    .then(function(res){
-      return res.json().catch(function(){ return {}; }).then(function(data){
-        return { ok: res.ok, data: data };
-      });
-    })
-    .then(function(result){
-      if(result.ok){
-        showStatus('Talebiniz alındı. En kısa sürede sizinle iletişime geçeceğiz.', false);
-        form.reset();
-      }else{
-        showStatus((result.data && result.data.error) || 'Gönderilemedi. Lütfen daha sonra tekrar deneyin.', true);
-      }
-    })
-    .catch(function(){
-      showStatus('Bağlantı hatası oluştu. Lütfen daha sonra tekrar deneyin.', true);
-    })
-    .finally(function(){
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Gönder';
-    });
-  });
-})();
-</script>
-
-<script>
-(function(){
   var openLinks = document.querySelectorAll('[data-modal-target]');
   var modals = document.querySelectorAll('.legal-modal');
 
@@ -1067,31 +1286,518 @@
 
 <script>
 (function(){
-  var konuSelect = document.getElementById('konu');
-  if(!konuSelect) return;
-  document.querySelectorAll('.hasar-link').forEach(function(link){
-    link.addEventListener('click', function(){
-      konuSelect.value = 'Hasar Bildirimi';
-      konuSelect.dispatchEvent(new Event('change'));
+  'use strict';
+  var API_BASE_URL = '';
+  var ENDPOINT = (API_BASE_URL || '') + '/api/contact';
+  var MAX_FILES = 5, MAX_FILE_BYTES = 5 * 1024 * 1024;
+  var OK_TYPES = ['image/jpeg','image/png','image/webp','image/heic','image/heif','application/pdf'];
+  var OK_EXT = ['jpg','jpeg','png','webp','heic','heif','pdf'];
+  var $ = function(id){ return document.getElementById(id); };
+
+  /* ---------- Sekmeler ---------- */
+  var tabs = document.querySelectorAll('.mode-tab');
+  var panels = document.querySelectorAll('.mode-panel');
+  function setMode(mode){
+    tabs.forEach(function(t){
+      var on = t.getAttribute('data-mode') === mode;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    panels.forEach(function(p){ p.style.display = (p.getAttribute('data-mode') === mode) ? '' : 'none'; });
+  }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ setMode(t.getAttribute('data-mode')); }); });
+
+  /* ---------- Yardımcılar ---------- */
+  function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  function validPhone(v){ return v.replace(/\D/g,'').length >= 10; }
+  function clearInvalid(scope){ scope.querySelectorAll('.invalid').forEach(function(e){ e.classList.remove('invalid'); }); }
+  function fail(el, msg, box){
+    if(el){ el.classList.add('invalid'); if(el.focus && el.tagName !== 'LABEL') { try{ el.focus({preventScroll:false}); }catch(e){ el.focus(); } } }
+    box.textContent = msg; box.classList.add('show');
+    return false;
+  }
+  function send(fields, files, btn, statusEl, onOk){
+    var orig = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Gönderiliyor…';
+    statusEl.classList.remove('show','is-error');
+    var opts;
+    if(files && files.length){
+      var fd = new FormData();
+      Object.keys(fields).forEach(function(k){ fd.append(k, fields[k]); });
+      files.forEach(function(f){ fd.append('files', f, f.name); });
+      opts = { method:'POST', body: fd };
+    } else {
+      opts = { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(fields) };
+    }
+    fetch(ENDPOINT, opts)
+      .then(function(res){ return res.json().catch(function(){ return {}; }).then(function(d){ return { ok: res.ok, data: d }; }); })
+      .then(function(r){
+        if(r.ok){ onOk(); }
+        else{
+          statusEl.textContent = (r.data && r.data.error) || 'Gönderilemedi. Lütfen daha sonra tekrar deneyin veya bizi arayın.';
+          statusEl.classList.add('show','is-error');
+        }
+      })
+      .catch(function(){
+        statusEl.textContent = 'Bağlantı hatası oluştu. Lütfen daha sonra tekrar deneyin veya bizi arayın.';
+        statusEl.classList.add('show','is-error');
+      })
+      .then(function(){ btn.disabled = false; btn.textContent = orig; });
+  }
+
+  /* ---------- 3 adımlı teklif sihirbazı ---------- */
+  var wiz = $('teklifWizard');
+  var steps = wiz.querySelectorAll('.wiz-step');
+  var bars = wiz.querySelectorAll('.wiz-bars span');
+  var stepLabel = $('wizStepLabel'), wizError = $('wizError');
+  var btnBack = $('wizBack'), btnNext = $('wizNext'), btnSubmit = $('wizSubmit');
+  var STEP_NAMES = ['Sigorta türü','Araç bilgileri','İletişim bilgileri'];
+  var cur = 1;
+
+  function goStep(n){
+    cur = n;
+    steps.forEach(function(s,i){ s.classList.toggle('active', i === n-1); });
+    bars.forEach(function(b,i){ b.classList.toggle('on', i < n); });
+    stepLabel.textContent = 'Adım ' + n + '/3 · ' + STEP_NAMES[n-1];
+    btnBack.style.display = n > 1 ? '' : 'none';
+    btnNext.style.display = n < 3 ? '' : 'none';
+    btnSubmit.style.display = n === 3 ? '' : 'none';
+    wizError.classList.remove('show');
+  }
+  function validateStep(n){
+    clearInvalid(wiz); wizError.classList.remove('show');
+    if(n === 1 && !wiz.querySelector('input[name="sigortaTuru"]:checked')) return fail(null,'Lütfen bir sigorta türü seçin.', wizError);
+    if(n === 2){
+      if(!$('marka').value.trim()) return fail($('marka'),'Lütfen araç markasını girin.', wizError);
+      if(!$('model').value.trim()) return fail($('model'),'Lütfen model / yıl bilgisini girin.', wizError);
+    }
+    if(n === 3){
+      if(!$('tAd').value.trim()) return fail($('tAd'),'Lütfen adınızı ve soyadınızı girin.', wizError);
+      if(!validPhone($('tTel').value)) return fail($('tTel'),'Lütfen geçerli bir telefon numarası girin.', wizError);
+      if(!validEmail($('tEposta').value.trim())) return fail($('tEposta'),'Lütfen geçerli bir e-posta adresi girin.', wizError);
+      if(!$('tConsent').checked){ $('tConsentWrap').classList.add('invalid'); return fail(null,'Devam etmek için KVKK onayı gereklidir.', wizError); }
+      $('tConsentWrap').classList.remove('invalid');
+    }
+    return true;
+  }
+  btnNext.addEventListener('click', function(){ if(validateStep(cur)) goStep(cur + 1); });
+  btnBack.addEventListener('click', function(){ if(cur > 1) goStep(cur - 1); });
+  wiz.querySelectorAll('input[name="sigortaTuru"]').forEach(function(r){
+    r.addEventListener('change', function(){ wizError.classList.remove('show'); setTimeout(function(){ if(cur === 1) goStep(2); }, 240); });
+  });
+  wiz.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' && e.target.tagName === 'INPUT' && e.target.type !== 'checkbox' && e.target.type !== 'radio' && cur < 3){
+      e.preventDefault(); if(validateStep(cur)) goStep(cur + 1);
+    }
+  });
+  wiz.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!validateStep(1)){ goStep(1); return; }
+    if(!validateStep(2)){ goStep(2); return; }
+    if(!validateStep(3)) return;
+    var tur = wiz.querySelector('input[name="sigortaTuru"]:checked').value;
+    var plaka = $('plaka').value.trim(), not = $('tNot').value.trim();
+    var lines = ['TEKLİF TALEBİ', 'Sigorta Türü: ' + tur, 'Araç: ' + [$('marka').value.trim(), $('model').value.trim()].filter(Boolean).join(' - ')];
+    if(plaka) lines.push('Plaka: ' + plaka);
+    lines.push('Telefon: ' + $('tTel').value.trim());
+    if(not){ lines.push('', 'Not:', not); }
+    send({ topic:'Teklif Talebi', name:$('tAd').value.trim(), email:$('tEposta').value.trim(), message:lines.join('\n'), consent:'true', website:$('tWebsite').value },
+         null, btnSubmit, $('teklifStatus'), function(){
+      wiz.style.display = 'none'; $('teklifDone').classList.add('show');
+    });
+  });
+  function resetWizard(){
+    wiz.reset(); clearInvalid(wiz); $('teklifStatus').classList.remove('show'); goStep(1);
+    wiz.style.display = ''; $('teklifDone').classList.remove('show');
+  }
+
+  /* ---------- Hasar bildirimi + dosya yükleme ---------- */
+  var hf = $('hasarForm');
+  var files = [], thumbUrls = [];
+  var dz = $('dropzone'), fi = $('fileInput'), fl = $('fileList'), fh = $('fileHint');
+  var FILE_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>';
+
+  function hint(msg){ fh.textContent = msg || ''; fh.style.display = msg ? 'block' : 'none'; }
+  function fmtSize(b){ return b < 1024*1024 ? Math.max(1, Math.round(b/1024)) + ' KB' : (b/1024/1024).toFixed(1) + ' MB'; }
+
+  function compressImage(file){
+    return new Promise(function(resolve){
+      if(!/^image\/(jpeg|png|webp)$/.test(file.type)) return resolve(file);
+      var url = URL.createObjectURL(file), img = new Image();
+      img.onload = function(){
+        var max = 1600, w = img.naturalWidth, h = img.naturalHeight, scale = Math.min(1, max / Math.max(w,h));
+        if(scale === 1 && file.size <= 1.5*1024*1024){ URL.revokeObjectURL(url); return resolve(file); }
+        var c = document.createElement('canvas'); c.width = Math.round(w*scale); c.height = Math.round(h*scale);
+        var ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0,0,c.width,c.height); ctx.drawImage(img,0,0,c.width,c.height);
+        c.toBlob(function(blob){
+          URL.revokeObjectURL(url);
+          if(!blob || blob.size >= file.size) return resolve(file);
+          resolve(new File([blob], file.name.replace(/\.[^.]+$/,'') + '.jpg', { type:'image/jpeg' }));
+        }, 'image/jpeg', 0.82);
+      };
+      img.onerror = function(){ URL.revokeObjectURL(url); resolve(file); };
+      img.src = url;
+    });
+  }
+
+  function renderFiles(){
+    thumbUrls.forEach(function(u){ URL.revokeObjectURL(u); }); thumbUrls = [];
+    fl.innerHTML = '';
+    files.forEach(function(f, idx){
+      var li = document.createElement('li'); li.className = 'file-item';
+      var th = document.createElement('div'); th.className = 'file-thumb';
+      if(/^image\/(jpeg|png|webp)$/.test(f.type)){
+        var u = URL.createObjectURL(f); thumbUrls.push(u);
+        var im = document.createElement('img'); im.src = u; im.alt = ''; th.appendChild(im);
+      } else { th.innerHTML = FILE_ICON; }
+      var meta = document.createElement('div'); meta.className = 'file-meta';
+      var nm = document.createElement('b'); nm.textContent = f.name;
+      var sz = document.createElement('span'); sz.textContent = fmtSize(f.size);
+      meta.appendChild(nm); meta.appendChild(sz);
+      var rm = document.createElement('button'); rm.type = 'button'; rm.className = 'file-remove'; rm.setAttribute('aria-label','Dosyayı kaldır'); rm.textContent = '✕';
+      rm.addEventListener('click', function(){ files.splice(idx,1); hint(''); renderFiles(); });
+      li.appendChild(th); li.appendChild(meta); li.appendChild(rm); fl.appendChild(li);
+    });
+  }
+
+  async function addFiles(list){
+    hint('');
+    var arr = Array.prototype.slice.call(list);
+    for(var i = 0; i < arr.length; i++){
+      var f = arr[i];
+      if(files.length >= MAX_FILES){ hint('En fazla ' + MAX_FILES + ' dosya ekleyebilirsiniz.'); break; }
+      var ext = (f.name.split('.').pop() || '').toLowerCase(), type = (f.type || '').toLowerCase();
+      if(!(OK_TYPES.indexOf(type) !== -1 || (!type && OK_EXT.indexOf(ext) !== -1))){ hint('Yalnızca JPG, PNG, WEBP, HEIC veya PDF dosyaları eklenebilir.'); continue; }
+      var p = await compressImage(f);
+      if(p.size > MAX_FILE_BYTES){ hint('"' + f.name + '" dosyası 5 MB sınırını aşıyor.'); continue; }
+      if(files.some(function(x){ return x.name === p.name && x.size === p.size; })) continue;
+      files.push(p);
+    }
+    renderFiles();
+  }
+  dz.addEventListener('click', function(){ fi.click(); });
+  dz.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); fi.click(); } });
+  fi.addEventListener('change', function(){ addFiles(fi.files); fi.value = ''; });
+  ['dragenter','dragover'].forEach(function(ev){ dz.addEventListener(ev, function(e){ e.preventDefault(); dz.classList.add('drag'); }); });
+  ['dragleave','drop'].forEach(function(ev){ dz.addEventListener(ev, function(e){ e.preventDefault(); dz.classList.remove('drag'); }); });
+  dz.addEventListener('drop', function(e){ if(e.dataTransfer && e.dataTransfer.files) addFiles(e.dataTransfer.files); });
+
+  hf.addEventListener('submit', function(e){
+    e.preventDefault();
+    var err = $('hasarError'); clearInvalid(hf); err.classList.remove('show');
+    if(!$('hAd').value.trim()) return fail($('hAd'),'Lütfen adınızı ve soyadınızı girin.', err);
+    if(!validPhone($('hTel').value)) return fail($('hTel'),'Lütfen geçerli bir telefon numarası girin.', err);
+    if(!validEmail($('hEposta').value.trim())) return fail($('hEposta'),'Lütfen geçerli bir e-posta adresi girin.', err);
+    if(!$('hAciklama').value.trim()) return fail($('hAciklama'),'Lütfen hasarı kısaca açıklayın.', err);
+    if(!$('hConsent').checked){ $('hConsentWrap').classList.add('invalid'); return fail(null,'Devam etmek için KVKK onayı gereklidir.', err); }
+    $('hConsentWrap').classList.remove('invalid');
+
+    var lines = ['HASAR BİLDİRİMİ', 'Telefon: ' + $('hTel').value.trim()];
+    if($('hPolice').value.trim()) lines.push('Poliçe No: ' + $('hPolice').value.trim());
+    if($('hPlaka').value.trim()) lines.push('Plaka: ' + $('hPlaka').value.trim());
+    if($('hTarih').value) lines.push('Hasar Tarihi: ' + $('hTarih').value);
+    lines.push('Ekli dosya sayısı: ' + files.length, '', 'Açıklama:', $('hAciklama').value.trim());
+
+    send({ topic:'Hasar Bildirimi', name:$('hAd').value.trim(), email:$('hEposta').value.trim(), message:lines.join('\n'), consent:'true', website:$('hWebsite').value },
+         files, $('hasarSubmit'), $('hasarStatus'), function(){
+      hf.style.display = 'none'; $('hasarDone').classList.add('show');
+    });
+  });
+  function resetHasar(){
+    hf.reset(); files = []; renderFiles(); hint(''); clearInvalid(hf);
+    $('hasarError').classList.remove('show'); $('hasarStatus').classList.remove('show');
+    hf.style.display = ''; $('hasarDone').classList.remove('show');
+  }
+  document.querySelectorAll('[data-again]').forEach(function(b){
+    b.addEventListener('click', function(){ if(b.getAttribute('data-again') === 'teklif') resetWizard(); else resetHasar(); });
+  });
+
+  /* ---------- Dış tetikleyiciler ---------- */
+  document.querySelectorAll('.teklif-link').forEach(function(l){ l.addEventListener('click', function(){ setMode('teklif'); }); });
+  document.querySelectorAll('.hasar-link').forEach(function(l){ l.addEventListener('click', function(){ setMode('hasar'); }); });
+  document.querySelectorAll('.product-cta').forEach(function(b){
+    b.addEventListener('click', function(){
+      setMode('teklif');
+      if($('teklifDone').classList.contains('show')) resetWizard();
+      var prod = b.getAttribute('data-product');
+      var input = wiz.querySelector('input[name="sigortaTuru"][value="' + prod + '"]');
+      if(input){ input.checked = true; goStep(2); }
     });
   });
 })();
+
 </script>
 
 <script>
 (function(){
-  var konuSelect = document.getElementById('konu');
-  var sigortaTuru = document.getElementById('sigortaTuru');
-  if(!konuSelect || !sigortaTuru) return;
-  document.querySelectorAll('.product-cta').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var product = btn.getAttribute('data-product');
-      konuSelect.value = 'Teklif Talebi';
-      konuSelect.dispatchEvent(new Event('change'));
-      if(product) sigortaTuru.value = product;
+  'use strict';
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var cards = document.querySelectorAll('.benefit-card, .vehicle-card, .quote-card, .pg-item, .why-card, .qc-btn');
+
+  /* 3D belirme animasyonu (JS çalışmazsa içerik zaten görünür kalır) */
+  if(!reduce && 'IntersectionObserver' in window){
+    document.documentElement.classList.add('js-3d');
+    cards.forEach(function(c, i){ c.classList.add('reveal3d'); c.style.transitionDelay = ((i % 6) * 70) + 'ms'; });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        var el = en.target; io.unobserve(el); el.classList.add('in');
+        setTimeout(function(){ el.classList.remove('reveal3d','in'); el.style.transitionDelay = ''; }, 1100);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    cards.forEach(function(c){ io.observe(c); });
+  }
+
+  /* Fare ile 3D eğilme */
+  if(!reduce && canHover){
+    cards.forEach(function(el){
+      if(el.classList.contains('qc-btn')) return;
+      el.classList.add('tilt3d');
+      el.addEventListener('pointermove', function(e){
+        if(e.pointerType && e.pointerType !== 'mouse') return;
+        var r = el.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transition = 'transform .08s linear, box-shadow .3s ease';
+        el.style.transform = 'perspective(900px) rotateX(' + (-py * 9).toFixed(2) + 'deg) rotateY(' + (px * 11).toFixed(2) + 'deg) translateZ(6px)';
+      });
+      el.addEventListener('pointerleave', function(){ el.style.transition = ''; el.style.transform = ''; });
     });
-  });
+  }
 })();
+
+</script>
+
+<script>
+(function(){
+  'use strict';
+  var heroEl = document.getElementById('hero3d');
+  var avwEl = document.getElementById('avw3d');
+  if(!heroEl && !avwEl) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function hasWebGL(){
+    try{
+      var c = document.createElement('canvas');
+      return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl')));
+    }catch(e){ return false; }
+  }
+  if(!hasWebGL()) return;
+
+  function loadThree(cb){
+    if(window.THREE) return cb();
+    var s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    s.async = true; s.crossOrigin = 'anonymous';
+    s.onload = cb;
+    s.onerror = function(){ /* çevrimdışı: mevcut SVG görsel kalır */ };
+    document.head.appendChild(s);
+  }
+
+  /* ---- Model yardımcıları ---- */
+  function ribbon(THREE, p0, c, p2, t0, t1, off, halfW, n, mat){
+    var pos = [], idx = [];
+    for(var i = 0; i <= n; i++){
+      var t = t0 + (t1 - t0) * i / n, mt = 1 - t;
+      var x = mt*mt*p0[0] + 2*mt*t*c[0] + t*t*p2[0];
+      var y = mt*mt*p0[1] + 2*mt*t*c[1] + t*t*p2[1];
+      var dx = 2*mt*(c[0]-p0[0]) + 2*t*(p2[0]-c[0]);
+      var dy = 2*mt*(c[1]-p0[1]) + 2*t*(p2[1]-c[1]);
+      var l = Math.sqrt(dx*dx + dy*dy) || 1;
+      x += (-dy / l) * off; y += (dx / l) * off;
+      pos.push(x, y, -halfW, x, y, halfW);
+      if(i < n){ var a = i * 2; idx.push(a, a+1, a+2, a+1, a+3, a+2); }
+    }
+    var g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+    g.setIndex(idx); g.computeVertexNormals();
+    return new THREE.Mesh(g, mat);
+  }
+
+  function buildCar(THREE, bodyColor){
+    var car = new THREE.Group();
+    var bodyMat  = new THREE.MeshStandardMaterial({ color: bodyColor, metalness: 0.35, roughness: 0.38 });
+    var glassMat = new THREE.MeshStandardMaterial({ color: 0x0b1220, metalness: 0.6, roughness: 0.15, side: THREE.DoubleSide });
+    var tireMat  = new THREE.MeshStandardMaterial({ color: 0x0d0d10, roughness: 0.9, metalness: 0.05 });
+    var rimMat   = new THREE.MeshStandardMaterial({ color: 0xd7dde6, metalness: 0.85, roughness: 0.28 });
+    var lampMat  = new THREE.MeshStandardMaterial({ color: 0xcfefff, emissive: 0xbfe6ff, emissiveIntensity: 1.3 });
+    var tailMat  = new THREE.MeshStandardMaterial({ color: 0xff5a5a, emissive: 0xff2a2a, emissiveIntensity: 1.1 });
+
+    /* Gövde: yan profil çıkıntılı (extrude) */
+    var s = new THREE.Shape();
+    s.moveTo(-2.2, 0.30);
+    s.lineTo(-2.2, 0.72);
+    s.quadraticCurveTo(-2.2, 0.92, -1.95, 0.96);
+    s.lineTo(-1.45, 1.02);
+    s.quadraticCurveTo(-1.15, 1.45, -0.6, 1.47);
+    s.lineTo(0.35, 1.47);
+    s.quadraticCurveTo(0.95, 1.45, 1.25, 1.0);
+    s.lineTo(1.95, 0.9);
+    s.quadraticCurveTo(2.25, 0.85, 2.25, 0.6);
+    s.lineTo(2.25, 0.30);
+    s.lineTo(-2.2, 0.30);
+    var bodyGeo = new THREE.ExtrudeGeometry(s, { depth: 1.5, bevelEnabled: true, bevelThickness: 0.12, bevelSize: 0.12, bevelSegments: 4, curveSegments: 24 });
+    bodyGeo.translate(0, 0, -0.75);
+    car.add(new THREE.Mesh(bodyGeo, bodyMat));
+
+    /* Yan camlar */
+    var g = new THREE.Shape();
+    g.moveTo(-1.28, 1.04); g.lineTo(-0.9, 1.36); g.lineTo(0.3, 1.36); g.lineTo(0.9, 1.04); g.lineTo(-1.28, 1.04);
+    var glassGeo = new THREE.ExtrudeGeometry(g, { depth: 1.8, bevelEnabled: false });
+    glassGeo.translate(0, 0, -0.9);
+    car.add(new THREE.Mesh(glassGeo, glassMat));
+
+    /* Ön ve arka cam (eğriye uyumlu şerit) */
+    car.add(ribbon(THREE, [0.35,1.47], [0.95,1.45], [1.25,1.0], 0.10, 0.68, 0.125, 0.62, 10, glassMat));
+    car.add(ribbon(THREE, [-1.45,1.02], [-1.15,1.45], [-0.6,1.47], 0.14, 0.86, 0.125, 0.62, 10, glassMat));
+
+    /* Farlar */
+    [-0.52, 0.52].forEach(function(z){
+      var h = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.16, 0.36), lampMat); h.position.set(2.33, 0.68, z); car.add(h);
+      var t = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.14, 0.34), tailMat); t.position.set(-2.30, 0.70, z); car.add(t);
+    });
+
+    /* Tekerlekler */
+    var wheels = [];
+    [[-1.35, 0.76], [-1.35, -0.76], [1.35, 0.76], [1.35, -0.76]].forEach(function(p){
+      var w = new THREE.Group();
+      var tireGeo = new THREE.CylinderGeometry(0.42, 0.42, 0.3, 32); tireGeo.rotateX(Math.PI / 2);
+      w.add(new THREE.Mesh(tireGeo, tireMat));
+      var rimGeo = new THREE.CylinderGeometry(0.27, 0.27, 0.32, 28); rimGeo.rotateX(Math.PI / 2);
+      w.add(new THREE.Mesh(rimGeo, rimMat));
+      for(var k = 0; k < 5; k++){
+        var sp = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.05, 0.34), rimMat);
+        sp.rotation.z = k * Math.PI / 5; w.add(sp);
+      }
+      var hub = new THREE.CylinderGeometry(0.07, 0.07, 0.36, 16); hub.rotateX(Math.PI / 2);
+      w.add(new THREE.Mesh(hub, tireMat));
+      w.position.set(p[0], 0.42, p[1]);
+      car.add(w); wheels.push(w);
+    });
+
+    /* Zemin gölgesi */
+    var cv = document.createElement('canvas'); cv.width = cv.height = 128;
+    var cx = cv.getContext('2d'), gr = cx.createRadialGradient(64, 64, 4, 64, 64, 62);
+    gr.addColorStop(0, 'rgba(0,0,0,0.55)'); gr.addColorStop(1, 'rgba(0,0,0,0)');
+    cx.fillStyle = gr; cx.fillRect(0, 0, 128, 128);
+    var shadow = new THREE.Mesh(new THREE.PlaneGeometry(7, 3.4), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(cv), transparent: true, depthWrite: false }));
+    shadow.rotation.x = -Math.PI / 2; shadow.position.y = 0.01; car.add(shadow);
+
+    return { group: car, wheels: wheels };
+  }
+
+  function buildShield(THREE){
+    var grp = new THREE.Group();
+    var gold = new THREE.MeshStandardMaterial({ color: 0xF4C542, metalness: 0.6, roughness: 0.3, emissive: 0x6b4a00, emissiveIntensity: 0.25 });
+    var navy = new THREE.MeshStandardMaterial({ color: 0x0F2340, metalness: 0.2, roughness: 0.5 });
+    var sh = new THREE.Shape();
+    sh.moveTo(0, 0.9); sh.lineTo(0.7, 0.65); sh.lineTo(0.7, 0.05);
+    sh.quadraticCurveTo(0.7, -0.5, 0, -0.9);
+    sh.quadraticCurveTo(-0.7, -0.5, -0.7, 0.05);
+    sh.lineTo(-0.7, 0.65); sh.lineTo(0, 0.9);
+    var geo = new THREE.ExtrudeGeometry(sh, { depth: 0.14, bevelEnabled: true, bevelThickness: 0.05, bevelSize: 0.05, bevelSegments: 3, curveSegments: 20 });
+    geo.translate(0, 0, -0.07);
+    grp.add(new THREE.Mesh(geo, gold));
+    var a = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.13, 0.16), navy); a.position.set(-0.2, -0.09, 0.1); a.rotation.z = -0.83; grp.add(a);
+    var b = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.13, 0.16), navy); b.position.set(0.11, 0.03, 0.1); b.rotation.z = 0.83; grp.add(b);
+    return grp;
+  }
+
+  function mount(THREE, el, opt){
+    var host = el.closest(opt.hostSel);
+    var renderer;
+    try{
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
+    }catch(e){ return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setClearColor(0x000000, 0);
+    el.appendChild(renderer.domElement);
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+    var key = new THREE.DirectionalLight(0xffffff, 1.0); key.position.set(4, 6, 5); scene.add(key);
+    var rim = new THREE.DirectionalLight(0x7fb2ff, 0.75); rim.position.set(-5, 3, -4); scene.add(rim);
+    var fill = new THREE.PointLight(0x9fc3e8, 0.7, 24); fill.position.set(0, 2.5, 7); scene.add(fill);
+
+    var built = buildCar(THREE, opt.color);
+    var car = built.group;
+    car.scale.setScalar(opt.scale || 1);
+    car.position.y = opt.yOffset || 0;
+    scene.add(car);
+    var shield = null;
+    if(opt.shield){ shield = buildShield(THREE); shield.position.set(0, 2.75, 0); shield.scale.setScalar(0.62); scene.add(shield); }
+
+    var baseY = opt.yOffset || 0, target = 0, cur = 0, hoverActive = false, running = false, raf = 0, t0 = performance.now();
+    var dragging = false, dragX = 0, dragYaw = 0;
+
+    function size(){
+      var w = el.clientWidth || 300, h = el.clientHeight || 240;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      var dist = (opt.dist || 10.5) * Math.max(1, 1.28 / camera.aspect);
+      camera.position.set(0, opt.camY || 2.5, dist);
+      camera.lookAt(0, opt.lookY || 1.0, 0);
+      camera.updateProjectionMatrix();
+    }
+    function frame(now){
+      var t = (now - t0) / 1000;
+      var auto = Math.sin(t * 0.55) * 0.38;
+      var want = hoverActive ? target : auto;
+      cur += (want - cur) * 0.06;
+      car.rotation.y = -0.5 + cur + dragYaw;
+      car.position.y = baseY + Math.sin(t * 2.2) * 0.012;
+      built.wheels.forEach(function(w){ w.rotation.z = -t * 5; });
+      if(shield){ shield.rotation.y = Math.sin(t * 0.9) * 0.5; shield.position.y = 2.75 + Math.sin(t * 1.6) * 0.06; }
+      renderer.render(scene, camera);
+    }
+    function loop(now){ if(!running) return; frame(now); raf = requestAnimationFrame(loop); }
+    function start(){ if(reduce || running) return; running = true; raf = requestAnimationFrame(loop); }
+    function stop(){ running = false; cancelAnimationFrame(raf); }
+
+    size();
+    frame(performance.now());
+    el.classList.add('ready'); if(host) host.classList.add('has-3d');
+
+    if('ResizeObserver' in window){ new ResizeObserver(function(){ size(); if(!running) frame(performance.now()); }).observe(el); }
+    else window.addEventListener('resize', function(){ size(); if(!running) frame(performance.now()); });
+
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){ es[0].isIntersecting && !document.hidden ? start() : stop(); }, { threshold: 0.05 }).observe(el);
+    } else start();
+    document.addEventListener('visibilitychange', function(){ if(document.hidden) stop(); else start(); });
+
+    /* Fare ile yönlendirme, dokunmatikte yatay sürükleme */
+    var cv = renderer.domElement;
+    cv.addEventListener('pointermove', function(e){
+      if(e.pointerType === 'mouse'){
+        var r = cv.getBoundingClientRect();
+        target = ((e.clientX - r.left) / r.width - 0.5) * 1.5; hoverActive = true;
+      } else if(dragging){ dragYaw = dragYaw - (e.clientX - dragX) * 0.008; dragX = e.clientX; }
+    });
+    cv.addEventListener('pointerleave', function(){ hoverActive = false; });
+    cv.addEventListener('pointerdown', function(e){ if(e.pointerType !== 'mouse'){ dragging = true; dragX = e.clientX; } });
+    window.addEventListener('pointerup', function(){ dragging = false; });
+
+    cv.addEventListener('webglcontextlost', function(e){
+      e.preventDefault(); stop(); el.classList.remove('ready'); if(host) host.classList.remove('has-3d');
+    });
+  }
+
+  function init(){
+    var THREE = window.THREE; if(!THREE) return;
+    try{
+      if(heroEl) mount(THREE, heroEl, { hostSel: '.hero-art', color: 0xE3ECF7, shield: true, scale: 1, dist: 10.5, camY: 2.6, lookY: 1.25 });
+    }catch(e){ if(window.console) console.warn('Hero 3D başlatılamadı', e); }
+    try{
+      if(avwEl) mount(THREE, avwEl, { hostSel: '.avw', color: 0x3E7BC4, shield: false, scale: 0.95, yOffset: -0.25, dist: 11.5, camY: 2.3, lookY: 0.9 });
+    }catch(e){ if(window.console) console.warn('Kapsam 3D başlatılamadı', e); }
+  }
+
+  function boot(){ loadThree(init); }
+  if(document.readyState === 'complete') boot(); else window.addEventListener('load', boot);
+})();
+
 </script>
 
 </body>
