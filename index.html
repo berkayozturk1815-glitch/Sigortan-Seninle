@@ -1,1804 +1,408 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light only">
-<meta name="theme-color" content="#0F2340">
-<title>Sigortan Seninle — Aracınız için güvenli yol arkadaşı</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HTML Duo – HTML Öğren</title>
 <style>
-  :root{
-    --navy:#0F2340;
-    --navy-2:#183A63;
-    --blue:#3E7BC4;
-    --blue-light:#EAF2FA;
-    --sky:#BFDAF2;
-    --ink:#152238;
-    --ink-soft:#5B6B80;
-    --line:#E3E9F0;
-    --paper:#FFFFFF;
-    --bg:#FFFFFF;
-    --band:#F5F8FB;
-    --radius-lg:26px;
-    --radius-md:18px;
-    --radius-sm:10px;
-  }
-  /* Colors are intentionally fixed and do NOT react to prefers-color-scheme,
-     data-theme attributes, or any OS/browser dark-mode setting. This keeps
-     the site looking identical on every device and browser. */
-
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth; color-scheme:light;}
-  body{background:var(--bg); color:var(--ink); font-family:'Inter',-apple-system,sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
-  h1,h2,h3{font-family:'Fraunces',Georgia,serif; font-weight:500; color:var(--navy); letter-spacing:-0.01em; line-height:1.14;}
-  a{color:inherit; text-decoration:none;}
-  img,svg{display:block; max-width:100%;}
-  .wrap{max-width:1200px; margin:0 auto; padding:0 28px;}
-  section{position:relative;}
-
-  /* ---------- Nav ---------- */
-  header{position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--paper) 90%, transparent); backdrop-filter:blur(14px); border-bottom:1px solid var(--line);}
-  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 28px; max-width:1200px; margin:0 auto;}
-  .brand{display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-size:1.3rem; font-weight:500; color:var(--navy);}
-  nav.links{display:flex; gap:30px; font-size:0.94rem; color:var(--ink-soft);}
-  nav.links a:hover{color:var(--navy);}
-  .nav-cta{background:var(--navy); color:#fff; padding:11px 22px; border-radius:999px; font-size:0.9rem; font-weight:600; transition:.25s;}
-  .nav-cta.outline{background:transparent; color:var(--navy); border:1.5px solid var(--navy); padding:9.5px 20px;}
-  .nav-cta.outline:hover{background:var(--navy); color:#fff;}
-  .nav-cta:hover{background:var(--navy-2); transform:translateY(-1px);}
-
-  /* ---------- Hero ---------- */
-  .hero{background:linear-gradient(150deg, var(--navy) 0%, var(--navy-2) 60%, #1E4A80 100%); color:#EAF1F8; padding:88px 0 0; overflow:hidden;}
-  .hero .wrap{display:grid; grid-template-columns:1.05fr 0.95fr; gap:40px; align-items:center; position:relative; z-index:2;}
-  .badge-pill{display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18); padding:7px 16px; border-radius:999px; font-size:0.82rem; color:#CFE1F2; margin-bottom:22px;}
-  .badge-pill svg{width:14px; height:14px;}
-  .hero h1{font-size:clamp(2.3rem,4.4vw,3.4rem); color:#fff; max-width:15ch;}
-  .hero p.lead{color:#C9DAEA; font-size:1.06rem; max-width:46ch; margin-top:20px;}
-  .hero-ctas{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
-
-  .btn-primary{background:#fff; color:var(--navy); padding:15px 30px; border-radius:999px; font-weight:700; font-size:0.97rem; box-shadow:0 14px 32px -10px rgba(0,0,0,0.4); transition:.25s; display:inline-flex; align-items:center; gap:8px;}
-  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 18px 38px -8px rgba(0,0,0,0.5);}
-  .btn-primary svg{transition: transform .2s ease;}
-  .btn-primary:hover svg{animation: btn-arrow-slide 0.9s ease-in-out infinite;}
-  @keyframes btn-arrow-slide{
-    0%   { transform: translateX(0); }
-    50%  { transform: translateX(8px); }
-    100% { transform: translateX(0); }
-  }
-  @media (prefers-reduced-motion: reduce){
-    .btn-primary:hover svg{ animation: none; transform: translateX(5px); }
-  }
-  .btn-ghost{padding:15px 26px; border-radius:999px; border:1px solid rgba(255,255,255,0.35); color:#fff; font-weight:600; font-size:0.97rem; transition:.25s;}
-  .btn-ghost:hover{background:#fff; color:var(--navy); border-color:#fff;}
-  .hero-stats{display:flex; flex-wrap:wrap; gap:14px; margin-top:32px;}
-  .hero-feature{display:flex; align-items:center; gap:9px; padding:10px 16px; border-radius:999px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18);}
-  .hero-feature svg{width:18px; height:18px; flex-shrink:0;}
-  .hero-feature span{color:#E3ECF4; font-size:0.84rem; font-weight:600;}
-  .hero-art{position:relative; height:400px;}
-  .hero-wave{position:absolute; left:0; right:0; bottom:-2px;}
-
-  /* ---------- Section heads ---------- */
-  .section-head{max-width:600px; margin-bottom:48px;}
-  .kicker{display:inline-block; font-size:0.78rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); margin-bottom:12px;}
-  .section-head h2{font-size:clamp(1.75rem,3vw,2.3rem);}
-  .section-head p{color:var(--ink-soft); margin-top:12px; font-size:1.01rem;}
-  .section-pad{padding:96px 0;}
-  .section-pad.tight{padding:76px 0;}
-
-  /* ---------- Benefits ---------- */
-  .benefit-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
-  .benefit-card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-md); padding:28px 24px; transition:.3s;}
-  .benefit-card:hover{transform:translateY(-4px); box-shadow:0 20px 40px -22px rgba(15,35,64,0.25);}
-  .benefit-card .icon-wrap{width:48px; height:48px; border-radius:12px; background:var(--blue-light); display:flex; align-items:center; justify-content:center; margin-bottom:18px;}
-  .benefit-card .icon-wrap svg{width:24px; height:24px; stroke:var(--navy);}
-  .benefit-card h3{font-size:1.08rem; margin-bottom:8px;}
-  .benefit-card p{color:var(--ink-soft); font-size:0.92rem;}
-
-  /* ---------- Coverage ---------- */
-  .coverage{background:var(--band); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
-  .coverage-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
-  .coverage-art{background:linear-gradient(135deg,var(--sky),var(--blue-light)); border-radius:var(--radius-lg); aspect-ratio:1/0.9; display:flex; align-items:center; justify-content:center; padding:30px; position:relative; overflow:hidden;}
-
-  /* ================= Araç Güvence Widget'ı (sıfırdan) ================= */
-  .avw{
-    background: radial-gradient(120% 100% at 50% 30%, #123244 0%, #081826 55%, #050f18 100%);
-    border-radius: var(--radius-lg);
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-    display: flex; align-items: center; justify-content: center;
-    isolation: isolate;
-  }
-  .avw-hex{
-    position:absolute; inset:0; opacity:0.12;
-    background-image:
-      repeating-linear-gradient(60deg, transparent 0 18px, rgba(94,234,212,0.5) 18px 19px),
-      repeating-linear-gradient(-60deg, transparent 0 18px, rgba(94,234,212,0.5) 18px 19px);
-    mask-image: radial-gradient(60% 60% at 50% 45%, black 40%, transparent 75%);
-  }
-  .avw-halo{
-    position:absolute; width:78%; aspect-ratio: 1.5/1; border-radius:50%;
-    border:2px dashed rgba(94,234,212,0.55);
-    box-shadow: 0 0 40px rgba(45,212,191,0.25) inset;
-    animation: avw-halo-spin 18s linear infinite;
-  }
-  @keyframes avw-halo-spin{ to{ transform: rotate(360deg); } }
-  .avw-stage{ position:relative; width:100%; height:100%; }
-
-  .avw-badge-shield{
-    position:absolute; top:10%; left:50%; transform:translateX(-50%);
-    width:15%; aspect-ratio:1/1; min-width:44px;
-    background: #08131f; border:2px solid #22d3ee; border-radius:22%;
-    display:flex; align-items:center; justify-content:center;
-    box-shadow: 0 0 18px rgba(34,211,238,0.7), 0 0 4px rgba(34,211,238,0.9) inset;
-    animation: avw-pulse 2.4s ease-in-out infinite;
-    z-index:5;
-  }
-  .avw-badge-shield svg{ width:60%; height:60%; }
-  @keyframes avw-pulse{
-    0%,100% { box-shadow: 0 0 14px rgba(34,211,238,0.55), 0 0 4px rgba(34,211,238,0.85) inset; }
-    50%     { box-shadow: 0 0 26px rgba(34,211,238,0.95), 0 0 8px rgba(34,211,238,1) inset; }
-  }
-
-  .avw-pill{
-    position:absolute; display:flex; align-items:center; gap:8px;
-    background:#0a1c2c; border:1.5px solid rgba(94,234,212,0.6); border-radius:999px;
-    padding:7px 14px; font-size:0.72rem; font-weight:700; color:#eafffb;
-    white-space:normal; max-width:42%; line-height:1.3;
-    box-shadow:0 0 14px rgba(45,212,191,0.35);
-  }
-  .avw-pill .dot{ width:8px; height:8px; border-radius:50%; flex-shrink:0; }
-  .avw-pill.left{ top:22%; left:3%; }
-  .avw-pill.left .dot{ background:#34d399; box-shadow:0 0 8px #34d399; animation: avw-blink 1.6s ease-in-out infinite; }
-  .avw-pill.right{ top:80%; right:2%; }
-  .avw-pill.right .dot{ background:#38bdf8; box-shadow:0 0 8px #38bdf8; }
-  @keyframes avw-blink{ 0%,100%{opacity:1;} 50%{opacity:0.35;} }
-
-  .avw-car-wrap{
-    position:absolute; left:50%; top:48%; transform:translate(-50%,-50%);
-    width:70%; animation: avw-bob 3.2s ease-in-out infinite;
-  }
-  @keyframes avw-bob{
-    0%,100% { transform: translate(-50%,-50%) translateY(0); }
-    50%     { transform: translate(-50%,-50%) translateY(-3%); }
-  }
-  .avw-wheel{ transform-box: fill-box; transform-origin: 50% 50%; animation: avw-spin 0.6s linear infinite; }
-  @keyframes avw-spin{ to{ transform: rotate(360deg); } }
-
-  .avw-beam-l, .avw-beam-r{ opacity:0.85; }
-  .avw-beam-r{ animation: avw-beam-flicker 2.4s ease-in-out infinite; }
-  @keyframes avw-beam-flicker{ 0%,100%{ opacity:0.65;} 50%{ opacity:1;} }
-
-  .avw-road{ position:absolute; left:0; right:0; bottom:14%; height:14%; overflow:hidden; }
-  .avw-road-line{
-    position:absolute; top:50%; height:3px; width:36px; border-radius:2px;
-    background:linear-gradient(90deg, transparent, #22d3ee, transparent);
-    animation: avw-road-move 1.1s linear infinite;
-  }
-  @keyframes avw-road-move{ from{ transform:translateX(120%);} to{ transform:translateX(-140%);} }
-
-  @media (prefers-reduced-motion: reduce){
-    .avw-halo, .avw-badge-shield, .avw-pill .dot, .avw-car-wrap, .avw-wheel, .avw-beam-r, .avw-road-line{
-      animation: none !important;
-    }
-  }
-  @media (max-width:560px){
-    .avw-pill{ font-size:0.62rem; padding:5px 10px; }
-    .avw-pill.left{ left:1%; }
-    .avw-pill.right{ right:1%; }
-  }
-  .coverage-list{display:flex; flex-direction:column; gap:4px;}
-  .coverage-item{display:flex; gap:16px; padding:16px 0; border-bottom:1px solid var(--line);}
-  .coverage-item:last-child{border-bottom:none;}
-  .coverage-item svg{width:22px; height:22px; stroke:var(--blue); flex-shrink:0; margin-top:2px;}
-  .coverage-item h3{font-size:1.02rem; margin-bottom:4px;}
-  .coverage-item p{color:var(--ink-soft); font-size:0.9rem;}
-
-  /* ---------- Why choose (navy strip) ---------- */
-  .why-strip{background:var(--navy); color:#fff;}
-  .why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:34px;}
-  .why-card{padding:8px 0;}
-  .why-card .step-num{font-family:'Fraunces',serif; font-size:1.3rem; color:#9FC3E8; display:block; margin-bottom:16px;}
-  .why-card h3{color:#fff; font-size:1.12rem; margin-bottom:10px;}
-  .why-card p{color:#BCD2E6; font-size:0.92rem;}
-
-  /* ---------- Vehicles (Araçlarımız) ---------- */
-  .vehicles-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
-  .vehicle-card{
-    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden;
-    display:flex; flex-direction:column; transition:transform .3s ease, box-shadow .3s ease;
-  }
-  .vehicle-card:hover{transform:translateY(-6px); box-shadow:0 26px 50px -24px rgba(15,35,64,0.3);}
-  .product-media{
-    background:linear-gradient(160deg,var(--blue-light),var(--band)); height:110px;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .product-media svg{width:52px; height:52px;}
-  .vehicle-body{padding:22px 22px 24px; display:flex; flex-direction:column; flex:1;}
-  .vehicle-body h3{font-size:1.14rem; margin-bottom:4px;}
-  .vehicle-body .model-type{color:var(--blue); font-size:0.84rem; font-weight:600; margin-bottom:12px;}
-  .vehicle-body p.desc{color:var(--ink-soft); font-size:0.9rem; margin-bottom:18px; flex:1;}
-  .vehicle-cta{
-    display:inline-flex; align-items:center; justify-content:center; gap:8px; width:100%;
-    background:var(--navy); color:#fff; padding:12px 16px; border-radius:10px; font-size:0.88rem; font-weight:600;
-    transition:background .25s ease;
-  }
-  .vehicle-cta:hover{background:var(--navy-2);}
-  .vehicle-cta svg{width:15px; height:15px;}
-
-  /* ---------- Trust ---------- */
-  .trust{background:var(--band); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
-
-  /* ---------- FAQ ---------- */
-  .faq-list{max-width:760px; display:flex; flex-direction:column; gap:12px;}
-  .faq-item{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-md); overflow:visible; position:relative;}
-  .faq-item summary{
-    list-style:none; cursor:pointer; padding:20px 24px; font-size:1rem; font-weight:600; color:var(--navy);
-    display:flex; align-items:center; justify-content:space-between; gap:16px;
-    transform-origin:left center; transition: transform .25s ease, background .25s ease;
-    border-radius:var(--radius-md);
-    position:relative; z-index:1;
-  }
-  .faq-item summary:hover{
-    transform: scale(1.035);
-    background: var(--band);
-    z-index:2;
-  }
-  .faq-item summary::-webkit-details-marker{display:none;}
-  .faq-item summary .plus{
-    width:26px; height:26px; border-radius:50%; background:var(--blue-light); flex-shrink:0;
-    display:flex; align-items:center; justify-content:center; position:relative; transition:transform .25s ease;
-  }
-  .faq-item summary .plus::before, .faq-item summary .plus::after{
-    content:''; position:absolute; background:var(--navy); border-radius:2px;
-  }
-  .faq-item summary .plus::before{width:11px; height:2px;}
-  .faq-item summary .plus::after{width:2px; height:11px;}
-  .faq-item[open] summary .plus{transform:rotate(45deg); background:var(--navy);}
-  .faq-item[open] summary .plus::before, .faq-item[open] summary .plus::after{background:#fff;}
-  .faq-item .faq-a{padding:0 24px 20px; color:var(--ink-soft); font-size:0.94rem; max-width:64ch;}
-  @media (prefers-reduced-motion: reduce){
-    .faq-item summary{ transition:none; }
-    .faq-item summary:hover{ transform:none; }
-  }
-  .trust-grid{display:grid; grid-template-columns:1.1fr 1fr 1fr; gap:22px;}
-  .trust-badges{display:flex; flex-direction:column; gap:22px; justify-content:center;}
-  .why-reason{display:flex; align-items:center; gap:12px; font-size:0.96rem; color:var(--ink); font-weight:600;}
-  .why-reason svg{width:24px; height:24px; flex-shrink:0;}
-  .quote-card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-md); padding:28px 26px;}
-  .quote-card p{font-size:0.96rem; margin-bottom:16px;}
-  .quote-who{display:flex; align-items:center; gap:12px;}
-  .quote-who svg{width:36px; height:36px; border-radius:50%; flex-shrink:0;}
-  .quote-who b{font-size:0.88rem; display:block;}
-  .quote-who span{font-size:0.8rem; color:var(--ink-soft);}
-
-  /* ---------- Contact ---------- */
-  .contact-wrap{display:grid; grid-template-columns:0.85fr 1.15fr; gap:0; border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--line);}
-  .contact-info{background:var(--navy); color:#fff; padding:50px 42px;}
-  .contact-info h2{color:#fff; font-size:1.85rem; margin-bottom:14px;}
-  .contact-info p{color:#C9DAEA; font-size:0.96rem; margin-bottom:32px;}
-  .contact-row{display:flex; gap:14px; margin-bottom:20px; align-items:flex-start;}
-  .contact-row svg{width:19px; height:19px; stroke:#9FC3E8; flex-shrink:0; margin-top:2px;}
-  .contact-row b{display:block; font-size:0.92rem;}
-  .contact-row span{color:#A9C4DC; font-size:0.86rem;}
-  .contact-form{background:var(--paper); padding:50px 42px;}
-  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
-  .field{display:flex; flex-direction:column; gap:6px;}
-  .field.full{grid-column:1/-1;}
-  .field label{font-size:0.84rem; color:var(--ink-soft);}
-  .field input, .field select, .field textarea{border:1px solid var(--line); border-radius:var(--radius-sm); padding:12px 14px; font-family:inherit; font-size:0.94rem; background:var(--band); color:var(--ink);}
-  .field input:focus, .field select:focus, .field textarea:focus{outline:none; border-color:var(--blue);}
-  .field textarea{resize:vertical; min-height:88px;}
-  .submit-btn{background:var(--navy); color:#fff; padding:14px 30px; border-radius:999px; border:none; font-weight:700; font-size:0.95rem; cursor:pointer; margin-top:6px; width:100%; transition:.25s;}
-  .submit-btn:hover{background:var(--navy-2);}
-  .form-success{display:none; background:#E8F4EA; border:1px solid #BFDFC7; color:#245B33; padding:15px 17px; border-radius:var(--radius-sm); font-size:0.9rem; margin-top:16px;}
-  .form-success.is-error{background:#FBEAEA; border-color:#E6BFBF; color:#7A2A2A;}
-  .form-success.show{display:block;}
-
-  footer{padding:32px 0; text-align:center; color:var(--ink-soft); font-size:0.85rem;}
-  .footer-inner{display:flex; flex-direction:column; align-items:center; gap:10px;}
-  .footer-links{display:flex; flex-wrap:wrap; justify-content:center; gap:18px;}
-  .footer-links a{color:var(--ink-soft); font-size:0.82rem; text-decoration:underline; text-underline-offset:3px;}
-  .footer-links a:hover{color:var(--navy);}
-
-  /* ---------- Yasal metin modalleri ---------- */
-  .legal-modal{
-    display:none; position:fixed; inset:0; z-index:400;
-    align-items:center; justify-content:center; padding:24px;
-    background:rgba(8,19,32,0.45);
-  }
-  .legal-modal.show{ display:flex; }
-  .legal-modal-card{
-    background:var(--paper); border-radius:var(--radius-lg); width:600px; max-width:100%;
-    max-height:80vh; overflow-y:auto; padding:32px 30px; position:relative;
-    box-shadow:0 30px 70px -20px rgba(15,35,64,0.45);
-  }
-  .legal-modal-card h3{font-size:1.3rem; margin-bottom:16px; padding-right:30px;}
-  .legal-modal-body p{color:var(--ink-soft); font-size:0.92rem; margin-bottom:12px; line-height:1.6;}
-  .legal-modal-close{
-    position:absolute; top:18px; right:18px; width:32px; height:32px; border-radius:50%;
-    border:none; background:var(--band); color:var(--navy); cursor:pointer; font-size:1rem;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .legal-modal-close:hover{ background:var(--line); }
-
-  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{outline:2px solid var(--blue); outline-offset:2px;}
-  @media (prefers-reduced-motion: reduce){ *{transition:none !important; animation:none !important; scroll-behavior:auto !important;} }
-
-  /* ---------- Mobil aksiyon çubuğu ---------- */
-  .mobile-action-bar{ display:none; }
-
-  @media (max-width:980px){
-    nav.links{display:none;}
-    .hero .wrap{grid-template-columns:1fr;}
-    .hero-art{height:260px; order:-1;}
-    .benefit-grid{grid-template-columns:repeat(2,1fr);}
-    .coverage-grid{grid-template-columns:1fr;}
-    .coverage-art{order:-1;}
-    .why-grid{grid-template-columns:1fr; gap:26px;}
-    .vehicles-grid{grid-template-columns:repeat(2,1fr);}
-    .trust-grid{grid-template-columns:1fr;}
-    .contact-wrap{grid-template-columns:1fr;}
-    .form-row{grid-template-columns:1fr;}
-    .hero-stats{flex-wrap:wrap; row-gap:16px;}
-  }
-  @media (max-width:620px){
-    .vehicles-grid{grid-template-columns:1fr;}
-  }
-  @media (max-width:768px){
-    body{ padding-bottom:64px; }
-    .mobile-action-bar{
-      display:flex; position:fixed; left:0; right:0; bottom:0; z-index:250;
-      background:var(--paper); border-top:1px solid var(--line);
-      box-shadow:0 -8px 24px -12px rgba(15,35,64,0.25);
-    }
-    .mab-btn{
-      flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
-      padding:9px 4px 8px; font-size:0.68rem; font-weight:600; color:var(--navy);
-      border-right:1px solid var(--line);
-    }
-    .mab-btn:last-child{ border-right:none; }
-    .mab-btn svg{ width:19px; height:19px; }
-    .mab-whatsapp{ color:#25D366; }
-    .mab-primary{ background:var(--navy); color:#fff; }
-  }
-  @media (max-width:420px){
-    .header-ctas .nav-cta:not(.outline){ display:none; }
-  }
-
-  .ip-title{ font-family:'Fraunces',serif; font-size:1.05rem; color:var(--navy); font-weight:600; }
-
-  /* ================= Profesyonel güncelleme: ürünler, iletişim, sihirbaz, dosya yükleme ================= */
-  section[id]{scroll-margin-top:76px;}
-
-  /* Ürün kartları (detaylı) */
-  .product-guide{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:28px;}
-  .pg-item{display:flex; gap:12px; align-items:flex-start; background:var(--band); border:1px solid var(--line); border-radius:var(--radius-md); padding:14px 16px;}
-  .pg-item p{font-size:0.86rem; color:var(--ink-soft); line-height:1.45; margin:0;}
-  .pg-item p b{color:var(--navy);}
-  .pg-badge{flex-shrink:0; font-size:0.66rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase; padding:4px 9px; border-radius:999px; margin-top:1px;}
-  .pg-must{background:#FDECEC; color:#9B2C2C;}
-  .pg-opt{background:var(--blue-light); color:var(--navy);}
-  .pg-extra{background:#E8F4EA; color:#245B33;}
-  .vehicle-body p.desc{flex:none; margin-bottom:14px;}
-  .product-block{margin-bottom:12px;}
-  .pb-title{font-size:0.72rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--navy); margin-bottom:8px;}
-  .product-list{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:7px;}
-  .product-list li{position:relative; padding-left:25px; font-size:0.86rem; color:var(--ink); line-height:1.45;}
-  .product-list li::before{content:''; position:absolute; left:0; top:1px; width:17px; height:17px; border-radius:50%;
-    background:var(--blue-light) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230F2340' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'><path d='M20 6L9 17l-5-5'/></svg>") center/10px no-repeat;}
-  .product-note{display:flex; gap:8px; align-items:flex-start; background:#FFF8E6; border:1px solid #F3E2B0; border-radius:10px; padding:9px 11px; font-size:0.79rem; color:#6B5316; line-height:1.4; margin-bottom:12px;}
-  .product-note svg{width:15px; height:15px; flex-shrink:0; margin-top:1px; stroke:#B7791F;}
-  .product-audience{font-size:0.8rem; color:var(--ink-soft); margin-bottom:16px; padding-top:10px; border-top:1px dashed var(--line);}
-  .product-audience b{color:var(--navy);}
-  .vehicle-cta{margin-top:auto;}
-  .product-disclaimer{margin-top:22px; font-size:0.8rem; color:var(--ink-soft); text-align:center;}
-
-  /* Hızlı iletişim butonları */
-  .quick-contact{display:flex; flex-direction:column; gap:12px; margin-bottom:28px;}
-  .qc-btn{display:flex; align-items:center; gap:14px; padding:12px 16px; border-radius:14px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); color:#fff; transition:.25s;}
-  .qc-btn:hover{background:rgba(255,255,255,0.16); transform:translateX(4px);}
-  .qc-ico{width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
-  .qc-ico svg{width:20px; height:20px;}
-  .qc-call .qc-ico{background:#fff; color:var(--navy);}
-  .qc-wa .qc-ico{background:#25D366; color:#fff;}
-  .qc-mail .qc-ico{background:#9FC3E8; color:var(--navy);}
-  .qc-txt b{display:block; font-size:0.95rem; font-weight:700;}
-  .qc-txt small{display:block; font-size:0.8rem; color:#BCD2E6; word-break:break-all;}
-  .wa-float{position:fixed; right:22px; bottom:22px; width:56px; height:56px; border-radius:50%; background:#25D366; color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 0 #1a9a4c, 0 16px 28px -8px rgba(37,211,102,0.6); z-index:240; transition:transform .25s;}
-  .wa-float:hover{transform:translateY(-3px) scale(1.06);}
-  .wa-float svg{width:28px; height:28px;}
-
-  /* Sekmeler, sihirbaz, dosya yükleme */
-  .mode-tabs{display:flex; background:var(--band); border:1px solid var(--line); border-radius:999px; padding:4px; margin-bottom:26px;}
-  .mode-tab{flex:1; border:none; background:transparent; padding:11px 14px; border-radius:999px; font-family:inherit; font-size:0.9rem; font-weight:700; color:var(--ink-soft); cursor:pointer; transition:.25s;}
-  .mode-tab.active{background:var(--navy); color:#fff; box-shadow:0 8px 18px -8px rgba(15,35,64,0.5);}
-  .wiz-progress{margin-bottom:22px;}
-  .wiz-progress-top{display:flex; justify-content:space-between; font-size:0.8rem; color:var(--ink-soft); margin-bottom:8px; font-weight:600;}
-  .wiz-bars{display:flex; gap:6px;}
-  .wiz-bars span{flex:1; height:5px; border-radius:99px; background:var(--line); transition:background .3s;}
-  .wiz-bars span.on{background:var(--blue);}
-  .wiz-step{display:none;}
-  .wiz-step.active{display:block; animation:wiz-in .35s ease;}
-  @keyframes wiz-in{from{opacity:0; transform:translateX(14px);} to{opacity:1; transform:none;}}
-  .wiz-title{font-family:'Fraunces',serif; font-size:1.2rem; color:var(--navy); margin-bottom:4px;}
-  .wiz-sub{font-size:0.86rem; color:var(--ink-soft); margin-bottom:16px;}
-  .type-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
-  .type-opt{position:relative; cursor:pointer; display:block;}
-  .type-opt input{position:absolute; opacity:0; inset:0; width:100%; height:100%; cursor:pointer; margin:0;}
-  .type-opt span{display:flex; align-items:center; gap:10px; padding:13px 14px; border:1.5px solid var(--line); border-radius:12px; background:var(--band); font-size:0.88rem; font-weight:600; color:var(--ink); transition:.2s; min-height:50px;}
-  .type-opt span::before{content:''; width:16px; height:16px; border-radius:50%; border:2px solid #B9CFE6; flex-shrink:0; background:#fff; transition:.2s;}
-  .type-opt:hover span{border-color:var(--blue);}
-  .type-opt input:checked + span{border-color:var(--navy); background:var(--blue-light); color:var(--navy);}
-  .type-opt input:checked + span::before{border-color:var(--navy); background:var(--navy); box-shadow:inset 0 0 0 3px #fff;}
-  .type-opt input:focus-visible + span{outline:2px solid var(--blue); outline-offset:2px;}
-  .wiz-nav{display:flex; gap:10px; margin-top:20px;}
-  .wiz-nav .submit-btn{margin-top:0; flex:1;}
-  .btn-back{flex:0 0 auto; padding:14px 22px; border-radius:999px; border:1.5px solid var(--line); background:transparent; color:var(--navy); font-family:inherit; font-weight:700; font-size:0.92rem; cursor:pointer; transition:.25s;}
-  .btn-back:hover{border-color:var(--navy);}
-  .field input.invalid, .field select.invalid, .field textarea.invalid{border-color:#C0392B; background:#FFF5F4;}
-  .wiz-error{display:none; color:#9B2C2C; font-size:0.84rem; margin-top:12px; font-weight:600;}
-  .wiz-error.show{display:block;}
-  .consent{display:flex; gap:10px; align-items:flex-start; font-size:0.82rem; color:var(--ink-soft); margin:14px 0 4px; line-height:1.45; cursor:pointer;}
-  .consent input{margin-top:3px; width:16px; height:16px; flex-shrink:0; accent-color:var(--navy);}
-  .consent a{color:var(--navy); text-decoration:underline;}
-  .consent.invalid span{color:#9B2C2C;}
-  .hp-field{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;}
-  .info-note{display:flex; gap:10px; align-items:flex-start; background:#FFF8E6; border:1px solid #F3E2B0; border-radius:12px; padding:11px 13px; font-size:0.84rem; color:#6B5316; line-height:1.45; margin-bottom:18px;}
-  .info-note svg{width:18px; height:18px; flex-shrink:0; margin-top:1px; stroke:#B7791F;}
-  .dropzone{border:2px dashed #B9CFE6; border-radius:14px; background:var(--band); padding:20px 16px; text-align:center; cursor:pointer; transition:.2s;}
-  .dropzone:hover, .dropzone.drag{border-color:var(--blue); background:var(--blue-light);}
-  .dropzone svg{width:30px; height:30px; stroke:var(--blue); margin:0 auto 8px; display:block;}
-  .dropzone b{display:block; color:var(--navy); font-size:0.92rem;}
-  .dropzone small{display:block; color:var(--ink-soft); font-size:0.78rem; margin-top:4px;}
-  .file-list{list-style:none; margin:12px 0 0; padding:0; display:flex; flex-direction:column; gap:8px;}
-  .file-item{display:flex; align-items:center; gap:12px; padding:8px 10px; border:1px solid var(--line); border-radius:12px; background:var(--paper);}
-  .file-thumb{width:44px; height:44px; border-radius:8px; background:var(--blue-light); overflow:hidden; flex-shrink:0; display:flex; align-items:center; justify-content:center;}
-  .file-thumb img{width:100%; height:100%; object-fit:cover;}
-  .file-thumb svg{width:22px; height:22px; stroke:var(--navy);}
-  .file-meta{flex:1; min-width:0;}
-  .file-meta b{display:block; font-size:0.84rem; color:var(--ink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-  .file-meta span{font-size:0.76rem; color:var(--ink-soft);}
-  .file-remove{border:none; background:var(--band); width:28px; height:28px; border-radius:50%; cursor:pointer; color:var(--navy); font-size:0.85rem; flex-shrink:0;}
-  .file-remove:hover{background:var(--line);}
-  .file-hint{font-size:0.8rem; color:#9B2C2C; margin-top:8px; display:none; font-weight:600;}
-  .done-card{display:none; text-align:center; padding:26px 8px;}
-  .done-card.show{display:block; animation:wiz-in .4s ease;}
-  .done-ico{width:64px; height:64px; border-radius:50%; background:#E8F4EA; display:flex; align-items:center; justify-content:center; margin:0 auto 16px;}
-  .done-ico svg{width:30px; height:30px; stroke:#245B33;}
-  .done-card h3{font-size:1.3rem; margin-bottom:8px;}
-  .done-card p{color:var(--ink-soft); font-size:0.94rem; margin-bottom:20px;}
-  .done-card .btn-back{margin:0 auto;}
-
-  @media (max-width:900px){ .product-guide{grid-template-columns:1fr;} }
-  @media (max-width:768px){ .wa-float{display:none;} }
-  @media (max-width:560px){
-    .contact-info, .contact-form{padding:30px 20px;}
-    .type-grid{gap:8px;}
-    .type-opt span{padding:11px 10px; font-size:0.82rem;}
-    .qc-btn{padding:11px 12px;}
-    .wiz-nav{flex-wrap:wrap;}
-  }
-
-  /* ================= 3D katmanı ================= */
-  .js-3d .reveal3d{opacity:0; transform:perspective(900px) rotateX(14deg) translateY(34px) scale(.97); transform-origin:50% 100%;
-    transition:opacity .7s ease, transform .8s cubic-bezier(.2,.8,.2,1);}
-  .js-3d .reveal3d.in{opacity:1; transform:none;}
-  .tilt3d{transform-style:preserve-3d; will-change:transform;}
-  .benefit-card .icon-wrap{transform:translateZ(34px); box-shadow:0 10px 18px -8px rgba(15,35,64,0.35);}
-  .benefit-card h3{transform:translateZ(22px);}
-  .benefit-card p{transform:translateZ(10px);}
-  .benefit-card{box-shadow:0 1px 0 #fff inset, 0 12px 24px -16px rgba(15,35,64,0.25);}
-  .vehicle-card, .quote-card, .pg-item{box-shadow:0 14px 28px -20px rgba(15,35,64,0.35);}
-  .hero h1{text-shadow:0 1px 0 #24467a, 0 2px 0 #1d3a67, 0 3px 0 #173056, 0 4px 0 #132849, 0 14px 22px rgba(0,0,0,0.38);}
-  .btn-primary{box-shadow:0 4px 0 #C4D3E6, 0 16px 28px -10px rgba(0,0,0,0.45);}
-  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 6px 0 #C4D3E6, 0 22px 34px -10px rgba(0,0,0,0.5);}
-  .btn-primary:active{transform:translateY(3px); box-shadow:0 1px 0 #C4D3E6, 0 8px 16px -8px rgba(0,0,0,0.5);}
-  .submit-btn, .vehicle-cta, .nav-cta:not(.outline){box-shadow:0 4px 0 #07152b, 0 12px 20px -10px rgba(15,35,64,0.55);}
-  .submit-btn:hover, .vehicle-cta:hover, .nav-cta:not(.outline):hover{transform:translateY(-2px); box-shadow:0 6px 0 #07152b, 0 16px 24px -10px rgba(15,35,64,0.6);}
-  .submit-btn:active, .vehicle-cta:active, .nav-cta:not(.outline):active{transform:translateY(3px); box-shadow:0 1px 0 #07152b, 0 6px 12px -8px rgba(15,35,64,0.6);}
-  .vehicle-cta{border-radius:12px;}
-
-  /* Three.js 3D model alanları */
-  .car3d{position:absolute; inset:0; z-index:2; opacity:0; transition:opacity .6s ease;}
-  .car3d.ready{opacity:1;}
-  .car3d canvas{width:100% !important; height:100% !important; display:block; touch-action:pan-y;}
-  .hero-art.has-3d > svg{opacity:0; transition:opacity .4s ease;}
-  .avw.has-3d .avw-car-wrap{opacity:0;}
-  .avw .avw-pill, .avw .avw-badge-shield{z-index:5;}
-
-  @media (prefers-reduced-motion: reduce){
-    .js-3d .reveal3d{opacity:1; transform:none; transition:none;}
-  }
+:root{--bg:#fff;--fg:#3c3c3c;--mut:#777;--card:#f7f7f7;--bd:#e5e5e5;--g:#58cc02;--gd:#58a700;--r:#ff4b4b;--rd:#ea2b2b;--b:#1cb0f6;--y:#ffc800;--gbg:#d7ffb8;--rbg:#ffdfe0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131f24;--fg:#eee;--mut:#9aa;--card:#1f2c33;--bd:#37464f;--gbg:#1f3a12;--rbg:#3d1c1e}}
+:root[data-theme="dark"]{--bg:#131f24;--fg:#eee;--mut:#9aa;--card:#1f2c33;--bd:#37464f;--gbg:#1f3a12;--rbg:#3d1c1e}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+#app{max-width:560px;margin:0 auto;padding:16px 16px 120px}
+.top{display:flex;gap:10px;align-items:center;justify-content:space-between;font-weight:800;margin-bottom:8px}
+.pill{background:var(--card);border:2px solid var(--bd);border-radius:14px;padding:4px 10px}
+.bar{height:14px;background:var(--bd);border-radius:9px;overflow:hidden;flex:1}
+.bar i{display:block;height:100%;background:var(--g);border-radius:9px;transition:width .3s}
+h1{font-size:26px;margin:8px 0}
+.unit{display:flex;gap:14px;align-items:center;width:100%;text-align:left;background:var(--card);border:2px solid var(--bd);border-bottom-width:5px;border-radius:18px;padding:14px;margin:12px 0;color:var(--fg);font:inherit;cursor:pointer}
+.unit .ic{font-size:30px;width:56px;height:56px;border-radius:50%;background:var(--g);display:grid;place-items:center;flex:none}
+.unit.done .ic{background:var(--y)}
+.unit.lock{opacity:.5;cursor:not-allowed}.unit.lock .ic{background:var(--bd)}
+.unit b{display:block;font-size:18px}.unit span{color:var(--mut);font-size:14px}
+.btn{display:block;width:100%;border:0;border-bottom:5px solid var(--gd);background:var(--g);color:#fff;font:800 16px system-ui,sans-serif;letter-spacing:.5px;text-transform:uppercase;padding:14px;border-radius:16px;cursor:pointer}
+.btn:disabled{background:var(--bd);border-color:var(--mut);color:var(--mut);cursor:default}
+.btn.red{background:var(--r);border-color:var(--rd)}
+.btn.ghost{background:transparent;color:var(--b);border:2px solid var(--bd);border-bottom-width:5px}
+.x{background:none;border:0;font-size:24px;color:var(--mut);cursor:pointer}
+pre,code{font-family:ui-monospace,Menlo,Consolas,monospace}
+pre u{color:#7bdc1d;border-bottom:2px solid #7bdc1d;text-decoration:none}
+pre{background:#1e2a30;color:#e8f5e9;padding:14px;border-radius:14px;overflow-x:auto;margin:10px 0}
+iframe{width:100%;height:90px;border:2px solid var(--bd);border-radius:14px;background:#fff}
+.opt{display:block;width:100%;text-align:left;background:var(--card);color:var(--fg);border:2px solid var(--bd);border-bottom-width:5px;border-radius:16px;padding:14px;margin:10px 0;font:16px ui-monospace,Menlo,monospace;cursor:pointer}
+.opt.sel{border-color:var(--b);background:rgba(28,176,246,.15)}
+textarea.code{resize:vertical}
+input.code,textarea.code{width:100%;padding:14px;border:2px solid var(--bd);border-radius:14px;background:var(--card);color:var(--fg);font:16px ui-monospace,Menlo,monospace}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:14px 16px calc(14px + env(safe-area-inset-bottom,0px));border-top:2px solid var(--bd);background:var(--bg)}
+.foot.ok{background:var(--gbg);border-color:var(--g)}.foot.no{background:var(--rbg);border-color:var(--r)}
+.foot .in{max-width:528px;margin:0 auto}
+.fb{font-weight:800;font-size:18px;margin-bottom:4px}.fb+p{margin:0 0 10px;font-size:15px}
+.ok .fb{color:var(--gd)}.no .fb{color:var(--r)}
+.center{text-align:center;padding-top:40px}.big{font-size:70px}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.6);display:grid;place-items:center;padding:20px}
+.ov>div{background:var(--bg);padding:22px;border-radius:20px;max-width:420px;width:100%}
+.ov .btn{margin-top:10px}
 </style>
 </head>
 <body>
-
-<div class="mobile-action-bar">
-  <a href="tel:08502009090" class="mab-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Ara</span></a>
-  <a href="https://wa.me/908502009090" target="_blank" rel="noopener" class="mab-btn mab-whatsapp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .1-1.6-.1-.4-.1-1-.3-1.6-.6-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.7.8 1.8.1.2.1.3 0 .5-.1.2-.2.3-.3.5-.2.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.4.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.8.3.1.4.2.5.3.1.2.1.7-.1 1.2z"/></svg><span>WhatsApp</span></a>
-  <a href="#iletisim" class="mab-btn hasar-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg><span>Hasar</span></a>
-  <a href="#iletisim" class="mab-btn mab-primary teklif-link"><span>Teklif Al</span></a>
-</div>
-
-<a href="https://wa.me/908502009090?text=Merhaba%2C%20sigorta%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp ile yazın"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .1-1.6-.1-.4-.1-1-.3-1.6-.6-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.7.8 1.8.1.2.1.3 0 .5-.1.2-.2.3-.3.5-.2.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.4.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.8.3.1.4.2.5.3.1.2.1.7-.1 1.2z"/></svg></a>
-
-<header>
-  <div class="nav">
-    <div class="brand">
-      <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
-        <circle cx="20" cy="20" r="18" fill="none" stroke="var(--navy)" stroke-width="2"/>
-        <path d="M12 22l2-6a3 3 0 0 1 2.8-2h6.4a3 3 0 0 1 2.8 2l2 6" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <rect x="10" y="22" width="20" height="6" rx="2" fill="none" stroke="var(--navy)" stroke-width="2"/>
-        <circle cx="15" cy="28" r="1.6" fill="var(--navy)"/>
-        <circle cx="25" cy="28" r="1.6" fill="var(--navy)"/>
-      </svg>
-      Sigortan Seninle
-    </div>
-    <nav class="links">
-      <a href="#avantajlar">Avantajlar</a>
-      <a href="#kapsam">Kapsam</a>
-      <a href="#urunler">Sigorta Ürünleri</a>
-      <a href="#hakkimizda">Hakkımızda</a>
-      <a href="#sss">S.S.S.</a>
-      <a href="#iletisim">İletişim</a>
-    </nav>
-    <div class="header-ctas" style="display:flex; align-items:center; gap:10px;">
-      <a href="#iletisim" class="nav-cta outline hasar-link">Hasar Bildir</a>
-      <a href="#iletisim" class="nav-cta teklif-link">Teklif Al</a>
-    </div>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="wrap">
-    <div>
-      <span class="badge-pill">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#9FC3E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg>
-        Kasko &amp; Trafik'te uzman güvence
-      </span>
-      <h1>Aracınız neredeyse, güvenceniz de orada.</h1>
-      <p class="lead">Kasko, trafik sigortası ve yol yardımını tek çatı altında topluyoruz. Hasarınızı bekletmeden, dürüst bir fiyatla çözüyoruz.</p>
-      <div class="hero-ctas">
-        <a href="#iletisim" class="btn-primary teklif-link">
-          Teklif Al
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a href="#iletisim" class="btn-ghost hasar-link">Hasar Bildir</a>
-      </div>
-
-      <div class="hero-stats">
-        <div class="hero-feature"><svg viewBox="0 0 24 24" fill="none" stroke="#9FC3E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg><span>Lisanslı Sigorta Acentesi</span></div>
-        <div class="hero-feature"><svg viewBox="0 0 24 24" fill="none" stroke="#9FC3E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span>Hızlı Teklif ve Hasar Desteği</span></div>
-        <div class="hero-feature"><svg viewBox="0 0 24 24" fill="none" stroke="#9FC3E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Birden Fazla Sigorta Şirketinden Teklif</span></div>
-      </div>
-    </div>
-    <div class="hero-art">
-      <div class="car3d" id="hero3d" aria-hidden="true"></div>
-      <svg viewBox="0 0 480 420" width="100%" height="100%">
-        <defs>
-          <radialGradient id="glow" cx="50%" cy="40%" r="65%">
-            <stop offset="0%" stop-color="#3E7BC4" stop-opacity="0.5"/>
-            <stop offset="100%" stop-color="#3E7BC4" stop-opacity="0"/>
-          </radialGradient>
-          <linearGradient id="carBody" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#EAF2FA"/>
-            <stop offset="100%" stop-color="#BFDAF2"/>
-          </linearGradient>
-        </defs>
-        <circle cx="240" cy="180" r="190" fill="url(#glow)"/>
-        <!-- shield -->
-        <g transform="translate(300,40)">
-          <path d="M45 0 L90 16 V48 C90 74 70 90 45 100 C20 90 0 74 0 48 V16 Z" fill="#EFE3CC"/>
-          <path d="M27 50 L40 63 L67 34" stroke="#0F2340" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </g>
-        <!-- car silhouette -->
-        <g transform="translate(50,190)">
-          <path d="M10 90 L10 70 C10 60 18 55 28 52 L60 44 C70 30 85 20 105 20 L220 20 C245 20 265 34 275 55 L330 62 C345 64 355 74 355 88 L355 100 L10 100 Z" fill="url(#carBody)" stroke="#0F2340" stroke-width="2.2"/>
-          <path d="M110 52 L128 24 L215 24 L235 52 Z" fill="#0F2340" opacity="0.85"/>
-          <circle cx="90" cy="102" r="26" fill="#0F2340"/>
-          <circle cx="90" cy="102" r="10" fill="#EAF2FA"/>
-          <circle cx="285" cy="102" r="26" fill="#0F2340"/>
-          <circle cx="285" cy="102" r="10" fill="#EAF2FA"/>
-          <rect x="330" y="55" width="14" height="8" rx="3" fill="#F4C542"/>
-        </g>
-        <g opacity="0.9">
-          <rect x="30" y="330" width="150" height="60" rx="16" fill="rgba(255,255,255,0.08)"/>
-          <circle cx="58" cy="360" r="12" fill="#9FC3E8"/>
-          <rect x="78" y="352" width="80" height="7" rx="3.5" fill="rgba(255,255,255,0.4)"/>
-          <rect x="78" y="366" width="55" height="6" rx="3" fill="rgba(255,255,255,0.22)"/>
-        </g>
-      </svg>
-    </div>
-  </div>
-  <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" style="height:70px; width:100%;">
-    <path d="M0,32 C240,80 480,0 720,24 C960,48 1200,88 1440,40 L1440,100 L0,100 Z" fill="var(--bg)"/>
-  </svg>
-</section>
-
-<section class="section-pad" id="avantajlar">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">Neden Sigortan Seninle</span>
-      <h2>Araç sigortasında fark yaratan avantajlar</h2>
-      <p>Kasko yaptırmak karmaşık olmak zorunda değil. İşte size sunduğumuz temel avantajlar.</p>
-    </div>
-    <div class="benefit-grid">
-      <div class="benefit-card">
-        <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
-        <h3>Hızlı hasar süreci</h3>
-        <p>Hasar talebiniz mümkün olan en kısa sürede değerlendirilir.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-4 4 8 2-4h6"/></svg></div>
-        <h3>7/24 yol yardımı</h3>
-        <p>Türkiye genelinde geniş çekici ve yol yardımı ağı ile yanınızdayız.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
-        <h3>Anlaşmalı geniş servis ağı</h3>
-        <p>Geniş yetkili servis ağımızda sorunsuz onarım imkanı.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-        <h3>Şeffaf ve uygun fiyat</h3>
-        <p>Sürpriz ek ücret yok; poliçenizde her kalem açıkça yazar.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="coverage section-pad" id="kapsam">
-  <div class="wrap coverage-grid">
-    <div>
-      <div class="section-head" style="margin-bottom:34px;">
-        <span class="kicker">Kapsam Detayları</span>
-        <h2>Aracınız için tam koruma</h2>
-        <p>Kasko poliçenizin neleri kapsadığını en baştan, anlaşılır şekilde bilin.</p>
-      </div>
-      <div class="coverage-list">
-        <div class="coverage-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
-          <div><h3>Çarpışma &amp; Çarpma</h3><p>Kaza sonucu oluşan hasarlar poliçe kapsamında karşılanır.</p></div>
-        </div>
-        <div class="coverage-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
-          <div><h3>Cam kırılması</h3><p>Cam hasarları poliçe şartlarına göre karşılanır.</p></div>
-        </div>
-        <div class="coverage-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/></svg>
-          <div><h3>Hırsızlık koruması</h3><p>Aracınızın çalınması ya da çalınmaya teşebbüs halinde güvence.</p></div>
-        </div>
-        <div class="coverage-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-4 4 8 2-4h6"/></svg>
-          <div><h3>Doğal afet güvencesi</h3><p>Sel, dolu, deprem gibi afetlerden doğan hasarlar dahildir.</p></div>
-        </div>
-        <div class="coverage-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg>
-          <div><h3>İhtiyari Mali Mesuliyet (İMM)</h3><p>Karşı tarafa verdiğiniz zararlarda ek limit sağlar.</p></div>
-        </div>
-      </div>
-    </div>
-    <div class="coverage-art" style="padding:0;">
-      <div class="avw">
-        <div class="avw-hex"></div>
-        <div class="avw-stage">
-          <div class="avw-halo"></div>
-          <div class="car3d" id="avw3d" aria-hidden="true"></div>
-
-          <div class="avw-badge-shield">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/>
-              <path d="M8.5 12l2.3 2.3L15.5 9.5"/>
-            </svg>
-          </div>
-
-          <div class="avw-pill left"><span class="dot"></span>TAM KORUMA AKTİF</div>
-          <div class="avw-pill right"><span class="dot"></span>Aracınız neredeyse, güvenceniz de orada.</div>
-
-          <div class="avw-road">
-            <div class="avw-road-line" style="left:10%; animation-delay:0s;"></div>
-            <div class="avw-road-line" style="left:40%; animation-delay:0.35s;"></div>
-            <div class="avw-road-line" style="left:70%; animation-delay:0.7s;"></div>
-          </div>
-
-          <div class="avw-car-wrap">
-            <svg viewBox="0 0 300 150" width="100%" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="avwBody" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#60a5fa"/>
-                  <stop offset="100%" stop-color="#1d4ed8"/>
-                </linearGradient>
-                <radialGradient id="avwBeamR" cx="0" cy="0.5" r="1">
-                  <stop offset="0%" stop-color="#a5f3fc" stop-opacity="0.9"/>
-                  <stop offset="100%" stop-color="#a5f3fc" stop-opacity="0"/>
-                </radialGradient>
-                <radialGradient id="avwBeamL" cx="1" cy="0.5" r="1">
-                  <stop offset="0%" stop-color="#f87171" stop-opacity="0.7"/>
-                  <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
-                </radialGradient>
-              </defs>
-
-              <!-- Far ışık hüzmeleri -->
-              <path class="avw-beam-r" d="M258 92 L300 78 L300 108 Z" fill="url(#avwBeamR)"/>
-              <path class="avw-beam-l" d="M42 92 L0 82 L0 104 Z" fill="url(#avwBeamL)"/>
-
-              <!-- Gölge -->
-              <ellipse cx="153" cy="132" rx="110" ry="9" fill="#000" opacity="0.35"/>
-
-              <!-- Gövde -->
-              <path d="M20 102 L20 82 C20 72 28 66 38 63 L64 54 C78 34 98 24 122 24 L188 24 C210 24 228 36 238 56 L264 64 C278 68 286 78 286 90 L286 102 Z"
-                    fill="url(#avwBody)" stroke="#0b1220" stroke-width="3"/>
-              <!-- Camlar -->
-              <path d="M90 60 L126 30 L184 30 L220 60 Z" fill="#0b1220" opacity="0.9"/>
-              <line x1="155" y1="30" x2="155" y2="60" stroke="#0b1220" stroke-width="2"/>
-              <!-- Tampon aksanları -->
-              <rect x="268" y="86" width="16" height="6" rx="2" fill="#a5f3fc"/>
-              <rect x="22" y="86" width="14" height="5" rx="2" fill="#f87171"/>
-
-              <!-- Arka jant -->
-              <g class="avw-wheel">
-                <circle cx="70" cy="104" r="20" fill="#0b1220"/>
-                <circle cx="70" cy="104" r="8" fill="#9ca3af"/>
-                <g stroke="#d1d5db" stroke-width="2.4">
-                  <line x1="70" y1="96" x2="70" y2="112"/>
-                  <line x1="62" y1="104" x2="78" y2="104"/>
-                  <line x1="64.5" y1="98.5" x2="75.5" y2="109.5"/>
-                  <line x1="75.5" y1="98.5" x2="64.5" y2="109.5"/>
-                </g>
-              </g>
-              <!-- Ön jant -->
-              <g class="avw-wheel">
-                <circle cx="236" cy="104" r="20" fill="#0b1220"/>
-                <circle cx="236" cy="104" r="8" fill="#9ca3af"/>
-                <g stroke="#d1d5db" stroke-width="2.4">
-                  <line x1="236" y1="96" x2="236" y2="112"/>
-                  <line x1="228" y1="104" x2="244" y2="104"/>
-                  <line x1="230.5" y1="98.5" x2="241.5" y2="109.5"/>
-                  <line x1="241.5" y1="98.5" x2="230.5" y2="109.5"/>
-                </g>
-              </g>
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="why-strip section-pad">
-  <div class="wrap">
-    <div class="section-head" style="margin-bottom:52px;">
-      <span class="kicker" style="color:#9FC3E8;">Süreç</span>
-      <h2 style="color:#fff;">Teklif almak üç adım sürer</h2>
-    </div>
-    <div class="why-grid">
-      <div class="why-card">
-        <span class="step-num">01</span>
-        <h3>Aracınızı seçin</h3>
-        <p>Marka, model ve kullanım şeklinizi bize iletin.</p>
-      </div>
-      <div class="why-card">
-        <span class="step-num">02</span>
-        <h3>Teklifi karşılaştırın</h3>
-        <p>Size özel hazırlanan kapsam ve fiyat seçeneklerini inceleyin.</p>
-      </div>
-      <div class="why-card">
-        <span class="step-num">03</span>
-        <h3>Güvence altına alın</h3>
-        <p>Onayınızla poliçeniz hazırlanır ve size iletilir.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section-pad" id="urunler">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">Sigorta Ürünlerimiz</span>
-      <h2>İhtiyacınıza uygun sigorta ürünleri</h2>
-      <p>Her ürünün neyi kapsadığını, kimler için uygun olduğunu ve nelere dikkat etmeniz gerektiğini kısaca özetledik.</p>
-    </div>
-
-    <div class="product-guide">
-      <div class="pg-item"><span class="pg-badge pg-must">Zorunlu</span><p><b>Trafik Sigortası</b> — Karşı tarafa verebileceğiniz zararlar için yasal zorunluluk.</p></div>
-      <div class="pg-item"><span class="pg-badge pg-opt">Önerilen</span><p><b>Kasko</b> — Kendi aracınızın hasarı için koruma.</p></div>
-      <div class="pg-item"><span class="pg-badge pg-extra">Ek Güvence</span><p><b>İMM, Ferdi Kaza, Yeşil Kart</b> — İhtiyacınıza göre tamamlayıcı teminatlar.</p></div>
-    </div>
-
-    <div class="vehicles-grid">
-
-      <div class="vehicle-card">
-        <div class="product-media">
-          <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="32" height="24" rx="4" stroke="#3E7BC4" stroke-width="2"/><path d="M8 16h32" stroke="#0F2340" stroke-width="2"/></svg>
-        </div>
-        <div class="vehicle-body">
-          <h3>Trafik Sigortası</h3>
-          <div class="model-type">Zorunlu Sigorta</div>
-          <p class="desc">Kanunen zorunludur. Kaza durumunda karşı tarafa verdiğiniz zararları karşılar.</p>
-          <div class="product-block">
-            <div class="pb-title">Neleri kapsar?</div>
-            <ul class="product-list">
-            <li>Karşı tarafın araç ve mal hasarı</li>
-            <li>Karşı taraftaki kişilerin bedensel zararları (yaralanma, sakatlık, vefat)</li>
-            <li>Yasal yükümlülüğünüzü yerine getirir</li>
-            </ul>
-          </div>
-          <div class="product-note"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg><span><b>Dikkat:</b> Kendi aracınızın hasarını karşılamaz; bunun için kasko gerekir.</span></div>
-          <div class="product-audience"><b>Kimler için?</b> Trafiğe çıkan tüm araç sahipleri.</div>
-          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Trafik Sigortası">Bu Ürün İçin Teklif Al
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="vehicle-card">
-        <div class="product-media">
-          <svg viewBox="0 0 48 48" fill="none"><path d="M24 4 L40 11 V22 C40 32 33 39 24 42 C15 39 8 32 8 22 V11 Z" stroke="#3E7BC4" stroke-width="2" stroke-linejoin="round"/><path d="M17 24l4.5 4.5L32 18" stroke="#0F2340" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-        </div>
-        <div class="vehicle-body">
-          <h3>Kasko</h3>
-          <div class="model-type">İsteğe Bağlı Sigorta</div>
-          <p class="desc">Kendi aracınızda oluşan hasarlara karşı geniş koruma sağlar.</p>
-          <div class="product-block">
-            <div class="pb-title">Neleri kapsar?</div>
-            <ul class="product-list">
-            <li>Çarpma, çarpışma ve devrilme hasarları</li>
-            <li>Yangın ve hırsızlık</li>
-            <li>Doğal afet kaynaklı hasarlar (poliçeye göre)</li>
-            </ul>
-          </div>
-          <div class="product-note"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg><span><b>Dikkat:</b> Muafiyet ve teminat limitleri poliçeye göre değişir.</span></div>
-          <div class="product-audience"><b>Kimler için?</b> Aracını hasar ve çalınmaya karşı korumak isteyenler.</div>
-          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Kasko">Bu Ürün İçin Teklif Al
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="vehicle-card">
-        <div class="product-media">
-          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="#3E7BC4" stroke-width="2"/><path d="M24 14v10l7 4" stroke="#0F2340" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="vehicle-body">
-          <h3>Genişletilmiş Kasko</h3>
-          <div class="model-type">Ek Teminat Paketi</div>
-          <p class="desc">Standart kasko kapsamına ek teminatlar ekleyerek korumayı artırır.</p>
-          <div class="product-block">
-            <div class="pb-title">Neleri kapsar?</div>
-            <ul class="product-list">
-            <li>Anahtar kaybı ve lastik hasarı</li>
-            <li>Cam ve mini onarım teminatı</li>
-            <li>İkame araç ve yol yardımı (seçilen pakete göre)</li>
-            </ul>
-          </div>
-          <div class="product-note"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg><span><b>Dikkat:</b> Ek teminatların kapsamı sigorta şirketine göre farklılık gösterir.</span></div>
-          <div class="product-audience"><b>Kimler için?</b> Daha kapsamlı ve rahat bir koruma isteyenler.</div>
-          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Genişletilmiş Kasko">Bu Ürün İçin Teklif Al
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="vehicle-card">
-        <div class="product-media">
-          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="#3E7BC4" stroke-width="2"/><path d="M17 24l4.5 4.5L32 18" stroke="#0F2340" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-        </div>
-        <div class="vehicle-body">
-          <h3>İhtiyari Mali Mesuliyet (İMM)</h3>
-          <div class="model-type">Ek Teminat</div>
-          <p class="desc">Trafik sigortası limitinin yetmediği durumlarda ek güvence sağlar.</p>
-          <div class="product-block">
-            <div class="pb-title">Neleri kapsar?</div>
-            <ul class="product-list">
-            <li>Trafik sigortası limitini aşan maddi zararlar</li>
-            <li>Limit üstünde kalan bedensel zararlar</li>
-            <li>Yüksek tutarlı kazalarda mali riskinizi azaltır</li>
-            </ul>
-          </div>
-          <div class="product-note"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg><span><b>Dikkat:</b> Poliçe şartları ve limitler sigorta şirketine göre değişir.</span></div>
-          <div class="product-audience"><b>Kimler için?</b> Olası yüksek tazminat risklerine karşı ek güvence isteyenler.</div>
-          <a href="#iletisim" class="vehicle-cta product-cta" data-product="İMM">Bu Ürün İçin Teklif Al
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="vehicle-card">
-        <div class="product-media">
-          <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="12" width="36" height="24" rx="3" stroke="#3E7BC4" stroke-width="2"/><path d="M6 18h36" stroke="#0F2340" stroke-width="2"/><circle cx="14" cy="28" r="2" fill="#0F2340"/></svg>
-        </div>
-        <div class="vehicle-body">
-          <h3>Yeşil Kart Sigortası</h3>
-          <div class="model-type">Yurt Dışı Sigortası</div>
-          <p class="desc">Aracınızla yurt dışına çıkarken gereken zorunlu sorumluluk sigortasıdır.</p>
-          <div class="product-block">
-            <div class="pb-title">Neleri kapsar?</div>
-            <ul class="product-list">
-            <li>Anlaşmalı ülkelerde geçerli sorumluluk teminatı</li>
-            <li>Yurt dışında karşı tarafa verilen zararlar</li>
-            <li>Gidilecek ülkeye ve süreye göre düzenlenir</li>
-            </ul>
-          </div>
-          <div class="product-note"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg><span><b>Dikkat:</b> Seyahatten önce gideceğiniz ülkedeki geçerliliği kontrol edin.</span></div>
-          <div class="product-audience"><b>Kimler için?</b> Aracıyla yurt dışına çıkacak sürücüler.</div>
-          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Yeşil Kart">Bu Ürün İçin Teklif Al
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="vehicle-card">
-        <div class="product-media">
-          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="17" r="7" stroke="#3E7BC4" stroke-width="2"/><path d="M10 40c0-8 6-13 14-13s14 5 14 13" stroke="#0F2340" stroke-width="2.4" stroke-linecap="round"/></svg>
-        </div>
-        <div class="vehicle-body">
-          <h3>Ferdi Kaza Sigortası</h3>
-          <div class="model-type">Kişisel Koruma</div>
-          <p class="desc">Sürücü ve yolcuların kaza sonucu yaşayabileceği bedensel zararlara karşı tamamlayıcı korumadır.</p>
-          <div class="product-block">
-            <div class="pb-title">Neleri kapsar?</div>
-            <ul class="product-list">
-            <li>Kaza sonucu vefat ve kalıcı sakatlık teminatı</li>
-            <li>Tedavi gider teminatı (pakete göre)</li>
-            <li>Sürücü ve yolcuları kapsayacak şekilde düzenlenebilir</li>
-            </ul>
-          </div>
-          <div class="product-note"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg><span><b>Dikkat:</b> Teminat bedelleri seçilen pakete göre belirlenir.</span></div>
-          <div class="product-audience"><b>Kimler için?</b> Kendisi ve yolcuları için ek güvence isteyenler.</div>
-          <a href="#iletisim" class="vehicle-cta product-cta" data-product="Ferdi Kaza Sigortası">Bu Ürün İçin Teklif Al
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <p class="product-disclaimer">Teminat kapsamı, limitler ve muafiyetler sigorta şirketine ve seçilen poliçeye göre değişir. Kesin bilgi için size sunulan teklif ve poliçe şartlarını inceleyiniz.</p>
-  </div>
-</section>
-
-<section class="trust section-pad" id="hakkimizda">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">Hakkımızda</span>
-      <h2>Lisanslı sigorta acentesi güvencesi</h2>
-      <p>Sigortan Seninle, araç sahiplerinin ihtiyaç duyduğu sigorta ürünlerini şeffaf ve anlaşılır şekilde sunan bir sigorta acentesidir.</p>
-    </div>
-    <div class="trust-grid">
-      <div class="trust-badges">
-        <div class="why-reason"><svg viewBox="0 0 24 24" fill="none" stroke="#3E7BC4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg><span>Lisanslı ve yetkili sigorta acentesi</span></div>
-        <div class="why-reason"><svg viewBox="0 0 24 24" fill="none" stroke="#3E7BC4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Birden fazla sigorta şirketinden karşılaştırmalı teklif</span></div>
-        <div class="why-reason"><svg viewBox="0 0 24 24" fill="none" stroke="#3E7BC4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span>Hasar sürecinde adım adım destek</span></div>
-      </div>
-      <div class="quote-card">
-        <p class="ip-title" style="margin-bottom:10px;">Kimiz?</p>
-        <p style="color:var(--ink-soft); font-size:0.94rem;">Sigortan Seninle, araç sahiplerine trafik sigortası ve kasko başta olmak üzere ihtiyaç duydukları sigorta ürünlerinde danışmanlık veren bir aracı kurumdur. Amacımız, sigorta seçim sürecini basitleştirmek ve size en uygun teminatı bulmanıza yardımcı olmaktır.</p>
-      </div>
-      <div class="quote-card">
-        <p class="ip-title" style="margin-bottom:10px;">Sigorta Şirketleri</p>
-        <p style="color:var(--ink-soft); font-size:0.94rem;">Anlaşmalı olduğumuz sigorta şirketlerinden aldığımız teklifleri karşılaştırarak, ihtiyacınıza ve bütçenize en uygun poliçeyi birlikte belirliyoruz. Güncel anlaşmalı kurum listemiz için bizimle iletişime geçebilirsiniz.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section-pad" id="sss">
-
-
-
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">Merak edilenler</span>
-      <h2>Sıkça sorulan sorular</h2>
-      <p>Araç sigortası hakkında en çok gelen soruları sizin için yanıtladık.</p>
-    </div>
-    <div class="faq-list">
-      <details class="faq-item" open>
-        <summary>Kasko ile trafik sigortası arasındaki fark nedir?<span class="plus"></span></summary>
-        <div class="faq-a">Trafik sigortası kanunen zorunludur ve yalnızca karşı tarafa verdiğiniz zararları karşılar. Kasko ise isteğe bağlıdır ve kendi aracınızda oluşan çarpışma, hırsızlık, yangın gibi hasarları da güvence altına alır.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Kasko fiyatımı hangi faktörler etkiler?<span class="plus"></span></summary>
-        <div class="faq-a">Aracın marka/modeli, yaşı, kullanım şekli, hasarsızlık basamağı, kayıtlı olduğu il ve seçtiğiniz teminat kapsamı fiyatı doğrudan etkiler. Size özel net fiyatı teklif formunu doldurarak öğrenebilirsiniz.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Kaza sonrası hasar süreci nasıl işliyor?<span class="plus"></span></summary>
-        <div class="faq-a">Bizi aradığınız anda dosyanız açılır, en yakın anlaşmalı servise yönlendirilirsiniz. Ekspertiz ve onarım sürecini sizin adınıza takip ederiz.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Hasar bildirirken hangi fotoğraf ve belgeleri eklemeliyim?<span class="plus"></span></summary>
-        <div class="faq-a">Hasarın genel ve yakın çekim fotoğrafları, varsa kaza tutanağı, ruhsat ve poliçe bilgileri süreci hızlandırır. Hasar formundan JPG, PNG, WEBP, HEIC veya PDF olarak en fazla 5 dosya ekleyebilirsiniz.</div>
-      </details>
-      <details class="faq-item">
-        <summary>İhtiyari Mali Mesuliyet (İMM) neden önemlidir?<span class="plus"></span></summary>
-        <div class="faq-a">Trafik sigortasının karşı tarafa sağladığı teminat limiti bir kazada yetersiz kalabilir. İMM, bu limitin üzerinde kalan tutarları karşılayarak sizi maddi risklerden korur.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Poliçemi iptal edip iade alabilir miyim?<span class="plus"></span></summary>
-        <div class="faq-a">Evet. Poliçe süresi içinde iptal talep ettiğinizde, kullanılmayan güne karşılık gelen prim tutarı yasal kesintiler düşülerek tarafınıza iade edilir.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Yurt dışına çıkarken aracım kasko kapsamında mı?<span class="plus"></span></summary>
-        <div class="faq-a">Standart kasko poliçeleri yalnızca Türkiye sınırları içinde geçerlidir. Yurt dışı seyahatleriniz için Yeşil Kart sigortası ayrıca düzenlenmelidir; bu konuda size destek oluyoruz.</div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<section class="section-pad" id="iletisim">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">İletişim</span>
-      <h2>Hızlı online teklif ve hasar bildirimi</h2>
-      <p>Birkaç adımda talebinizi iletin, uzmanımız sizi arasın. Acil durumlarda doğrudan arayabilir veya WhatsApp'tan yazabilirsiniz.</p>
-    </div>
-
-    <div class="contact-wrap">
-      <div class="contact-info">
-        <h2>Bize hemen ulaşın</h2>
-        <p>Size en uygun yolu seçin. Acil durumlarda telefon veya WhatsApp en hızlı yoldur.</p>
-
-        <div class="quick-contact">
-          <a href="tel:08502009090" class="qc-btn qc-call">
-            <span class="qc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-            <span class="qc-txt"><b>Hemen Ara</b><small>0850 200 90 90</small></span>
-          </a>
-          <a href="https://wa.me/908502009090?text=Merhaba%2C%20sigorta%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="qc-btn qc-wa">
-            <span class="qc-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .1-1.6-.1-.4-.1-1-.3-1.6-.6-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.7.8 1.8.1.2.1.3 0 .5-.1.2-.2.3-.3.5-.2.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.4.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.8.3.1.4.2.5.3.1.2.1.7-.1 1.2z"/></svg></span>
-            <span class="qc-txt"><b>WhatsApp ile Yazın</b><small>Hızlı yanıt için</small></span>
-          </a>
-          <a href="mailto:berkayozturk1815@gmail.com" class="qc-btn qc-mail">
-            <span class="qc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
-            <span class="qc-txt"><b>E-posta Gönderin</b><small>berkayozturk1815@gmail.com</small></span>
-          </a>
-        </div>
-
-        <div class="contact-row">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-          <div><b>Çalışma saatleri</b><span>Hafta içi 08:00–20:00</span></div>
-        </div>
-        <div class="contact-row">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <div><b>Maslak, İstanbul</b><span>Merkez ofis</span></div>
-        </div>
-      </div>
-
-      <div class="contact-form">
-        <div class="mode-tabs" role="tablist" aria-label="Talep türü">
-          <button type="button" class="mode-tab active" data-mode="teklif" role="tab" aria-selected="true">Teklif Al</button>
-          <button type="button" class="mode-tab" data-mode="hasar" role="tab" aria-selected="false">Hasar Bildir</button>
-        </div>
-
-        <!-- ========== ONLINE TEKLİF (3 ADIM) ========== -->
-        <div class="mode-panel" data-mode="teklif">
-          <form id="teklifWizard" novalidate>
-            <div class="wiz-progress">
-              <div class="wiz-progress-top"><span id="wizStepLabel">Adım 1/3 · Sigorta türü</span><span>~1 dakika</span></div>
-              <div class="wiz-bars"><span class="on"></span><span></span><span></span></div>
-            </div>
-
-            <div class="wiz-step active" data-step="1">
-              <h3 class="wiz-title">Hangi sigortayı arıyorsunuz?</h3>
-              <p class="wiz-sub">Size en yakın seçeneği işaretleyin; emin değilseniz "Emin değilim" diyebilirsiniz.</p>
-              <div class="type-grid">
-                <label class="type-opt"><input type="radio" name="sigortaTuru" value="Trafik Sigortası"><span>Trafik Sigortası</span></label>
-                <label class="type-opt"><input type="radio" name="sigortaTuru" value="Kasko"><span>Kasko</span></label>
-                <label class="type-opt"><input type="radio" name="sigortaTuru" value="Trafik + Kasko"><span>Trafik + Kasko</span></label>
-                <label class="type-opt"><input type="radio" name="sigortaTuru" value="Genişletilmiş Kasko"><span>Genişletilmiş Kasko</span></label>
-                <label class="type-opt"><input type="radio" name="sigortaTuru" value="İMM"><span>İMM</span></label>
-                <label class="type-opt"><input type="radio" name="sigortaTuru" value="Yeşil Kart"><span>Yeşil Kart</span></label>
-                <label class="type-opt"><input type="radio" name="sigortaTuru" value="Ferdi Kaza Sigortası"><span>Ferdi Kaza</span></label>
-                <label class="type-opt"><input type="radio" name="sigortaTuru" value="Emin değilim"><span>Emin değilim</span></label>
-              </div>
-            </div>
-
-            <div class="wiz-step" data-step="2">
-              <h3 class="wiz-title">Aracınız hakkında</h3>
-              <p class="wiz-sub">Doğru teklif için temel araç bilgilerine ihtiyacımız var.</p>
-              <div class="form-row">
-                <div class="field"><label for="marka">Araç Markası *</label><input id="marka" type="text" placeholder="Örn. Toyota" autocomplete="off"></div>
-                <div class="field"><label for="model">Model / Yıl *</label><input id="model" type="text" placeholder="Örn. Corolla 2021" autocomplete="off"></div>
-              </div>
-              <div class="form-row">
-                <div class="field full"><label for="plaka">Plaka (opsiyonel)</label><input id="plaka" type="text" placeholder="Örn. 34 ABC 123" autocomplete="off"></div>
-              </div>
-            </div>
-
-            <div class="wiz-step" data-step="3">
-              <h3 class="wiz-title">İletişim bilgileriniz</h3>
-              <p class="wiz-sub">Teklifinizi size iletebilmemiz için bilgilerinizi bırakın.</p>
-              <div class="form-row">
-                <div class="field full"><label for="tAd">Ad Soyad *</label><input id="tAd" type="text" placeholder="Adınız Soyadınız" autocomplete="name"></div>
-              </div>
-              <div class="form-row">
-                <div class="field"><label for="tTel">Telefon *</label><input id="tTel" type="tel" placeholder="05xx xxx xx xx" autocomplete="tel"></div>
-                <div class="field"><label for="tEposta">E-posta *</label><input id="tEposta" type="email" placeholder="ornek@eposta.com" autocomplete="email"></div>
-              </div>
-              <div class="form-row">
-                <div class="field full"><label for="tNot">Notunuz (opsiyonel)</label><textarea id="tNot" placeholder="Eklemek istediğiniz bir bilgi var mı?"></textarea></div>
-              </div>
-              <label class="consent" id="tConsentWrap"><input type="checkbox" id="tConsent"><span><a href="#" data-modal-target="modalKvkk">KVKK Aydınlatma Metni</a>'ni okudum; kişisel verilerimin teklif hazırlanması amacıyla işlenmesini kabul ediyorum. *</span></label>
-              <div class="hp-field" aria-hidden="true"><label>Web sitesi<input type="text" id="tWebsite" tabindex="-1" autocomplete="off"></label></div>
-            </div>
-
-            <div class="wiz-error" id="wizError" role="alert"></div>
-
-            <div class="wiz-nav">
-              <button type="button" class="btn-back" id="wizBack" style="display:none;">← Geri</button>
-              <button type="button" class="submit-btn" id="wizNext">Devam →</button>
-              <button type="submit" class="submit-btn" id="wizSubmit" style="display:none;">Teklif İste</button>
-            </div>
-            <div class="form-success" id="teklifStatus" role="alert"></div>
-          </form>
-
-          <div class="done-card" id="teklifDone">
-            <div class="done-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
-            <h3>Teklif talebiniz alındı</h3>
-            <p>Bilgilerinizi inceleyip en kısa sürede sizinle iletişime geçeceğiz. Acil bir durumunuz varsa bizi arayabilirsiniz.</p>
-            <button type="button" class="btn-back" data-again="teklif">Yeni teklif talebi</button>
-          </div>
-        </div>
-
-        <!-- ========== HASAR BİLDİRİMİ (DOSYA YÜKLEMELİ) ========== -->
-        <div class="mode-panel" data-mode="hasar" style="display:none;">
-          <form id="hasarForm" novalidate>
-            <div class="info-note">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
-              <span>Yaralanma veya acil bir durum varsa önce <b>112</b>'yi arayın. Hasar fotoğraflarını ve belgeleri aşağıdan ekleyebilirsiniz.</span>
-            </div>
-
-            <div class="form-row">
-              <div class="field full"><label for="hAd">Ad Soyad *</label><input id="hAd" type="text" placeholder="Adınız Soyadınız" autocomplete="name"></div>
-            </div>
-            <div class="form-row">
-              <div class="field"><label for="hTel">Telefon *</label><input id="hTel" type="tel" placeholder="05xx xxx xx xx" autocomplete="tel"></div>
-              <div class="field"><label for="hEposta">E-posta *</label><input id="hEposta" type="email" placeholder="ornek@eposta.com" autocomplete="email"></div>
-            </div>
-            <div class="form-row">
-              <div class="field"><label for="hPolice">Poliçe No (opsiyonel)</label><input id="hPolice" type="text" placeholder="Varsa poliçe numaranız"></div>
-              <div class="field"><label for="hPlaka">Araç Plakası (opsiyonel)</label><input id="hPlaka" type="text" placeholder="Örn. 34 ABC 123"></div>
-            </div>
-            <div class="form-row">
-              <div class="field full"><label for="hTarih">Hasar Tarihi</label><input id="hTarih" type="date"></div>
-            </div>
-            <div class="form-row">
-              <div class="field full"><label for="hAciklama">Hasar Açıklaması *</label><textarea id="hAciklama" placeholder="Kaza veya hasarın nasıl oluştuğunu kısaca anlatın..."></textarea></div>
-            </div>
-
-            <div class="field full" style="margin-bottom:6px;">
-              <label>Fotoğraf / Belge Ekle (opsiyonel)</label>
-              <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Dosya seçmek için tıklayın veya sürükleyip bırakın">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
-                <b>Dosya seçin veya buraya sürükleyin</b>
-                <small>JPG, PNG, WEBP, HEIC veya PDF · en fazla 5 dosya · dosya başına 5 MB</small>
-              </div>
-              <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,image/heic,image/heif,application/pdf,.jpg,.jpeg,.png,.webp,.heic,.heif,.pdf" multiple style="display:none;">
-              <div class="file-hint" id="fileHint" role="alert"></div>
-              <ul class="file-list" id="fileList"></ul>
-            </div>
-
-            <label class="consent" id="hConsentWrap"><input type="checkbox" id="hConsent"><span><a href="#" data-modal-target="modalKvkk">KVKK Aydınlatma Metni</a>'ni okudum; kişisel verilerimin ve yüklediğim belgelerin hasar sürecinin yönetilmesi amacıyla işlenmesini kabul ediyorum. *</span></label>
-            <div class="hp-field" aria-hidden="true"><label>Web sitesi<input type="text" id="hWebsite" tabindex="-1" autocomplete="off"></label></div>
-
-            <div class="wiz-error" id="hasarError" role="alert"></div>
-            <button type="submit" class="submit-btn" id="hasarSubmit">Hasarı Bildir</button>
-            <div class="form-success" id="hasarStatus" role="alert"></div>
-          </form>
-
-          <div class="done-card" id="hasarDone">
-            <div class="done-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
-            <h3>Hasar bildiriminiz alındı</h3>
-            <p>Bildiriminiz ve ekleriniz ekibimize iletildi. Süreç hakkında en kısa sürede sizinle iletişime geçeceğiz.</p>
-            <button type="button" class="btn-back" data-again="hasar">Yeni hasar bildirimi</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap footer-inner">
-    <span>© 2026 Sigortan Seninle. Tüm hakları saklıdır.</span>
-    <nav class="footer-links">
-      <a href="#" data-modal-target="modalKvkk">KVKK Aydınlatma Metni</a>
-      <a href="#" data-modal-target="modalGizlilik">Gizlilik Politikası</a>
-      <a href="#" data-modal-target="modalKosullar">Kullanım Koşulları</a>
-    </nav>
-  </div>
-</footer>
-
-<div class="legal-modal" id="modalKvkk">
-  <div class="legal-modal-card">
-    <button class="legal-modal-close" type="button" aria-label="Kapat">✕</button>
-    <h3>KVKK Aydınlatma Metni</h3>
-    <div class="legal-modal-body">
-      <p>6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") uyarınca, Sigortan Seninle sigorta acenteliği faaliyetleri kapsamında elde ettiği ad, soyad, telefon, e-posta, araç ve poliçe bilgileriniz gibi kişisel verilerinizi; sigorta teklifi hazırlamak, hasar süreçlerinizi yönetmek, yasal yükümlülükleri yerine getirmek ve sizinle iletişime geçmek amacıyla işlemektedir.</p>
-      <p>Kişisel verileriniz, yalnızca ilgili sigorta şirketleri ve yasal olarak yetkili kurumlarla, işin gerektirdiği ölçüde paylaşılabilir. Verileriniz, ilgili mevzuatta öngörülen veya işlendikleri amaç için gerekli olan süre kadar saklanır.</p>
-      <p>KVKK'nın 11. maddesi kapsamında; verilerinizin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, düzeltilmesini veya silinmesini isteme haklarına sahipsiniz. Bu haklarınızı kullanmak için bizimle iletişim bölümünden ulaşabilirsiniz.</p>
-      <p style="color:var(--ink-soft); font-size:0.82rem;">Bu metin genel bir şablon niteliğindedir; şirketinizin faaliyetlerine göre bir hukuk danışmanı tarafından güncellenmesi önerilir.</p>
-    </div>
-  </div>
-</div>
-
-<div class="legal-modal" id="modalGizlilik">
-  <div class="legal-modal-card">
-    <button class="legal-modal-close" type="button" aria-label="Kapat">✕</button>
-    <h3>Gizlilik Politikası</h3>
-    <div class="legal-modal-body">
-      <p>Sigortan Seninle olarak, web sitemiz üzerinden bizimle paylaştığınız bilgilerin gizliliğine önem veriyoruz. Teklif ve hasar bildirim formları aracılığıyla topladığımız bilgiler yalnızca size hizmet sunmak amacıyla kullanılır ve üçüncü taraflarla, hizmetin gerektirdiği durumlar dışında paylaşılmaz.</p>
-      <p>Sitemiz, tarayıcınızda yalnızca teknik işlevsellik için gerekli olan yerel depolama (tercih hatırlama vb.) kullanabilir; bu veriler kimlik bilgilerinizle ilişkilendirilmez.</p>
-      <p>Sorularınız için iletişim bölümünden bize ulaşabilirsiniz.</p>
-      <p style="color:var(--ink-soft); font-size:0.82rem;">Bu metin genel bir şablon niteliğindedir; gerçek veri işleme süreçlerinize göre güncellenmelidir.</p>
-    </div>
-  </div>
-</div>
-
-<div class="legal-modal" id="modalKosullar">
-  <div class="legal-modal-card">
-    <button class="legal-modal-close" type="button" aria-label="Kapat">✕</button>
-    <h3>Kullanım Koşulları</h3>
-    <div class="legal-modal-body">
-      <p>Bu web sitesini kullanarak aşağıdaki koşulları kabul etmiş sayılırsınız. Sitede yer alan sigorta ürünü açıklamaları genel bilgilendirme amaçlıdır; kesin teminat ve fiyat bilgisi, tarafınıza sunulan resmi teklif ve poliçe belgelerinde yer alır.</p>
-      <p>Site üzerinden iletilen teklif ve hasar bildirim talepleri, ilgili ekibimiz tarafından değerlendirilir; bu talepler otomatik olarak bir poliçe oluşturmaz veya hasar kabulü anlamına gelmez.</p>
-      <p>Sitede yer alan içeriklerin izinsiz çoğaltılması veya ticari amaçla kullanılması yasaktır.</p>
-      <p style="color:var(--ink-soft); font-size:0.82rem;">Bu metin genel bir şablon niteliğindedir; hukuki danışmanlık yerine geçmez.</p>
-    </div>
-  </div>
-</div>
-
+<div id="app"></div><div id="dlg"></div>
 <script>
-(function(){
-  var openLinks = document.querySelectorAll('[data-modal-target]');
-  var modals = document.querySelectorAll('.legal-modal');
+const U=[
+{id:1,ic:'🌱',t:'İlk Adım',d:'HTML nedir? Etiket nedir?',
+teach:[
+{h:'HTML nedir?',p:'HTML, web sayfalarının iskeletidir. Bir sayfada ne olduğunu (başlık, yazı, resim…) tarayıcıya <b>etiketlerle</b> söyleriz.',c:'<p>Merhaba dünya!</p>'},
+{h:'Etiketler',p:'Çoğu etiketin bir <b>açılış</b> (&lt;p&gt;) ve bir <b>kapanış</b> (&lt;/p&gt;) hali vardır. Kapanış etiketi bir / işareti içerir. İçerik ikisinin arasına yazılır.',c:'<p>Bu bir paragraf.</p>'}],
+q:[
+{k:'mc',q:'Hangisi bir <b>kapanış</b> etiketidir?',o:['<p>','</p>','p/','<p/>'],a:1,e:'Kapanış etiketi, etiket adından önce / alır: </p>.'},
+{k:'mc',q:'HTML ne işe yarar?',o:['Sayfanın yapısını oluşturur','Bilgisayarı hızlandırır','Video düzenler'],a:0,e:'HTML, web sayfasının yapısını ve içeriğini tanımlar.'},
+{k:'type',q:'Paragraf etiketiyle <b>Selam</b> yazısını yaz:',a:['<p>Selam</p>'],e:'Doğrusu: <p>Selam</p> — açılış etiketi, içerik, kapanış etiketi.'}]},
+{id:2,ic:'📝',t:'Başlıklar ve Metin',d:'h1–h6, strong, em',
+teach:[
+{h:'Başlıklar',p:'&lt;h1&gt; en büyük, &lt;h6&gt; en küçük başlıktır. Bir sayfada genelde tek h1 olur.',c:'<h1>Ana Başlık</h1>\n<h2>Alt Başlık</h2>'},
+{h:'Kalın ve eğik',p:'&lt;strong&gt; yazıyı kalın, &lt;em&gt; eğik yapar.',c:'<p><strong>Kalın</strong> ve <em>eğik</em></p>'}],
+q:[
+{k:'mc',q:'En büyük başlık etiketi hangisi?',o:['<h6>','<h3>','<h1>','<head>'],a:2,e:'h1 en büyük, h6 en küçüktür.'},
+{k:'mc',q:'Yazıyı <b>kalın</b> yapan etiket?',o:['<em>','<strong>','<p>','<big>'],a:1,e:'<strong> kalın gösterir. <em> ise eğik yapar.'},
+{k:'type',q:'İkinci seviye başlıkla <b>Konu</b> yaz:',a:['<h2>Konu</h2>'],e:'Doğrusu: <h2>Konu</h2>'},
+{k:'type',q:'<b>Merhaba</b> yazısını eğik yap:',a:['<em>Merhaba</em>'],e:'Doğrusu: <em>Merhaba</em>'}]},
+{id:3,ic:'🔗',t:'Bağlantılar',d:'a etiketi ve href',
+teach:[
+{h:'Link oluşturma',p:'&lt;a&gt; etiketi bağlantı yapar. Gideceği adres <b>href</b> özelliğine yazılır. Özelliğin değeri tırnak içinde olur.',c:'<a href="https://example.com">Tıkla</a>'}],
+q:[
+{k:'mc',q:'Linkin adresi hangi özelliğe yazılır?',o:['src','href','link','url'],a:1,e:'Bağlantı adresi href özelliğine yazılır. src resimler içindir.'},
+{k:'mc',q:'Hangisi doğru yazılmış?',o:['<a href=google.com>Git</a>','<a href="google.com">Git</a>','<a>"google.com"Git</a>'],a:1,e:'Özellik değeri tırnak içinde olmalı ve etiketin içinde yer almalı.'},
+{k:'type',q:'<b>Git</b> yazısına https://google.com adresini bağla:',a:['<a href="https://google.com">Git</a>'],e:'Doğrusu: <a href="https://google.com">Git</a>'}]},
+{id:4,ic:'🖼️',t:'Resimler',d:'img, src ve alt',
+teach:[
+{h:'Resim ekleme',p:'&lt;img&gt; resim gösterir ve <b>kapanış etiketi yoktur</b>. <b>src</b> dosya adresidir, <b>alt</b> ise resim görünmezse çıkan açıklamadır.',c:'<img src="kedi.jpg" alt="Kedi">'}],
+q:[
+{k:'mc',q:'img etiketinin kapanış etiketi var mı?',o:['Evet, </img>','Hayır'],a:1,e:'img boş (kapanışsız) bir etikettir.'},
+{k:'mc',q:'alt özelliği ne işe yarar?',o:['Resmi büyütür','Resim yüklenmezse gösterilen açıklamadır','Resmin adresini tutar'],a:1,e:'alt, erişilebilirlik ve yüklenmeme durumu için açıklama metnidir. Adres src ile verilir.'},
+{k:'type',q:'kedi.jpg resmini ekle, alt açıklaması <b>Kedi</b> olsun:',a:['<img src="kedi.jpg" alt="Kedi">'],e:'Doğrusu: <img src="kedi.jpg" alt="Kedi">'}]},
+{id:5,ic:'📋',t:'Listeler',d:'ul, ol, li',
+teach:[
+{h:'Listeler',p:'&lt;ul&gt; noktalı, &lt;ol&gt; numaralı liste yapar. Her madde bir &lt;li&gt; ile yazılır.',c:'<ul>\n<li>Elma</li>\n<li>Armut</li>\n</ul>'}],
+q:[
+{k:'mc',q:'Numaralı liste etiketi hangisi?',o:['<ul>','<ol>','<li>','<nl>'],a:1,e:'ol = ordered list (sıralı liste). ul noktalı listedir.'},
+{k:'mc',q:'Liste maddesi hangi etiketle yazılır?',o:['<item>','<p>','<li>'],a:2,e:'Her madde <li> etiketinin içine yazılır.'},
+{k:'type',q:'Noktalı listeye tek madde ekle: <b>Elma</b>',a:['<ul><li>Elma</li></ul>'],e:'Doğrusu: <ul><li>Elma</li></ul>'}]}
+,{id:6,ic:'🏠',t:'Sayfa İskeleti',d:'html, head, body, title',
+teach:[
+{h:'Bir sayfanın iskeleti',p:'Gerçek bir web sayfası <b>&lt;html&gt;</b> etiketiyle başlar. İçinde iki bölüm olur: <b>&lt;head&gt;</b> (sayfa hakkında bilgiler, ekranda görünmez) ve <b>&lt;body&gt;</b> (ekranda görünen her şey).',c:'<html>\n<head>\n<title>Sayfam</title>\n</head>\n<body>\n<h1>Merhaba</h1>\n</body>\n</html>'},
+{h:'Title ve DOCTYPE',p:'<b>&lt;title&gt;</b> tarayıcı sekmesinde görünen sayfa adıdır. Dosyanın en üstüne <b>&lt;!DOCTYPE html&gt;</b> yazılır; tarayıcıya "bu modern HTML" der.',c:'<!DOCTYPE html>\n<html>\n<head><title>Adım</title></head>\n<body><p>İçerik</p></body>\n</html>'}],
+q:[
+{k:'mc',q:'Ekranda görünen içerik hangi etiketin içine yazılır?',o:['<head>','<body>','<title>'],a:1,e:'Görünen her şey body içindedir. head sayfa bilgilerini tutar.'},
+{k:'mc',q:'title neyi belirler?',o:['Sayfanın en büyük başlığını','Tarayıcı sekmesindeki adı','Sayfanın rengini'],a:1,e:'title, sekmede görünen sayfa adıdır.'},
+{k:'type',q:'body etiketinin içine <b>Merhaba</b> yazan bir paragraf koy:',a:['<body><p>Merhaba</p></body>'],e:'Doğrusu: <body><p>Merhaba</p></body>'}]}
+,{id:7,ic:'📦',t:'Gruplama',d:'div, span, br, hr',
+teach:[
+{h:'div ve span',p:'<b>&lt;div&gt;</b> içeriği kutu gibi gruplar ve alt satıra geçer. <b>&lt;span&gt;</b> ise yazının içindeki küçük bir parçayı işaretler, satırı bölmez. İkisi de tek başına görünüşü değiştirmez; stil vermek için kullanılır.',c:'<div>\n<p>Kutu içinde paragraf</p>\n</div>\n<p>Bu <span>kelime</span> işaretli</p>'},
+{h:'Satır sonu ve çizgi',p:'<b>&lt;br&gt;</b> satırı bitirir, <b>&lt;hr&gt;</b> yatay çizgi çeker. İkisinin de kapanış etiketi yoktur.',c:'<p>Birinci satır<br>İkinci satır</p>\n<hr>\n<p>Çizgiden sonra</p>'}],
+q:[
+{k:'mc',q:'Yeni satıra geçmek için hangisi kullanılır?',o:['<hr>','<br>','<div>'],a:1,e:'br satır sonudur. hr ise yatay çizgi çeker.'},
+{k:'mc',q:'hr etiketi ne yapar?',o:['Yatay çizgi çeker','Yazıyı kalın yapar','Başlık oluşturur'],a:0,e:'hr yatay bir çizgi çeker (horizontal rule).'},
+{k:'type',q:'<b>Bir</b> yazısından sonra satır atla, sonra <b>İki</b> yaz (br kullan):',a:['Bir<br>İki'],e:'Doğrusu: Bir<br>İki'}]}
+,{id:8,ic:'📊',t:'Tablolar',d:'table, tr, th, td',
+teach:[
+{h:'Tablo yapmak',p:'<b>&lt;table&gt;</b> tabloyu başlatır. Her satır <b>&lt;tr&gt;</b> (table row), başlık hücresi <b>&lt;th&gt;</b>, normal hücre <b>&lt;td&gt;</b> ile yazılır.',c:'<table border="1">\n<tr><th>Ad</th><th>Yaş</th></tr>\n<tr><td>Ali</td><td>12</td></tr>\n</table>'}],
+q:[
+{k:'mc',q:'Tablo satırı etiketi hangisi?',o:['<td>','<tr>','<th>','<row>'],a:1,e:'tr = table row, yani tablo satırı.'},
+{k:'mc',q:'Başlık hücresi hangisi?',o:['<th>','<td>','<h1>'],a:0,e:'th = table header. td normal veri hücresidir.'},
+{k:'type',q:'Tek satırlı ve tek hücreli bir tablo yaz. Hücrede <b>A</b> yazsın:',a:['<table><tr><td>A</td></tr></table>'],e:'Doğrusu: <table><tr><td>A</td></tr></table>'}]}
+,{id:9,ic:'✉️',t:'Formlar',d:'input, label, button',
+teach:[
+{h:'Form elemanları',p:'<b>&lt;input&gt;</b> kullanıcıdan bilgi alır ve kapanış etiketi yoktur. <b>type</b> özelliği türünü belirler (text, password, checkbox…). <b>&lt;label&gt;</b> kutunun adıdır, <b>&lt;button&gt;</b> tıklanan düğmedir.',c:'<label>Adın:</label>\n<input type="text" placeholder="Yaz...">\n<button>Gönder</button>'}],
+q:[
+{k:'mc',q:'input etiketi kapanış etiketi ister mi?',o:['Evet','Hayır'],a:1,e:'input kapanışsız bir etikettir, tıpkı img gibi.'},
+{k:'mc',q:'Yazı kutusu için type değeri hangisi?',o:['text','box','write'],a:0,e:'Yazı kutusu için type="text" kullanılır.'},
+{k:'type',q:'<b>Gönder</b> yazılı bir düğme yap:',a:['<button>Gönder</button>'],e:'Doğrusu: <button>Gönder</button>'}]}
+,{id:10,ic:'🎨',t:'Renk ve Stil (CSS)',d:'style, color, font-size',
+teach:[
+{h:'Görünüşü değiştirmek',p:'HTML yapıyı kurar, görünüşü <b>CSS</b> belirler. En basit yol etikete <b>style</b> özelliği vermektir. Kalıp: <b>özellik: değer;</b> (iki nokta ve noktalı virgül).',c:'<p style="color:red">Kırmızı yazı</p>'},
+{h:'Sık kullanılanlar',p:'<b>color</b> yazı rengi, <b>background-color</b> arka plan rengi, <b>font-size</b> yazı boyudur. Birden fazlasını noktalı virgülle ayır.',c:'<h1 style="color:white; background-color:teal; font-size:30px">Stilli başlık</h1>'}],
+q:[
+{k:'mc',q:'Yazı rengini hangi CSS özelliği değiştirir?',o:['font-size','color','background-color'],a:1,e:'color yazı rengidir. background-color arka plan rengidir.'},
+{k:'mc',q:'Doğru kalıp hangisi?',o:['color=red','color: red;','color - red'],a:1,e:'CSS kalıbı özellik: değer; şeklindedir.'},
+{k:'type',q:'<b>Merhaba</b> paragrafına mavi renk ver:',a:['<p style="color:blue">Merhaba</p>','<p style="color:blue;">Merhaba</p>'],e:'Doğrusu: <p style="color:blue">Merhaba</p>'}]}
+];
+const X={
+1:[{k:'fill',q:'Kapanış etiketini seç:',code:'<p>Merhaba___',o:['<p>','</p>','/p'],a:1,e:'Kapanış etiketi </p> şeklindedir.'},{k:'bug',q:'Bu kodda ne eksik?',code:'<p>Merhaba dünya',o:['Kapanış etiketi </p>','Başlık etiketi','Tırnak işareti'],a:0,e:'Açılan her etiket kapatılmalı: <p>Merhaba dünya</p>'}],
+2:[{k:'fill',q:'Boşluğa doğru etiketi seç (en büyük başlık):',code:'___Başlık</h1>',o:['<h1>','<p>','<h6>'],a:0,e:'h1 ile açılan </h1> ile kapanır ve en büyük başlıktır.'},{k:'bug',q:'Hata nedir?',code:'<strong>Kalın yazı</em>',o:['Kapanış etiketi açılışla uyuşmuyor','strong yanlış yazılmış','Boşluk eksik'],a:0,e:'<strong> ile açılan </strong> ile kapanmalı: <strong>Kalın yazı</strong>'}],
+3:[{k:'fill',q:'Adres hangi özelliğe yazılır?',code:'<a ___="https://example.com">Git</a>',o:['src','href','link'],a:1,e:'Bağlantı adresi href özelliğine yazılır.'},{k:'bug',q:'Hata nedir?',code:'<a href=https://example.com>Git</a>',o:['Adres tırnak içinde olmalı','a etiketi kapanmamış','href yanlış'],a:0,e:'Özellik değerleri tırnak içine yazılır: href="https://example.com"'}],
+4:[{k:'fill',q:'Resmin adresi hangi özelliğe yazılır?',code:'<img ___="kedi.jpg" alt="Kedi">',o:['src','href','alt'],a:0,e:'Resmin dosya adresi src özelliğine yazılır.'},{k:'bug',q:'Hata nedir?',code:'<img src="kedi.jpg" alt="Kedi"></img>',o:['img için kapanış etiketi yazılmaz','alt eksik','src yanlış'],a:0,e:'img kapanışsız bir etikettir; </img> yazılmaz.'}],
+5:[{k:'fill',q:'Numaralı liste için açılış etiketi hangisi?',code:'<___>\n<li>Elma</li>\n</ol>',o:['ul','ol','li'],a:1,e:'</ol> ile kapanıyorsa açılış <ol> olmalı.'},{k:'bug',q:'Hata nedir?',code:'<ul>\n<p>Elma</p>\n</ul>',o:['Liste maddesi <li> ile yazılmalı','ul yanlış','Kapanış eksik'],a:0,e:'Liste maddeleri <li> etiketiyle yazılır.'}],
+6:[{k:'fill',q:'title hangi bölümün içindedir?',code:'<html>\n<___>\n<title>Sayfam</title>\n</head>',o:['head','body','title'],a:0,e:'title, head içinde yer alır.'},{k:'bug',q:'Hata nedir?',code:'<html>\n<body>Merhaba</body>\n<title>Sayfam</title>\n</html>',o:['title, head içinde olmalı','body yanlış','html kapanmamış'],a:0,e:'title, head bölümünün içine yazılır.'}],
+7:[{k:'fill',q:'Satır atlatan etiketi seç:',code:'Birinci___İkinci',o:['<br>','<hr>','<div>'],a:0,e:'br satır sonu ekler.'},{k:'bug',q:'Hata nedir?',code:'<div><p>Kutu</p>',o:['div kapanmamış','p yanlış','br eksik'],a:0,e:'Doğrusu: <div><p>Kutu</p></div>'}],
+8:[{k:'fill',q:'Tablo satırı etiketini seç:',code:'<table>\n<___><td>A</td></tr>\n</table>',o:['tr','th','td'],a:0,e:'Satır <tr> ile başlar ve </tr> ile biter.'},{k:'bug',q:'Hata nedir?',code:'<table>\n<tr><td>A</td>\n</table>',o:['tr kapanmamış','td yanlış','table yanlış'],a:0,e:'Satır </tr> ile kapatılmalı.'}],
+9:[{k:'fill',q:'Kutunun türü hangi özellikle verilir?',code:'<input ___="text">',o:['type','src','name'],a:0,e:'Kutunun türü type özelliğiyle verilir.'},{k:'bug',q:'Hata nedir?',code:'<input type="text"></input>',o:['input kapanış etiketi istemez','type yanlış','label eksik'],a:0,e:'input kapanışsızdır: <input type="text">'}],
+10:[{k:'fill',q:'Yazı rengi için hangi özellik?',code:'<p style="___: red">Yazı</p>',o:['color','size','red'],a:0,e:'Yazı rengi için color özelliği kullanılır.'},{k:'bug',q:'Hata nedir?',code:'<p style="color=red">Yazı</p>',o:['= yerine : kullanılmalı','p yanlış','tırnak fazla'],a:0,e:'CSS kalıbı özellik: değer; şeklindedir (color: red).'}]};
+U.forEach(u=>u.q.splice(u.q.length-1,0,...X[u.id]));
+const G={
+1:{pre:[{h:'Kod nasıl yazılır?',p:'Her etiket aynı kalıpla yazılır: <b>&lt;</b> ile başlar, etiket adı gelir, <b>&gt;</b> ile biter. Kapanışta ada bir <b>/</b> eklenir. Küçük harf kullanmak alışkanlıktır. Boşluklar ve yeni satırlar sayfanın görünüşünü değiştirmez, sadece kodu okunaklı yapar.',c:'<p>Kod    böyle\nyazılır</p>'}],
+ g:[['<etiket>','Açılış etiketi: bir şeyin başladığını söyler'],['</etiket>','Kapanış etiketi: bir şeyin bittiğini söyler'],['<p>','Paragraf, yani düz yazı'],['içerik','İki etiketin arasına yazdığın metin']],
+ tr:'<p>Buraya kendi adını yaz</p>'},
+2:{g:[['<h1> … <h6>','Başlıklar. h1 en büyük, h6 en küçüktür'],['<strong>','Yazıyı kalın yapar'],['<em>','Yazıyı eğik yapar']],
+ tr:'<h1>Başlığım</h1>\n<p>Bu yazıyı <strong>kalın</strong> yap!</p>'},
+3:{g:[['<a>','Bağlantı etiketi (anchor)'],['href','Tıklayınca gidilecek adres. Bir özelliktir'],['"…"','Özelliğin değeri her zaman tırnak içine yazılır']],
+ tr:'<a href="https://example.com">Beni değiştir</a>'},
+4:{g:[['<img>','Resim etiketi. Kapanış etiketi yoktur'],['src','Resim dosyasının adresi'],['alt','Resim görünmezse çıkan açıklama']],
+ tr:'<img src="kedi.jpg" alt="Kedi resmi">',p:'Kodu değiştir, önizleme anında güncellenir. Elimizde kedi.jpg dosyası olmadığı için alt yazısı görünecek.'},
+5:{g:[['<ul>','Noktalı liste'],['<ol>','Numaralı liste'],['<li>','Listedeki tek bir madde']],
+ tr:'<ol>\n<li>Birinci</li>\n<li>İkinci</li>\n</ol>'},
+6:{g:[['<html>','Sayfanın tamamını saran ana etiket'],['<head>','Sayfa hakkında bilgiler (ekranda görünmez)'],['<body>','Ekranda görünen her şey'],['<title>','Tarayıcı sekmesindeki ad']],
+ tr:'<html>\n<head><title>Sayfam</title></head>\n<body>\n<h1>Merhaba</h1>\n</body>\n</html>'},
+7:{g:[['<div>','İçeriği kutu gibi gruplar'],['<span>','Yazının küçük bir parçasını işaretler'],['<br>','Satır sonu (kapanışsız)'],['<hr>','Yatay çizgi (kapanışsız)']],
+ tr:'<div>\n<p>Birinci satır<br>İkinci satır</p>\n</div>\n<hr>'},
+8:{g:[['<table>','Tablonun tamamı'],['<tr>','Tablo satırı'],['<th>','Başlık hücresi (kalın)'],['<td>','Normal hücre']],
+ tr:'<table border="1">\n<tr><th>Ürün</th><th>Fiyat</th></tr>\n<tr><td>Elma</td><td>10</td></tr>\n</table>'},
+9:{g:[['<input>','Bilgi giriş kutusu (kapanışsız)'],['type','Kutunun türü: text, password…'],['<label>','Kutunun adı'],['<button>','Tıklanabilir düğme']],
+ tr:'<label>Adın:</label>\n<input type="text" placeholder="Yaz...">\n<button>Gönder</button>'},
+10:{g:[['style','Etikete doğrudan stil verme özelliği'],['color','Yazı rengi'],['background-color','Arka plan rengi'],['font-size','Yazı boyu']],
+ tr:'<h1 style="color:tomato">Renkli başlık</h1>\n<p style="font-size:24px">Büyük yazı</p>'}};
+const $=s=>document.querySelector(s);
+const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const norm=t=>t.toLowerCase().replace(/\s+/g,'').replace(/'/g,'"').replace(/\/>/g,'>');
+let S={xp:0,done:[],started:false,streak:0,last:''};
+try{Object.assign(S,JSON.parse(localStorage.getItem('htmlduo')||'{}'))}catch(e){}
+let DB=null,ST='local',V='home',PT=null,CB=null;
+const save=()=>{S.ts=Date.now();try{localStorage.setItem('htmlduo',JSON.stringify(S))}catch(e){}push()};
+function push(){if(!DB)return;clearTimeout(PT);PT=setTimeout(async()=>{try{await DB.set(JSON.parse(JSON.stringify(S)));ST='cloud'}catch(e){ST='local'}},700)}
+async function initCloud(){
+  try{
+    if(!window.claude||!window.claude.use)return;
+    const db=await claude.use('db'),us=await claude.use('user');
+    if(!db||!us)return;
+    const id=await us.id();if(!id)return;
+    const ref=db.collection('data/users/'+id).doc('progress'),sn=await ref.get(),c=sn.exists?sn.data():null;
+    DB=ref;ST='cloud';
+    if(c&&(c.ts||0)>(S.ts||0)){S=Object.assign({xp:0,done:[],started:false,streak:0,last:''},c);try{localStorage.setItem('htmlduo',JSON.stringify(S))}catch(e){}}
+    else push();
+    if(V==='home')home();
+  }catch(e){DB=null;ST='local'}
+}
+window.addEventListener('error',()=>{try{$('#dlg').innerHTML=`<div class="ov"><div><p style="font-size:17px">Bir şey ters gitti 😕 İlerlemen kaydedildi.</p><button class="btn" onclick="no();home()">Ana sayfaya dön</button></div></div>`}catch(x){}});
+function ask(m,f){CB=f;$('#dlg').innerHTML=`<div class="ov"><div><p style="font-size:17px">${m}</p><button class="btn red" onclick="yes()">Evet</button><button class="btn ghost" onclick="no()">Vazgeç</button></div></div>`}
+function yes(){const f=CB;no();if(f)f()}
+function no(){CB=null;$('#dlg').innerHTML=''}
+function rename(){$('#dlg').innerHTML=`<div class="ov"><div><p style="font-size:17px">Adın ne?</p><input class="code" id="nm2" maxlength="20" value="${esc(S.name||'')}"><button class="btn" onclick="setName()">Kaydet</button><button class="btn ghost" onclick="no()">Vazgeç</button></div></div>`}
+function setName(){S.name=$('#nm2').value.trim().slice(0,20);save();no();home()}
+function resetAll(){const n=S.name,p=S.play,a=S.ac;S={xp:0,done:[],started:false,streak:0,last:'',name:n,play:p,pt:[],ac:a};save();home()}
+const acct=()=>'👤 <b>'+esc(S.name||'Misafir')+'</b> <button class="x" style="font-size:14px" onclick="rename()">✏️</button> · '+(ST==='cloud'?'☁️ Hesabına kaydediliyor, her cihazda seninle':'💾 Bu cihazda kaydediliyor');
+const lvl=()=>Math.floor(S.xp/60)+1;
+const names=['Çaylak','Öğrenci','Kodlayıcı','Usta','Efsane'];
+let L=null;
 
-  function closeAll(){
-    modals.forEach(function(m){ m.classList.remove('show'); });
+function home(){
+  L=null;V='home';
+  const un=U.map((u,i)=>{
+    const dn=S.done.includes(u.id),lk=i>0&&!S.done.includes(U[i-1].id);
+    return `<button class="unit ${dn?'done':''} ${lk?'lock':''}" ${lk?'disabled':`onclick="start(${u.id})"`}><div class="ic">${lk?'🔒':dn?'⭐':u.ic}</div><div><b>Bölüm ${u.id}: ${u.t}</b><span>${lk?'Önceki bölümü bitir':u.d}${dn?' • Tekrar çalış':''}${S.stars&&S.stars[u.id]?' • '+'★'.repeat(S.stars[u.id]):''}</span></div></button>`}).join('');
+  $('#app').innerHTML=`<div class="top"><span class="pill">🔥 ${S.streak}</span><span class="pill">⭐ ${S.xp} XP</span><span class="pill">Lv ${lvl()} · ${names[Math.min(lvl()-1,4)]}</span></div>
+  <div class="bar"><i style="width:${(S.xp%60)/60*100}%"></i></div>
+  <h1>HTML Yolculuğun</h1><p style="margin:0 0 6px;font-size:14px;color:var(--mut)">${acct()}</p><p style="color:var(--mut);margin-top:0">Bölümleri sırayla bitir, XP kazan, level atla. ${S.done.length}/${U.length} bölüm tamam.</p><button class="btn ghost" onclick="play()">🧪 Deneme Alanı: kendi sayfanı yap</button>${S.done.length===U.length?`<div class="center" style="padding-top:10px"><div class="big">🏆</div><h1>Tüm bölümler tamam!</h1><p>Harikasın! İstersen bölümleri tekrar çalış ya da en baştan başla.</p><button class="btn red" onclick="ask('Tüm ilerleme (XP, level, bölümler) sıfırlanacak ve 1. bölümden başlayacaksın. Deneme Alanındaki kodun silinmez. Emin misin?',resetAll)">🔄 Baştan başla</button></div>`:''}${(S.miss||[]).length?`<button class="unit" onclick="startReview()"><div class="ic" style="background:var(--b)">🔁</div><div><b>Tekrar: zorlandığın sorular</b><span>${S.miss.length} soru seni bekliyor</span></div></button>`:''}${un}
+  ${S.started?'':`<div class="ov"><div><h1>Hoş geldin! 👋</h1><p>Adın ne?</p><input class="code" id="nm" maxlength="20" placeholder="Adın (isteğe bağlı)" value="${esc(S.name||'')}"><p>Seviyeni seç:</p><button class="btn" onclick="lv(0)">Sıfırdan başlıyorum</button><button class="btn ghost" onclick="lv(1)">HTML'i biraz biliyorum (1. bölümü atla)</button></div></div>`}`;
+}
+function lv(k){const nm=$('#nm');if(nm&&nm.value.trim())S.name=nm.value.trim().slice(0,20);S.started=true;if(k&&!S.done.includes(1))S.done.push(1);save();home()}
+function start(id){
+  V='lesson';
+  const u=U.find(x=>x.id==id);
+  L={u,items:[{k:'g',g:G[u.id].g},...(G[u.id].pre||[]).map(t=>({k:'t',...t})),...u.teach.map(t=>({k:'t',...t})),{k:'try',c:G[u.id].tr,p:G[u.id].p||'Kodu değiştir, altındaki önizleme anında güncellenir. Hata yapmak serbest!'},...u.q.map((q,i)=>({...q,key:u.id+':'+i}))],i:0,hearts:3,xp:0,wrong:0,sel:null,val:'',res:null};
+  lesson();
+}
+function lesson(){
+  const it=L.items[L.i],hs='♾️❤️';
+  let body='',foot='';
+  if(it.k==='g'){
+    body=`<h1>📖 Şu şudur</h1><p>Bu bölümde göreceğin parçalar:</p>`+it.g.map(x=>`<div class="pill" style="display:block;margin:8px 0;font-weight:600"><code>${esc(x[0])}</code> → ${x[1]}</div>`).join('');
+    foot=`<button class="btn" onclick="next()">Devam</button>`;
+  }else if(it.k==='try'){
+    body=`<h1>✍️ Şimdi sen dene</h1><p>${it.p}</p><textarea id="ta" class="code" rows="5" autocapitalize="off" spellcheck="false" oninput="pv()">${esc(it.c)}</textarea><p style="font-weight:700;color:var(--mut)">Önizleme:</p><iframe id="pvw" sandbox></iframe>`;
+    foot=`<button class="btn" onclick="next()">Devam</button>`;
+  }else if(it.k==='t'){
+    body=`<h1>${it.h}</h1><p>${it.p}</p><pre>${esc(it.c)}</pre><p style="font-weight:700;color:var(--mut)">Tarayıcıda görünüşü:</p><iframe sandbox srcdoc="${it.c.replace(/"/g,'&quot;')}"></iframe>`;
+    foot=`<button class="btn" onclick="next()">Devam</button>`;
+  }else{
+    body=`<h1>${it.retry?'🔁 Tekrar dene ('+((it.n||1)+1)+'. deneme, en fazla 3)':'Soru'}</h1><p style="font-size:18px">${it.q}</p>`;
+    if(it.part)body+='<div class="pill" style="display:block;margin:8px 0;font-weight:700">'+(it.k==='type'?'💡 Cevabın bir kısmı: <code>'+esc(half(it.a[0]))+'</code>':'💡 Yanlış seçeneklerin çoğunu eledim, geriye 2 seçenek kaldı.')+'</div>';
+    if(it.code)body+='<pre>'+esc(it.code).replace('___','<u>'+(L.sel!==null?esc(it.o[L.sel]):'____')+'</u>')+'</pre>';
+    if(it.k!=='type')body+=it.o.map((o,i)=>`<button class="opt ${L.sel===i?'sel':''}" ${(L.gone||[]).includes(i)?'style="display:none"':''} ${L.res?'disabled':`onclick="L.sel=${i};lesson()"`}>${esc(o)}</button>`).join('');
+    else body+=`<input class="code" id="inp" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Kodu buraya yaz…" value="${L.val.replace(/"/g,'&quot;')}" ${L.res?'disabled':''} oninput="L.val=this.value;$('#chk').disabled=!L.val.trim()" onkeydown="if(event.key==='Enter'&&L.val.trim())check()">`;
+    if(!L.res)body+=`<button class="pill" style="cursor:pointer;color:var(--fg);font:inherit;font-weight:700" onclick="hint()">💡 İpucu</button>${L.hint?`<p style="color:var(--b);font-weight:600;white-space:pre-line">${esc(L.hint)}</p>`:''}`;
+    if(!L.res)foot=`<button class="btn" id="chk" ${(it.k!=='type'?L.sel===null:!L.val.trim())?'disabled':''} onclick="check()">Kontrol Et</button>`;
+    else foot=`<div class="fb">${L.res.ok?'✅ Doğru! +'+L.res.xp+' XP':'❌ Yanlış'}</div><p>${L.res.ok?esc(L.items[L.i].e||'Harika gidiyorsun.'):L.res.msg}</p><button class="btn ${L.res.ok?'':'red'}" onclick="next()">Devam</button>`;
   }
-
-  openLinks.forEach(function(link){
-    link.addEventListener('click', function(e){
-      e.preventDefault();
-      var id = link.getAttribute('data-modal-target');
-      var modal = document.getElementById(id);
-      if(modal) modal.classList.add('show');
-    });
-  });
-
-  modals.forEach(function(modal){
-    modal.addEventListener('click', function(e){
-      if(e.target === modal) closeAll();
-    });
-    var closeBtn = modal.querySelector('.legal-modal-close');
-    if(closeBtn) closeBtn.addEventListener('click', closeAll);
-  });
-
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeAll();
-  });
-})();
+  $('#app').innerHTML=`<div class="top"><button class="x" onclick="ask('Dersten çıkılsın mı? Bu dersteki ilerleme kaybolur.',home)">✕</button><div class="bar"><i style="width:${L.i/L.items.length*100}%"></i></div><span>${hs}</span></div>${body}<div class="foot ${L.res?(L.res.ok?'ok':'no'):''}"><div class="in">${foot}</div></div>`;
+  const inp=$('#inp');if(inp&&!L.res)inp.focus();
+  if($('#ta'))pv();
+}
+function pv(){$('#pvw').srcdoc='<meta charset=utf-8><style>body{font:16px system-ui,sans-serif;padding:8px;color:#222}img{max-width:100%}</style>'+$('#ta').value}
+function diag(it,v){
+  const n=norm(v),a=norm(it.a[0]);
+  if(!/</.test(v))return 'Etiketler < işaretiyle başlar. '+it.e;
+  if(/<\/[a-z0-9]+>/.test(a)&&!/<\/[a-z0-9]+>/.test(n))return 'Kapanış etiketini (</...>) unuttun. '+it.e;
+  if(/="/.test(a)&&!/="/.test(n))return 'Özellik değerini tırnak içine almalısın (özellik="değer"). '+it.e;
+  if((v.match(/</g)||[]).length!==(v.match(/>/g)||[]).length)return '< ve > işaretlerinden biri eksik. '+it.e;
+  return 'Etiket adını, metni veya sırayı kontrol et. '+it.e;
+}
+function check(){
+  const it=L.items[L.i];
+  const ok=it.k!=='type'?L.sel===it.a:it.a.some(a=>norm(a)===norm(L.val));
+  if(ok){const x=(it.retry||L.hu)?5:10;L.xp+=x;L.res={ok,xp:x};if(!it.retry&&S.miss)S.miss=S.miss.filter(k=>k!==it.key)}
+  else{L.wrong++;S.miss=S.miss||[];if(it.key&&!S.miss.includes(it.key))S.miss.push(it.key);const n=(it.n||0)+1;
+    if(n>=3){L.fail=true;L.failQ=it}
+    else{let gone;if(it.k!=='type'){const wr=it.o.map((_,i)=>i).filter(i=>i!==it.a),keep=wr.find(i=>i!==L.sel);gone=n>=2?wr.filter(i=>i!==(keep===undefined?wr[0]:keep)):undefined}
+      L.items.splice(Math.min(L.i+3,L.items.length),0,{...it,retry:true,n,part:n>=2,gone})}
+    L.res={ok,msg:it.k!=='type'?'Doğru cevap: <code>'+esc(it.o[it.a])+'</code>. '+esc(it.e):esc(diag(it,L.val))+' <br>Doğru cevap: <code>'+esc(it.a[0])+'</code>'};if(n>=3)L.res.msg+='<br><b>3 deneme bitti.</b> Devam’a basınca bölüm kapanacak; konuyu tekrar okuyup gel.'}
+  save();lesson();
+}
+function half(a){const t=a.match(/<[^>]*>|[^<]+/g)||[a];return t.length>=2?t.slice(0,Math.ceil(t.length/2)).join('')+' …':a.slice(0,Math.ceil(a.length/2))+' …'}
+function smart(a,v){const toks=a.match(/<[^>]*>|[^<]+/g)||[a];let u=norm(v),i=0;for(;i<toks.length;i++){const t=norm(toks[i]);if(u.startsWith(t))u=u.slice(t.length);else break}return{toks,i,u}}
+const nm=t=>t.replace(/^<\/?([a-zA-Z0-9]+)[\s\S]*$/,'$1');
+const attrs=t=>[...t.matchAll(/\s([a-zA-Z-]+)=/g)].map(m=>m[1]);
+const exT=n=>['p','b','i','li'].find(x=>x!==n);
+function step(t,l){
+  const n=nm(t),x=exT(n),at=attrs(t);
+  if(/^<\//.test(t))return l===1?'Sırada: kapanış etiketi.\nÖrnek: <'+x+'>Merhaba → <'+x+'>Merhaba</'+x+'>':l===2?'Kapanış = < + / + açılıştaki ad + >\nÖrnek: <'+x+'> açtıysan kapanışı </'+x+'> olur.':'Kapatılacak etiket: “'+n+'” (bitişik yaz: < / '+n+' >)';
+  if(/^</.test(t)){const ex=at.length?(n==='img'?'<a href="adres">':'<img src="a.png">'):'<'+x+'>Merhaba</'+x+'>';return l===1?'Sırada: açılış etiketi'+(at.length?' (özellikli)':'')+'.\nÖrnek: '+ex+(at.length?'  → özellik: ad="değer"':'  → baştaki <'+x+'> açılıştır.'):l===2?'Açılış = < + etiket adı + >'+(at.length?'\nBu etikette özellik var: '+at.join(', ')+' (ad="değer")':'\nÖrnek: <'+x+'> gibi.'):'Açılacak etiket: “'+n+'” (bitişik yaz: < '+n+(at.length?' özellik':'')+' >)'}
+  return l===1?'Sırada: etiketin içine sorudaki yazı: “'+t.trim()+'”.\nÖrnek: <'+x+'>Merhaba</'+x+'> → “Merhaba” içeriktir.':l===2?'Sorudaki yazıyı aynen yaz (büyük/küçük harfe dikkat).':'Yazı '+t.trim().length+' karakter, “'+t.trim()[0]+'” ile başlıyor.';
+}
+function hint(){
+  const it=L.items[L.i];L.hu=true;
+  if(it.k==='type'){
+    const v=L.val||'',a=it.a[0];
+    if(L.lv!==v){L.hl=0;L.lv=v}
+    L.hl++;
+    const {toks,i,u}=smart(a,v);
+    let raw='';
+    if(u){const n=norm(v).length-u.length;let c=0,k=0;while(k<v.length&&c<n){c+=norm(v[k]).length;k++}raw=v.slice(k).trim()}
+    if(!v.trim()){
+      const f=toks[0],isT=!/^</.test(f),fa=attrs(f),texts=toks.filter(t=>!/^</.test(t)).map(t=>t.trim());
+      const first=isT?'“'+f.trim()+'” (sorudaki yazı)':fa.length?'“<'+nm(f)+' …>” açılış etiketi (özellikler: '+fa.join(', ')+')':'“'+f.trim()+'” (açılış etiketi)';
+      L.hint=L.hl===1?['Nereden başlayacağını hatırlatayım:','• İlk yazacağın: '+first,(!isT&&texts.length?'• Sorudaki yazı “'+texts.join('”, “')+'” etiketin içine gelecek':''),(toks.some(t=>/^<\//.test(t))?'• En sonda açtığın etiketleri kapat':'')].filter(Boolean).join('\n'):'Örnekle:\n'+step(f,Math.min(L.hl-1,3));
+    }else if(i>=toks.length){
+      L.hint=u?'Fazla yazı: “'+raw+'”. Sil, gerisi doğru.':'Tamam görünüyor 👍 Kontrol Et’e bas.';
+    }else{
+      const t=toks[i],done=toks.slice(0,i).join(''),part=u&&norm(t).startsWith(u);
+      const st=done?'Doğru: “'+done+'”':'',bd=u?(part?'Yarım: “'+raw+'” → tamamla.':'Hatalı: “'+raw+'” → sil, tekrar dene.'):'';
+      L.hint=[st,bd,step(t,Math.min(L.hl,3))].filter(Boolean).join('\n');
+    }
+  }else{
+    L.mh=(L.mh||0)+1;L.gone=L.gone||[];let cut=0;
+    if(L.sel!==null&&L.sel!==it.a){L.gone.push(L.sel);L.sel=null;cut++}
+    const w=it.o.map((_,i)=>i).filter(i=>i!==it.a&&!L.gone.includes(i));
+    while(w.length>1){L.gone.push(w.shift());cut++}
+    const tip=it.k==='bug'?'Her açılan etiket kapanmış mı? Değerler tırnakta mı?\nÖrnek: <b>Selam → eksik, doğrusu <b>Selam</b>':it.k==='fill'?'Boşluğa bak: orada ne eksik?\nÖrnek: <b>Selam___ → boşluğa </b> gelir.':'İki seçeneği tek tek dene: soruda istenen şeyi hangisi yapıyor?';
+    L.hint=cut?'Yanlışları sildim, 2 seçenek kaldı.':(L.mh<=2?tip:'Birini seç; yanlışsa nedenini açıklarım.');
+  }
+  lesson();
+}
+function startReview(){
+  V='lesson';const items=[];
+  (S.miss||[]).slice(0,8).forEach(k=>{const[a,b]=k.split(':'),u=U.find(x=>x.id==a),q=u&&u.q[b];if(q)items.push({...q,key:k})});
+  if(!items.length){S.miss=[];save();return home()}
+  L={u:{id:0,t:'Tekrar'},items,i:0,hearts:3,xp:0,wrong:0,sel:null,val:'',res:null,rev:true};lesson();
+}
+function next(){
+  if(L.fail)return fail();
+  L.i++;L.sel=null;L.val='';L.res=null;L.hint='';L.hl=0;L.gone=[];L.hu=false;L.mh=0;{const nx=L.items[L.i];if(nx&&nx.gone)L.gone=nx.gone.slice()}
+  if(L.i>=L.items.length)return finish();
+  lesson();
+}
+function fail(){
+  const q=L.failQ,id=L.u.id,rv=L.rev,ans=q?(q.k!=='type'?q.o[q.a]:q.a[0]):'';
+  $('#app').innerHTML=`<div class="center"><div class="big">📖</div><h1>Bu bölümü tekrar edelim</h1><p>Bu soruda 3 denemede doğru yapamadın, sorun değil! Konuyu bir kez daha okuyup yeniden dene.</p>${q?`<p>Takıldığın sorunun doğru cevabı: <code>${esc(ans)}</code></p>`:''}<button class="btn" onclick="${rv?'startReview()':`start(${id})`}">Bölümü baştan başlat</button><br><button class="btn ghost" onclick="home()">Ana sayfa</button></div>`;
+}
+function finish(){
+  if(L.rev){S.xp+=L.xp+10;save();$('#app').innerHTML=`<div class="center"><div class="big">🔁</div><h1>Tekrar bitti!</h1><p style="font-size:18px">⭐ +${L.xp+10} XP<br>Kalan zor soru: ${(S.miss||[]).length}</p><button class="btn" onclick="home()">Ana sayfa</button></div>`;return}
+  const u=L.u,old=lvl(),bonus=20,first=!S.done.includes(u.id);
+  S.xp+=L.xp+bonus;if(first)S.done.push(u.id);const st=L.wrong===0?3:L.wrong<=2?2:1;S.stars=S.stars||{};S.stars[u.id]=Math.max(S.stars[u.id]||0,st);
+  const t=new Date().toDateString(),y=new Date(Date.now()-864e5).toDateString();
+  if(S.last!==t){S.streak=S.last===y?S.streak+1:1;S.last=t}
+  save();
+  const up=lvl()>old,nu=U[U.findIndex(x=>x.id===u.id)+1];
+  $('#app').innerHTML=`<div class="center"><div class="big">🎉</div><h1>Bölüm tamam!</h1>
+  <p style="font-size:34px;margin:0">${'★'.repeat(st)}${'☆'.repeat(3-st)}</p><p style="font-size:18px">⭐ +${L.xp+bonus} XP (${bonus} bonus)<br>❌ ${L.wrong} hata<br>${L.wrong===0?'Kusursuz! 💯':'Hatalarından öğrendin 👏'}</p>
+  ${up?`<p style="font-size:20px;font-weight:800;color:var(--b)">🆙 Level ${lvl()}: ${names[Math.min(lvl()-1,4)]}!</p>`:''}
+  ${nu&&first?`<p>🔓 Yeni bölüm açıldı: <b>${nu.t}</b></p>`:''}
+  <button class="btn" onclick="${nu?`start(${nu.id})`:'home()'}">${nu?'Sonraki bölüm':'Ana sayfa'}</button><br><button class="btn ghost" onclick="home()">Ana sayfa</button></div>`;
+}
+const SN=[[1,'<p>','<p>Yazı</p>'],[2,'<h1>','<h1>Başlık</h1>'],[2,'<strong>','<strong>kalın</strong>'],[2,'<em>','<em>eğik</em>'],[3,'<a>','<a href="https://example.com">Bağlantı</a>'],[4,'<img>','<img src="kedi.jpg" alt="Açıklama">'],[5,'<ul>','<ul>\n<li>Madde</li>\n</ul>'],[5,'<ol>','<ol>\n<li>Madde</li>\n</ol>'],[6,'<title>','<title>Sayfa adı</title>'],[7,'<div>','<div>\n<p>Grup</p>\n</div>'],[8,'<table>','<table border=\"1\">\n<tr><th>Ad</th><th>Yaş</th></tr>\n<tr><td>Ali</td><td>12</td></tr>\n</table>'],[9,'<input>','<input type=\"text\" placeholder=\"Adın\">'],[9,'<button>','<button>Gönder</button>'],[10,'style','<p style=\"color:blue\">Mavi yazı</p>']];
+const TPL={'Boş sayfa':'','Kişisel sayfa':'<h1>Merhaba, ben ...</h1>\n<p>Kendimi tanıtan <strong>kısa</strong> bir yazı.</p>\n<h2>Hobilerim</h2>\n<ul>\n<li>Kitap okumak</li>\n<li>Kod yazmak</li>\n<li>Yürüyüş</li>\n</ul>','Bağlantı sayfası':'<h1>Favori Sitelerim</h1>\n<ol>\n<li><a href="https://wikipedia.org">Vikipedi</a></li>\n<li><a href="https://example.com">Örnek site</a></li>\n</ol>'};
+const TN=Object.keys(TPL);
+const TK=[['Bir <h1> başlık ve bir <p> paragraf yaz',d=>d.querySelector('h1')&&d.querySelector('p')],['Kalın (<strong>) ve eğik (<em>) yazı kullan',d=>d.querySelector('strong')&&d.querySelector('em')],['Bir bağlantı ekle (<a href="…">)',d=>d.querySelector('a[href]')],['Bir resim ekle (src ve alt ile)',d=>d.querySelector('img[src][alt]')],['En az 3 maddelik liste yap',d=>d.querySelectorAll('li').length>=3],['Bir tablo yap (th ve td ile)',d=>d.querySelector('table th')&&d.querySelector('table td')],['Bir input ve bir button ekle',d=>d.querySelector('input')&&d.querySelector('button')],['Bir yazıya style ile renk ver',d=>d.querySelector('[style*="color"]')]];
+const VOID=['img','br','hr','input','meta','link'],KN=['p','h1','h2','h3','h4','h5','h6','strong','em','a','img','ul','ol','li','br','hr','div','span','b','i','u','table','tr','td','th','html','head','body','title','style','section','header','footer','nav','button','input','form','label','meta','link','thead','tbody','textarea','select','option'];
+let U2=[];
+const pb=(l,f,id)=>`<button class="pill" ${id?`id="${id}"`:''} style="cursor:pointer;margin:3px;color:var(--fg);font:inherit;font-weight:700" onclick="${f}">${l}</button>`;
+function lint(c){
+  const out=[],st=[],re=/<(\/?)([a-zA-Z][a-zA-Z0-9]*)([^<>]*)(>?)/g,ln=i=>c.slice(0,i).split('\n').length;let m;
+  while(m=re.exec(c)){
+    const n=m[2].toLowerCase(),l=ln(m.index);
+    if(!KN.includes(n))out.push(`Satır ${l}: <${n}> bilinmeyen bir etiket, yazım hatası olabilir`);
+    if(!m[4])out.push(`Satır ${l}: <${n} etiketinde > işareti eksik`);
+    if(m[1]){
+      if(VOID.includes(n)){out.push(`Satır ${l}: <${n}> kapanış etiketi istemez`);continue}
+      const k=st.map(x=>x.n).lastIndexOf(n);
+      if(k<0)out.push(`Satır ${l}: </${n}> kapanışının açılış etiketi yok`);
+      else{st.slice(k+1).forEach(x=>out.push(`Satır ${x.l}: <${x.n}> etiketi kapatılmamış`));st.length=k}
+    }else{
+      const at=m[3].replace(/"[^"]*"|'[^']*'/g,'\u0001');
+      if(/=\s*[^\u0001\s]/.test(at)||/["']/.test(at))out.push(`Satır ${l}: özellik değerini tırnak içine al (örn. href="...")`);
+      if(!VOID.includes(n))st.push({n,l});
+    }
+  }
+  st.forEach(x=>out.push(`Satır ${x.l}: <${x.n}> etiketi kapatılmamış`));
+  return out.slice(0,5);
+}
+function play(){
+  L=null;V='play';U2=[];if(!S.pt)S.pt=[];
+  if(S.play==null)S.play=TPL['Kişisel sayfa'];
+  $('#app').innerHTML=`<div class="top"><button class="x" onclick="home()">←</button><b>🧪 Deneme Alanı</b><span class="pill">⭐ ${S.xp} XP</span></div>
+  <p style="color:var(--mut);margin-top:0">Öğrendiklerini burada dene. Kodun otomatik kaydedilir. Şablon seç ya da etiket ekle; kilitli etiketler o bölümü bitirince açılır.</p>
+  <div><b>Şablonlar:</b>${TN.map((n,i)=>pb(n,`tpl(${i})`)).join('')}</div>
+  <div><b>Etiketler:</b>${SN.map((s,i)=>{const ok=s[0]==1||S.done.includes(s[0]);return ok?pb(esc(s[1]),`ins(${i})`):`<button class="pill" disabled style="margin:3px;opacity:.4;font:inherit;font-weight:700;color:var(--fg)">🔒 ${esc(s[1])}</button>`}).join('')}</div>
+  <textarea id="ta" class="code" rows="10" style="margin-top:8px" autocapitalize="off" spellcheck="false" oninput="ai(event)" onkeydown="kd(event)">${esc(S.play)}</textarea>
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap"><span id="cnt" style="color:var(--mut);font-size:14px"></span><span>${pb('↩ Geri al','undo()')}${pb('📋 Kopyala','cp()','cpb')}${pb('🏷️ Oto kapanış: '+(S.ac===false?'Kapalı':'Açık'),'tg()','acb')}</span></div>
+  <div id="ln" style="background:var(--card);border:2px solid var(--bd);border-radius:14px;padding:10px;margin:8px 0;font-size:14px"></div>
+  <p style="font-weight:700;color:var(--mut);margin-bottom:4px">Önizleme: ${pb('↕ Büyüt / küçült','big()')}</p><iframe id="pvw" style="height:260px" sandbox></iframe>
+  <div id="tk" style="background:var(--card);border:2px solid var(--bd);border-radius:14px;padding:10px;margin:8px 0;font-size:14px"></div>
+  <button class="btn ghost" style="margin-top:12px" onclick="ask('Tüm kod silinsin mi?',()=>{snap();setc('')})">Temizle</button>`;
+  pp(true);
+}
+function pp(nx){
+  const v=$('#ta').value;S.play=v;pv();$('#cnt').textContent=v.split('\n').length+' satır · '+v.length+' karakter';
+  const h=lint(v);$('#ln').innerHTML=h.length?'<b>🔍 İpuçları</b><br>'+h.map(x=>'• '+esc(x)).join('<br>'):(v.trim()?'✅ Kodunda belirgin bir hata görünmüyor.':'Yazmaya başla, hataları burada göstereceğim.');
+  const d=new DOMParser().parseFromString(v,'text/html');let g=0;
+  const rows=TK.map((k,i)=>{if(!nx&&k[1](d)&&!S.pt.includes(i)){S.pt.push(i);S.xp+=15;g+=15}return `<div style="margin:4px 0">${S.pt.includes(i)?'✅':'⬜'} ${esc(k[0])}</div>`}).join('');
+  $('#tk').innerHTML='<b>🎯 Mini görevler (+15 XP)</b>'+rows+(g?`<div style="color:var(--gd);font-weight:800">🎉 +${g} XP kazandın!</div>`:'');
+  save();
+}
+function snap(){U2.push($('#ta').value);if(U2.length>50)U2.shift()}
+function setc(v,p,nx){const t=$('#ta');t.value=v;t.focus();t.selectionStart=t.selectionEnd=p==null?v.length:p;pp(nx)}
+function tpl(i){snap();setc(TPL[TN[i]],null,true)}
+function undo(){if(U2.length)setc(U2.pop())}
+function ins(i){snap();const t=$('#ta'),a=t.selectionStart,b=t.selectionEnd,s=SN[i][2];setc(t.value.slice(0,a)+s+t.value.slice(b),a+s.length)}
+function tg(){S.ac=S.ac===false;save();$('#acb').textContent='🏷️ Oto kapanış: '+(S.ac===false?'Kapalı':'Açık')}
+function big(){const f=$('#pvw');f.style.height=f.style.height==='260px'?'60vh':'260px'}
+function kd(e){if(e.key==='Tab'){e.preventDefault();const t=e.target,a=t.selectionStart;t.value=t.value.slice(0,a)+'  '+t.value.slice(t.selectionEnd);t.selectionStart=t.selectionEnd=a+2;pp()}}
+function ai(e){
+  const t=$('#ta');
+  if(e.data==='>'&&S.ac!==false){
+    const p=t.selectionStart,b=t.value.slice(0,p),m=b.match(/<([a-zA-Z][a-zA-Z0-9]*)(?:\s[^<>]*)?>$/);
+    if(m&&!VOID.includes(m[1].toLowerCase())){const c='</'+m[1]+'>';if(!t.value.slice(p).startsWith(c)){t.value=b+c+t.value.slice(p);t.selectionStart=t.selectionEnd=p}}
+  }
+  pp();
+}
+function cp(){
+  const v=$('#ta').value,b=$('#cpb');
+  const ok=()=>{b.textContent='✓ Kopyalandı';setTimeout(()=>{b.textContent='📋 Kopyala'},1500)};
+  const fb=()=>{const t=$('#ta');t.select();try{document.execCommand('copy');ok()}catch(e){b.textContent='Elle kopyala (seçili)'}};
+  try{navigator.clipboard.writeText(v).then(ok,fb)}catch(e){fb()}
+}
+home();
+initCloud();
 </script>
-
-<script>
-(function(){
-  'use strict';
-  var API_BASE_URL = '';
-  var ENDPOINT = (API_BASE_URL || '') + '/api/contact';
-  var MAX_FILES = 5, MAX_FILE_BYTES = 5 * 1024 * 1024;
-  var OK_TYPES = ['image/jpeg','image/png','image/webp','image/heic','image/heif','application/pdf'];
-  var OK_EXT = ['jpg','jpeg','png','webp','heic','heif','pdf'];
-  var $ = function(id){ return document.getElementById(id); };
-
-  /* ---------- Sekmeler ---------- */
-  var tabs = document.querySelectorAll('.mode-tab');
-  var panels = document.querySelectorAll('.mode-panel');
-  function setMode(mode){
-    tabs.forEach(function(t){
-      var on = t.getAttribute('data-mode') === mode;
-      t.classList.toggle('active', on);
-      t.setAttribute('aria-selected', on ? 'true' : 'false');
-    });
-    panels.forEach(function(p){ p.style.display = (p.getAttribute('data-mode') === mode) ? '' : 'none'; });
-  }
-  tabs.forEach(function(t){ t.addEventListener('click', function(){ setMode(t.getAttribute('data-mode')); }); });
-
-  /* ---------- Yardımcılar ---------- */
-  function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
-  function validPhone(v){ return v.replace(/\D/g,'').length >= 10; }
-  function clearInvalid(scope){ scope.querySelectorAll('.invalid').forEach(function(e){ e.classList.remove('invalid'); }); }
-  function fail(el, msg, box){
-    if(el){ el.classList.add('invalid'); if(el.focus && el.tagName !== 'LABEL') { try{ el.focus({preventScroll:false}); }catch(e){ el.focus(); } } }
-    box.textContent = msg; box.classList.add('show');
-    return false;
-  }
-  function send(fields, files, btn, statusEl, onOk){
-    var orig = btn.textContent;
-    btn.disabled = true; btn.textContent = 'Gönderiliyor…';
-    statusEl.classList.remove('show','is-error');
-    var opts;
-    if(files && files.length){
-      var fd = new FormData();
-      Object.keys(fields).forEach(function(k){ fd.append(k, fields[k]); });
-      files.forEach(function(f){ fd.append('files', f, f.name); });
-      opts = { method:'POST', body: fd };
-    } else {
-      opts = { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(fields) };
-    }
-    fetch(ENDPOINT, opts)
-      .then(function(res){ return res.json().catch(function(){ return {}; }).then(function(d){ return { ok: res.ok, data: d }; }); })
-      .then(function(r){
-        if(r.ok){ onOk(); }
-        else{
-          statusEl.textContent = (r.data && r.data.error) || 'Gönderilemedi. Lütfen daha sonra tekrar deneyin veya bizi arayın.';
-          statusEl.classList.add('show','is-error');
-        }
-      })
-      .catch(function(){
-        statusEl.textContent = 'Bağlantı hatası oluştu. Lütfen daha sonra tekrar deneyin veya bizi arayın.';
-        statusEl.classList.add('show','is-error');
-      })
-      .then(function(){ btn.disabled = false; btn.textContent = orig; });
-  }
-
-  /* ---------- 3 adımlı teklif sihirbazı ---------- */
-  var wiz = $('teklifWizard');
-  var steps = wiz.querySelectorAll('.wiz-step');
-  var bars = wiz.querySelectorAll('.wiz-bars span');
-  var stepLabel = $('wizStepLabel'), wizError = $('wizError');
-  var btnBack = $('wizBack'), btnNext = $('wizNext'), btnSubmit = $('wizSubmit');
-  var STEP_NAMES = ['Sigorta türü','Araç bilgileri','İletişim bilgileri'];
-  var cur = 1;
-
-  function goStep(n){
-    cur = n;
-    steps.forEach(function(s,i){ s.classList.toggle('active', i === n-1); });
-    bars.forEach(function(b,i){ b.classList.toggle('on', i < n); });
-    stepLabel.textContent = 'Adım ' + n + '/3 · ' + STEP_NAMES[n-1];
-    btnBack.style.display = n > 1 ? '' : 'none';
-    btnNext.style.display = n < 3 ? '' : 'none';
-    btnSubmit.style.display = n === 3 ? '' : 'none';
-    wizError.classList.remove('show');
-  }
-  function validateStep(n){
-    clearInvalid(wiz); wizError.classList.remove('show');
-    if(n === 1 && !wiz.querySelector('input[name="sigortaTuru"]:checked')) return fail(null,'Lütfen bir sigorta türü seçin.', wizError);
-    if(n === 2){
-      if(!$('marka').value.trim()) return fail($('marka'),'Lütfen araç markasını girin.', wizError);
-      if(!$('model').value.trim()) return fail($('model'),'Lütfen model / yıl bilgisini girin.', wizError);
-    }
-    if(n === 3){
-      if(!$('tAd').value.trim()) return fail($('tAd'),'Lütfen adınızı ve soyadınızı girin.', wizError);
-      if(!validPhone($('tTel').value)) return fail($('tTel'),'Lütfen geçerli bir telefon numarası girin.', wizError);
-      if(!validEmail($('tEposta').value.trim())) return fail($('tEposta'),'Lütfen geçerli bir e-posta adresi girin.', wizError);
-      if(!$('tConsent').checked){ $('tConsentWrap').classList.add('invalid'); return fail(null,'Devam etmek için KVKK onayı gereklidir.', wizError); }
-      $('tConsentWrap').classList.remove('invalid');
-    }
-    return true;
-  }
-  btnNext.addEventListener('click', function(){ if(validateStep(cur)) goStep(cur + 1); });
-  btnBack.addEventListener('click', function(){ if(cur > 1) goStep(cur - 1); });
-  wiz.querySelectorAll('input[name="sigortaTuru"]').forEach(function(r){
-    r.addEventListener('change', function(){ wizError.classList.remove('show'); setTimeout(function(){ if(cur === 1) goStep(2); }, 240); });
-  });
-  wiz.addEventListener('keydown', function(e){
-    if(e.key === 'Enter' && e.target.tagName === 'INPUT' && e.target.type !== 'checkbox' && e.target.type !== 'radio' && cur < 3){
-      e.preventDefault(); if(validateStep(cur)) goStep(cur + 1);
-    }
-  });
-  wiz.addEventListener('submit', function(e){
-    e.preventDefault();
-    if(!validateStep(1)){ goStep(1); return; }
-    if(!validateStep(2)){ goStep(2); return; }
-    if(!validateStep(3)) return;
-    var tur = wiz.querySelector('input[name="sigortaTuru"]:checked').value;
-    var plaka = $('plaka').value.trim(), not = $('tNot').value.trim();
-    var lines = ['TEKLİF TALEBİ', 'Sigorta Türü: ' + tur, 'Araç: ' + [$('marka').value.trim(), $('model').value.trim()].filter(Boolean).join(' - ')];
-    if(plaka) lines.push('Plaka: ' + plaka);
-    lines.push('Telefon: ' + $('tTel').value.trim());
-    if(not){ lines.push('', 'Not:', not); }
-    send({ topic:'Teklif Talebi', name:$('tAd').value.trim(), email:$('tEposta').value.trim(), message:lines.join('\n'), consent:'true', website:$('tWebsite').value },
-         null, btnSubmit, $('teklifStatus'), function(){
-      wiz.style.display = 'none'; $('teklifDone').classList.add('show');
-    });
-  });
-  function resetWizard(){
-    wiz.reset(); clearInvalid(wiz); $('teklifStatus').classList.remove('show'); goStep(1);
-    wiz.style.display = ''; $('teklifDone').classList.remove('show');
-  }
-
-  /* ---------- Hasar bildirimi + dosya yükleme ---------- */
-  var hf = $('hasarForm');
-  var files = [], thumbUrls = [];
-  var dz = $('dropzone'), fi = $('fileInput'), fl = $('fileList'), fh = $('fileHint');
-  var FILE_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>';
-
-  function hint(msg){ fh.textContent = msg || ''; fh.style.display = msg ? 'block' : 'none'; }
-  function fmtSize(b){ return b < 1024*1024 ? Math.max(1, Math.round(b/1024)) + ' KB' : (b/1024/1024).toFixed(1) + ' MB'; }
-
-  function compressImage(file){
-    return new Promise(function(resolve){
-      if(!/^image\/(jpeg|png|webp)$/.test(file.type)) return resolve(file);
-      var url = URL.createObjectURL(file), img = new Image();
-      img.onload = function(){
-        var max = 1600, w = img.naturalWidth, h = img.naturalHeight, scale = Math.min(1, max / Math.max(w,h));
-        if(scale === 1 && file.size <= 1.5*1024*1024){ URL.revokeObjectURL(url); return resolve(file); }
-        var c = document.createElement('canvas'); c.width = Math.round(w*scale); c.height = Math.round(h*scale);
-        var ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0,0,c.width,c.height); ctx.drawImage(img,0,0,c.width,c.height);
-        c.toBlob(function(blob){
-          URL.revokeObjectURL(url);
-          if(!blob || blob.size >= file.size) return resolve(file);
-          resolve(new File([blob], file.name.replace(/\.[^.]+$/,'') + '.jpg', { type:'image/jpeg' }));
-        }, 'image/jpeg', 0.82);
-      };
-      img.onerror = function(){ URL.revokeObjectURL(url); resolve(file); };
-      img.src = url;
-    });
-  }
-
-  function renderFiles(){
-    thumbUrls.forEach(function(u){ URL.revokeObjectURL(u); }); thumbUrls = [];
-    fl.innerHTML = '';
-    files.forEach(function(f, idx){
-      var li = document.createElement('li'); li.className = 'file-item';
-      var th = document.createElement('div'); th.className = 'file-thumb';
-      if(/^image\/(jpeg|png|webp)$/.test(f.type)){
-        var u = URL.createObjectURL(f); thumbUrls.push(u);
-        var im = document.createElement('img'); im.src = u; im.alt = ''; th.appendChild(im);
-      } else { th.innerHTML = FILE_ICON; }
-      var meta = document.createElement('div'); meta.className = 'file-meta';
-      var nm = document.createElement('b'); nm.textContent = f.name;
-      var sz = document.createElement('span'); sz.textContent = fmtSize(f.size);
-      meta.appendChild(nm); meta.appendChild(sz);
-      var rm = document.createElement('button'); rm.type = 'button'; rm.className = 'file-remove'; rm.setAttribute('aria-label','Dosyayı kaldır'); rm.textContent = '✕';
-      rm.addEventListener('click', function(){ files.splice(idx,1); hint(''); renderFiles(); });
-      li.appendChild(th); li.appendChild(meta); li.appendChild(rm); fl.appendChild(li);
-    });
-  }
-
-  async function addFiles(list){
-    hint('');
-    var arr = Array.prototype.slice.call(list);
-    for(var i = 0; i < arr.length; i++){
-      var f = arr[i];
-      if(files.length >= MAX_FILES){ hint('En fazla ' + MAX_FILES + ' dosya ekleyebilirsiniz.'); break; }
-      var ext = (f.name.split('.').pop() || '').toLowerCase(), type = (f.type || '').toLowerCase();
-      if(!(OK_TYPES.indexOf(type) !== -1 || (!type && OK_EXT.indexOf(ext) !== -1))){ hint('Yalnızca JPG, PNG, WEBP, HEIC veya PDF dosyaları eklenebilir.'); continue; }
-      var p = await compressImage(f);
-      if(p.size > MAX_FILE_BYTES){ hint('"' + f.name + '" dosyası 5 MB sınırını aşıyor.'); continue; }
-      if(files.some(function(x){ return x.name === p.name && x.size === p.size; })) continue;
-      files.push(p);
-    }
-    renderFiles();
-  }
-  dz.addEventListener('click', function(){ fi.click(); });
-  dz.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); fi.click(); } });
-  fi.addEventListener('change', function(){ addFiles(fi.files); fi.value = ''; });
-  ['dragenter','dragover'].forEach(function(ev){ dz.addEventListener(ev, function(e){ e.preventDefault(); dz.classList.add('drag'); }); });
-  ['dragleave','drop'].forEach(function(ev){ dz.addEventListener(ev, function(e){ e.preventDefault(); dz.classList.remove('drag'); }); });
-  dz.addEventListener('drop', function(e){ if(e.dataTransfer && e.dataTransfer.files) addFiles(e.dataTransfer.files); });
-
-  hf.addEventListener('submit', function(e){
-    e.preventDefault();
-    var err = $('hasarError'); clearInvalid(hf); err.classList.remove('show');
-    if(!$('hAd').value.trim()) return fail($('hAd'),'Lütfen adınızı ve soyadınızı girin.', err);
-    if(!validPhone($('hTel').value)) return fail($('hTel'),'Lütfen geçerli bir telefon numarası girin.', err);
-    if(!validEmail($('hEposta').value.trim())) return fail($('hEposta'),'Lütfen geçerli bir e-posta adresi girin.', err);
-    if(!$('hAciklama').value.trim()) return fail($('hAciklama'),'Lütfen hasarı kısaca açıklayın.', err);
-    if(!$('hConsent').checked){ $('hConsentWrap').classList.add('invalid'); return fail(null,'Devam etmek için KVKK onayı gereklidir.', err); }
-    $('hConsentWrap').classList.remove('invalid');
-
-    var lines = ['HASAR BİLDİRİMİ', 'Telefon: ' + $('hTel').value.trim()];
-    if($('hPolice').value.trim()) lines.push('Poliçe No: ' + $('hPolice').value.trim());
-    if($('hPlaka').value.trim()) lines.push('Plaka: ' + $('hPlaka').value.trim());
-    if($('hTarih').value) lines.push('Hasar Tarihi: ' + $('hTarih').value);
-    lines.push('Ekli dosya sayısı: ' + files.length, '', 'Açıklama:', $('hAciklama').value.trim());
-
-    send({ topic:'Hasar Bildirimi', name:$('hAd').value.trim(), email:$('hEposta').value.trim(), message:lines.join('\n'), consent:'true', website:$('hWebsite').value },
-         files, $('hasarSubmit'), $('hasarStatus'), function(){
-      hf.style.display = 'none'; $('hasarDone').classList.add('show');
-    });
-  });
-  function resetHasar(){
-    hf.reset(); files = []; renderFiles(); hint(''); clearInvalid(hf);
-    $('hasarError').classList.remove('show'); $('hasarStatus').classList.remove('show');
-    hf.style.display = ''; $('hasarDone').classList.remove('show');
-  }
-  document.querySelectorAll('[data-again]').forEach(function(b){
-    b.addEventListener('click', function(){ if(b.getAttribute('data-again') === 'teklif') resetWizard(); else resetHasar(); });
-  });
-
-  /* ---------- Dış tetikleyiciler ---------- */
-  document.querySelectorAll('.teklif-link').forEach(function(l){ l.addEventListener('click', function(){ setMode('teklif'); }); });
-  document.querySelectorAll('.hasar-link').forEach(function(l){ l.addEventListener('click', function(){ setMode('hasar'); }); });
-  document.querySelectorAll('.product-cta').forEach(function(b){
-    b.addEventListener('click', function(){
-      setMode('teklif');
-      if($('teklifDone').classList.contains('show')) resetWizard();
-      var prod = b.getAttribute('data-product');
-      var input = wiz.querySelector('input[name="sigortaTuru"][value="' + prod + '"]');
-      if(input){ input.checked = true; goStep(2); }
-    });
-  });
-})();
-
-</script>
-
-<script>
-(function(){
-  'use strict';
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var canHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  var cards = document.querySelectorAll('.benefit-card, .vehicle-card, .quote-card, .pg-item, .why-card, .qc-btn');
-
-  /* 3D belirme animasyonu (JS çalışmazsa içerik zaten görünür kalır) */
-  if(!reduce && 'IntersectionObserver' in window){
-    document.documentElement.classList.add('js-3d');
-    cards.forEach(function(c, i){ c.classList.add('reveal3d'); c.style.transitionDelay = ((i % 6) * 70) + 'ms'; });
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(!en.isIntersecting) return;
-        var el = en.target; io.unobserve(el); el.classList.add('in');
-        setTimeout(function(){ el.classList.remove('reveal3d','in'); el.style.transitionDelay = ''; }, 1100);
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    cards.forEach(function(c){ io.observe(c); });
-  }
-
-  /* Fare ile 3D eğilme */
-  if(!reduce && canHover){
-    cards.forEach(function(el){
-      if(el.classList.contains('qc-btn')) return;
-      el.classList.add('tilt3d');
-      el.addEventListener('pointermove', function(e){
-        if(e.pointerType && e.pointerType !== 'mouse') return;
-        var r = el.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
-        el.style.transition = 'transform .08s linear, box-shadow .3s ease';
-        el.style.transform = 'perspective(900px) rotateX(' + (-py * 9).toFixed(2) + 'deg) rotateY(' + (px * 11).toFixed(2) + 'deg) translateZ(6px)';
-      });
-      el.addEventListener('pointerleave', function(){ el.style.transition = ''; el.style.transform = ''; });
-    });
-  }
-})();
-
-</script>
-
-<script>
-(function(){
-  'use strict';
-  var heroEl = document.getElementById('hero3d');
-  var avwEl = document.getElementById('avw3d');
-  if(!heroEl && !avwEl) return;
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function hasWebGL(){
-    try{
-      var c = document.createElement('canvas');
-      return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl')));
-    }catch(e){ return false; }
-  }
-  if(!hasWebGL()) return;
-
-  function loadThree(cb){
-    if(window.THREE) return cb();
-    var s = document.createElement('script');
-    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-    s.async = true; s.crossOrigin = 'anonymous';
-    s.onload = cb;
-    s.onerror = function(){ /* çevrimdışı: mevcut SVG görsel kalır */ };
-    document.head.appendChild(s);
-  }
-
-  /* ---- Model yardımcıları ---- */
-  function ribbon(THREE, p0, c, p2, t0, t1, off, halfW, n, mat){
-    var pos = [], idx = [];
-    for(var i = 0; i <= n; i++){
-      var t = t0 + (t1 - t0) * i / n, mt = 1 - t;
-      var x = mt*mt*p0[0] + 2*mt*t*c[0] + t*t*p2[0];
-      var y = mt*mt*p0[1] + 2*mt*t*c[1] + t*t*p2[1];
-      var dx = 2*mt*(c[0]-p0[0]) + 2*t*(p2[0]-c[0]);
-      var dy = 2*mt*(c[1]-p0[1]) + 2*t*(p2[1]-c[1]);
-      var l = Math.sqrt(dx*dx + dy*dy) || 1;
-      x += (-dy / l) * off; y += (dx / l) * off;
-      pos.push(x, y, -halfW, x, y, halfW);
-      if(i < n){ var a = i * 2; idx.push(a, a+1, a+2, a+1, a+3, a+2); }
-    }
-    var g = new THREE.BufferGeometry();
-    g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
-    g.setIndex(idx); g.computeVertexNormals();
-    return new THREE.Mesh(g, mat);
-  }
-
-  function buildCar(THREE, bodyColor){
-    var car = new THREE.Group();
-    var bodyMat  = new THREE.MeshStandardMaterial({ color: bodyColor, metalness: 0.35, roughness: 0.38 });
-    var glassMat = new THREE.MeshStandardMaterial({ color: 0x0b1220, metalness: 0.6, roughness: 0.15, side: THREE.DoubleSide });
-    var tireMat  = new THREE.MeshStandardMaterial({ color: 0x0d0d10, roughness: 0.9, metalness: 0.05 });
-    var rimMat   = new THREE.MeshStandardMaterial({ color: 0xd7dde6, metalness: 0.85, roughness: 0.28 });
-    var lampMat  = new THREE.MeshStandardMaterial({ color: 0xcfefff, emissive: 0xbfe6ff, emissiveIntensity: 1.3 });
-    var tailMat  = new THREE.MeshStandardMaterial({ color: 0xff5a5a, emissive: 0xff2a2a, emissiveIntensity: 1.1 });
-
-    /* Gövde: yan profil çıkıntılı (extrude) */
-    var s = new THREE.Shape();
-    s.moveTo(-2.2, 0.30);
-    s.lineTo(-2.2, 0.72);
-    s.quadraticCurveTo(-2.2, 0.92, -1.95, 0.96);
-    s.lineTo(-1.45, 1.02);
-    s.quadraticCurveTo(-1.15, 1.45, -0.6, 1.47);
-    s.lineTo(0.35, 1.47);
-    s.quadraticCurveTo(0.95, 1.45, 1.25, 1.0);
-    s.lineTo(1.95, 0.9);
-    s.quadraticCurveTo(2.25, 0.85, 2.25, 0.6);
-    s.lineTo(2.25, 0.30);
-    s.lineTo(-2.2, 0.30);
-    var bodyGeo = new THREE.ExtrudeGeometry(s, { depth: 1.5, bevelEnabled: true, bevelThickness: 0.12, bevelSize: 0.12, bevelSegments: 4, curveSegments: 24 });
-    bodyGeo.translate(0, 0, -0.75);
-    car.add(new THREE.Mesh(bodyGeo, bodyMat));
-
-    /* Yan camlar */
-    var g = new THREE.Shape();
-    g.moveTo(-1.28, 1.04); g.lineTo(-0.9, 1.36); g.lineTo(0.3, 1.36); g.lineTo(0.9, 1.04); g.lineTo(-1.28, 1.04);
-    var glassGeo = new THREE.ExtrudeGeometry(g, { depth: 1.8, bevelEnabled: false });
-    glassGeo.translate(0, 0, -0.9);
-    car.add(new THREE.Mesh(glassGeo, glassMat));
-
-    /* Ön ve arka cam (eğriye uyumlu şerit) */
-    car.add(ribbon(THREE, [0.35,1.47], [0.95,1.45], [1.25,1.0], 0.10, 0.68, 0.125, 0.62, 10, glassMat));
-    car.add(ribbon(THREE, [-1.45,1.02], [-1.15,1.45], [-0.6,1.47], 0.14, 0.86, 0.125, 0.62, 10, glassMat));
-
-    /* Farlar */
-    [-0.52, 0.52].forEach(function(z){
-      var h = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.16, 0.36), lampMat); h.position.set(2.33, 0.68, z); car.add(h);
-      var t = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.14, 0.34), tailMat); t.position.set(-2.30, 0.70, z); car.add(t);
-    });
-
-    /* Tekerlekler */
-    var wheels = [];
-    [[-1.35, 0.76], [-1.35, -0.76], [1.35, 0.76], [1.35, -0.76]].forEach(function(p){
-      var w = new THREE.Group();
-      var tireGeo = new THREE.CylinderGeometry(0.42, 0.42, 0.3, 32); tireGeo.rotateX(Math.PI / 2);
-      w.add(new THREE.Mesh(tireGeo, tireMat));
-      var rimGeo = new THREE.CylinderGeometry(0.27, 0.27, 0.32, 28); rimGeo.rotateX(Math.PI / 2);
-      w.add(new THREE.Mesh(rimGeo, rimMat));
-      for(var k = 0; k < 5; k++){
-        var sp = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.05, 0.34), rimMat);
-        sp.rotation.z = k * Math.PI / 5; w.add(sp);
-      }
-      var hub = new THREE.CylinderGeometry(0.07, 0.07, 0.36, 16); hub.rotateX(Math.PI / 2);
-      w.add(new THREE.Mesh(hub, tireMat));
-      w.position.set(p[0], 0.42, p[1]);
-      car.add(w); wheels.push(w);
-    });
-
-    /* Zemin gölgesi */
-    var cv = document.createElement('canvas'); cv.width = cv.height = 128;
-    var cx = cv.getContext('2d'), gr = cx.createRadialGradient(64, 64, 4, 64, 64, 62);
-    gr.addColorStop(0, 'rgba(0,0,0,0.55)'); gr.addColorStop(1, 'rgba(0,0,0,0)');
-    cx.fillStyle = gr; cx.fillRect(0, 0, 128, 128);
-    var shadow = new THREE.Mesh(new THREE.PlaneGeometry(7, 3.4), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(cv), transparent: true, depthWrite: false }));
-    shadow.rotation.x = -Math.PI / 2; shadow.position.y = 0.01; car.add(shadow);
-
-    return { group: car, wheels: wheels };
-  }
-
-  function buildShield(THREE){
-    var grp = new THREE.Group();
-    var gold = new THREE.MeshStandardMaterial({ color: 0xF4C542, metalness: 0.6, roughness: 0.3, emissive: 0x6b4a00, emissiveIntensity: 0.25 });
-    var navy = new THREE.MeshStandardMaterial({ color: 0x0F2340, metalness: 0.2, roughness: 0.5 });
-    var sh = new THREE.Shape();
-    sh.moveTo(0, 0.9); sh.lineTo(0.7, 0.65); sh.lineTo(0.7, 0.05);
-    sh.quadraticCurveTo(0.7, -0.5, 0, -0.9);
-    sh.quadraticCurveTo(-0.7, -0.5, -0.7, 0.05);
-    sh.lineTo(-0.7, 0.65); sh.lineTo(0, 0.9);
-    var geo = new THREE.ExtrudeGeometry(sh, { depth: 0.14, bevelEnabled: true, bevelThickness: 0.05, bevelSize: 0.05, bevelSegments: 3, curveSegments: 20 });
-    geo.translate(0, 0, -0.07);
-    grp.add(new THREE.Mesh(geo, gold));
-    var a = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.13, 0.16), navy); a.position.set(-0.2, -0.09, 0.1); a.rotation.z = -0.83; grp.add(a);
-    var b = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.13, 0.16), navy); b.position.set(0.11, 0.03, 0.1); b.rotation.z = 0.83; grp.add(b);
-    return grp;
-  }
-
-  function mount(THREE, el, opt){
-    var host = el.closest(opt.hostSel);
-    var renderer;
-    try{
-      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
-    }catch(e){ return; }
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    renderer.setClearColor(0x000000, 0);
-    el.appendChild(renderer.domElement);
-
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
-    scene.add(new THREE.AmbientLight(0xffffff, 0.6));
-    var key = new THREE.DirectionalLight(0xffffff, 1.0); key.position.set(4, 6, 5); scene.add(key);
-    var rim = new THREE.DirectionalLight(0x7fb2ff, 0.75); rim.position.set(-5, 3, -4); scene.add(rim);
-    var fill = new THREE.PointLight(0x9fc3e8, 0.7, 24); fill.position.set(0, 2.5, 7); scene.add(fill);
-
-    var built = buildCar(THREE, opt.color);
-    var car = built.group;
-    car.scale.setScalar(opt.scale || 1);
-    car.position.y = opt.yOffset || 0;
-    scene.add(car);
-    var shield = null;
-    if(opt.shield){ shield = buildShield(THREE); shield.position.set(0, 2.75, 0); shield.scale.setScalar(0.62); scene.add(shield); }
-
-    var baseY = opt.yOffset || 0, target = 0, cur = 0, hoverActive = false, running = false, raf = 0, t0 = performance.now();
-    var dragging = false, dragX = 0, dragYaw = 0;
-
-    function size(){
-      var w = el.clientWidth || 300, h = el.clientHeight || 240;
-      renderer.setSize(w, h, false);
-      camera.aspect = w / h;
-      var dist = (opt.dist || 10.5) * Math.max(1, 1.28 / camera.aspect);
-      camera.position.set(0, opt.camY || 2.5, dist);
-      camera.lookAt(0, opt.lookY || 1.0, 0);
-      camera.updateProjectionMatrix();
-    }
-    function frame(now){
-      var t = (now - t0) / 1000;
-      var auto = Math.sin(t * 0.55) * 0.38;
-      var want = hoverActive ? target : auto;
-      cur += (want - cur) * 0.06;
-      car.rotation.y = -0.5 + cur + dragYaw;
-      car.position.y = baseY + Math.sin(t * 2.2) * 0.012;
-      built.wheels.forEach(function(w){ w.rotation.z = -t * 5; });
-      if(shield){ shield.rotation.y = Math.sin(t * 0.9) * 0.5; shield.position.y = 2.75 + Math.sin(t * 1.6) * 0.06; }
-      renderer.render(scene, camera);
-    }
-    function loop(now){ if(!running) return; frame(now); raf = requestAnimationFrame(loop); }
-    function start(){ if(reduce || running) return; running = true; raf = requestAnimationFrame(loop); }
-    function stop(){ running = false; cancelAnimationFrame(raf); }
-
-    size();
-    frame(performance.now());
-    el.classList.add('ready'); if(host) host.classList.add('has-3d');
-
-    if('ResizeObserver' in window){ new ResizeObserver(function(){ size(); if(!running) frame(performance.now()); }).observe(el); }
-    else window.addEventListener('resize', function(){ size(); if(!running) frame(performance.now()); });
-
-    if('IntersectionObserver' in window){
-      new IntersectionObserver(function(es){ es[0].isIntersecting && !document.hidden ? start() : stop(); }, { threshold: 0.05 }).observe(el);
-    } else start();
-    document.addEventListener('visibilitychange', function(){ if(document.hidden) stop(); else start(); });
-
-    /* Fare ile yönlendirme, dokunmatikte yatay sürükleme */
-    var cv = renderer.domElement;
-    cv.addEventListener('pointermove', function(e){
-      if(e.pointerType === 'mouse'){
-        var r = cv.getBoundingClientRect();
-        target = ((e.clientX - r.left) / r.width - 0.5) * 1.5; hoverActive = true;
-      } else if(dragging){ dragYaw = dragYaw - (e.clientX - dragX) * 0.008; dragX = e.clientX; }
-    });
-    cv.addEventListener('pointerleave', function(){ hoverActive = false; });
-    cv.addEventListener('pointerdown', function(e){ if(e.pointerType !== 'mouse'){ dragging = true; dragX = e.clientX; } });
-    window.addEventListener('pointerup', function(){ dragging = false; });
-
-    cv.addEventListener('webglcontextlost', function(e){
-      e.preventDefault(); stop(); el.classList.remove('ready'); if(host) host.classList.remove('has-3d');
-    });
-  }
-
-  function init(){
-    var THREE = window.THREE; if(!THREE) return;
-    try{
-      if(heroEl) mount(THREE, heroEl, { hostSel: '.hero-art', color: 0xE3ECF7, shield: true, scale: 1, dist: 10.5, camY: 2.6, lookY: 1.25 });
-    }catch(e){ if(window.console) console.warn('Hero 3D başlatılamadı', e); }
-    try{
-      if(avwEl) mount(THREE, avwEl, { hostSel: '.avw', color: 0x3E7BC4, shield: false, scale: 0.95, yOffset: -0.25, dist: 11.5, camY: 2.3, lookY: 0.9 });
-    }catch(e){ if(window.console) console.warn('Kapsam 3D başlatılamadı', e); }
-  }
-
-  function boot(){ loadThree(init); }
-  if(document.readyState === 'complete') boot(); else window.addEventListener('load', boot);
-})();
-
-</script>
-
 </body>
 </html>
